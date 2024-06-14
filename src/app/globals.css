@@ -2,32 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #f5f6fa;
+  overflow-x: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Custom Swiper Pagination  */
+.swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  color: #000;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.swiper-pagination-bullet-active {
+  color: #fff;
+  background: #007aff;
+}
+
+.custom-swiper-pagination .swiper-pagination-bullet {
+  width: var(--swiper-pagination-bullet-width, 20px);
+  height: var(--swiper-pagination-bullet-height, 4px);
+  background: var(--swiper-pagination-bullet-inactive-color, #f89c1c);
+  border-radius: var(--swiper-pagination-bullet-border-radius, 10px);
+  transition:
+    width 0.3s,
+    height 0.3s; /* Smooth transition for size change */
+}
+
+.custom-swiper-pagination .swiper-pagination-bullet-active {
+  width: var(--swiper-pagination-bullet-active-width, 30px);
+  height: var(--swiper-pagination-bullet-active-height, 8px);
+  background: var(--swiper-pagination-color, #1479f4);
 }
