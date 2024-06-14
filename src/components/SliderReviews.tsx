@@ -9,7 +9,7 @@ import Image from "next/image";
 export default function SliderReviews() {
   const [showFullContent, setShowFullContent] = useState(Array(7).fill(false));
 
-  const toggleContent = (index) => {
+  const toggleContent = (index: number) => {
     setShowFullContent((prevState) => {
       const newState = [...prevState];
       newState[index] = !newState[index];
@@ -17,7 +17,7 @@ export default function SliderReviews() {
     });
   };
 
-  const renderContent = (content, index) => {
+  const renderContent = (content: string, index: number) => {
     if (showFullContent[index]) {
       return content;
     } else {
