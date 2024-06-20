@@ -1,11 +1,13 @@
+"use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Pagination, Autoplay } from "swiper/modules";
 import Link from "next/link";
 import Image from "next/image";
+import { INewPaper } from "@/types/interfaces";
 
 export default function SliderNewspapers() {
-  const SliderNewspapers = [
+  const SliderNewspapers: INewPaper[] = [
     {
       img: "/imgs/newspapers/newspaper-1.png",
       logo: "/imgs/newspapers/logo-1.png",

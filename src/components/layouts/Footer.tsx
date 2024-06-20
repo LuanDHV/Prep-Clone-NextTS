@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
+import ButtonFooter from "@/components/layouts/ButtonFooter";
 
 export default function Footer() {
   return (
     <>
       {/* Footer */}
+      <ButtonFooter />
       <section>
-        <div className="container h-auto w-full bg-white px-5 py-10 text-sm">
+        <div className="container mx-auto h-auto w-full bg-white px-5 py-10 text-sm">
           <div className="first-footer md:grid md:grid-cols-3">
             <div className="grid gap-2 md:gap-5">
               <Image

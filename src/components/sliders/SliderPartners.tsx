@@ -1,9 +1,11 @@
+"use client";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
+import { IPartner } from "@/types/interfaces";
 
 export default function SliderPartners() {
-  const SliderPartners = [
+  const SliderPartners: IPartner[] = [
     {
       img: "/imgs/partners/partner-1.png",
       width: 195,

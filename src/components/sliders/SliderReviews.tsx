@@ -1,3 +1,4 @@
+"use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -5,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 import Image from "next/image";
+import { IReview } from "@/types/interfaces";
 
 export default function SliderReviews() {
   const [showFullContent, setShowFullContent] = useState(Array(7).fill(false));
@@ -25,7 +27,7 @@ export default function SliderReviews() {
     }
   };
 
-  const SliderReviews = [
+  const SliderReviews: IReview[] = [
     {
       name: "Lê Thanh Tú",
       avatar: "/imgs/students/avt-1.png",

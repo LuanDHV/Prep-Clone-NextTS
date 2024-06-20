@@ -1,10 +1,12 @@
+"use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
+import { ITeacher } from "@/types/interfaces";
 
 export default function SliderTeachers() {
-  const SliderTeachers = [
+  const SliderTeachers: ITeacher[] = [
     {
       img: "/imgs/teachers/teacher-1.png",
       name: "Thầy Tú Phạm (MSc)",

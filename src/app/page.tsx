@@ -1,11 +1,10 @@
-"use client";
 import Link from "next/link";
 import Image from "next/image";
-import SliderRewards from "@/components/SliderRewards";
-import SliderTeachers from "@/components/SliderTeachers";
-import SliderReviews from "@/components/SliderReviews";
-import SliderNewspapers from "@/components/SliderNewspapers";
-import SliderPartners from "@/components/SliderPartners";
+import SliderRewards from "@/components/sliders/SliderRewards";
+import SliderTeachers from "@/components/sliders/SliderTeachers";
+import SliderReviews from "@/components/sliders/SliderReviews";
+import SliderNewspapers from "@/components/sliders/SliderNewspapers";
+import SliderPartners from "@/components/sliders/SliderPartners";
 
 export default function Home() {
   return (

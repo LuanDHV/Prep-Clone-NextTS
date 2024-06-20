@@ -1,10 +1,12 @@
+"use client";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Pagination } from "swiper/modules";
 import Image from "next/image";
+import { IReward } from "@/types/interfaces";
 
 export default function SliderRewards() {
-  const SliderRewards = [
+  const SliderRewards: IReward[] = [
     {
       img: "/imgs/homepage/edtech.svg",
       content: "Top 50 đơn vị Giáo dục Công Nghệ Đông Nam Á tiềm năng 2023",
