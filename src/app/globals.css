@@ -41,3 +41,7 @@ body {
   height: var(--swiper-pagination-bullet-active-height, 8px);
   background: var(--swiper-pagination-color, #1479f4);
 }
+
+/* .relative:hover .hover-span {
+  opacity: 1;
+} */

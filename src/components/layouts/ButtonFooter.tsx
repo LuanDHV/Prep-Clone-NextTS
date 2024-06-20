@@ -59,7 +59,7 @@ export default function ButtonFooter() {
               </svg>
             </div>
             <div className="fixed bottom-80 right-5 z-[200] space-y-5">
-              <div className="relative h-16 w-16 cursor-pointer rounded-full bg-white p-2">
+              <div className="group relative h-16 w-16 cursor-pointer rounded-full bg-white p-2">
                 <Link href="#">
                   <Image
                     src="/imgs/support/zalo.svg"
@@ -71,11 +71,19 @@ export default function ButtonFooter() {
                     className="absolute right-4 top-4"
                   />
                 </Link>
-                <span className="absolute right-20 top-4 flex h-10 w-16 items-center justify-center rounded-lg bg-black p-1 text-sm text-white">
+                <span className="absolute right-[75px] top-2 flex h-10 w-16 items-center justify-center rounded-lg bg-black p-1 text-sm text-white opacity-0 duration-300 ease-in-out group-hover:opacity-100">
                   Zalo
+                  <Image
+                    src="/imgs/support/arrow-right.svg"
+                    alt="arrow-right"
+                    width={14}
+                    height={14}
+                    objectFit="cover"
+                    className="absolute -right-[10px]"
+                  />
                 </span>
               </div>
-              <div className="relative h-16 w-16 cursor-pointer rounded-full bg-white p-2">
+              <div className="group relative h-16 w-16 cursor-pointer rounded-full bg-white p-2">
                 <Link href="#">
                   <Image
                     src="/imgs/support/form-pen.svg"
@@ -87,11 +95,19 @@ export default function ButtonFooter() {
                     className="absolute right-4 top-4"
                   />
                 </Link>
-                <span className="absolute right-20 top-4 flex h-10 w-48 items-center justify-center rounded-lg bg-black p-1 text-sm text-white opacity-100">
+                <span className="absolute right-[75px] top-2 flex h-10 w-48 items-center justify-center rounded-lg bg-black p-1 text-sm text-white opacity-0 duration-300 ease-in-out group-hover:opacity-100">
                   Đăng ký nhận tư vấn
+                  <Image
+                    src="/imgs/support/arrow-right.svg"
+                    alt="arrow-right"
+                    width={14}
+                    height={14}
+                    objectFit="cover"
+                    className="absolute -right-[10px]"
+                  />
                 </span>
               </div>
-              <div className="relative h-16 w-16 cursor-pointer rounded-full bg-white p-2">
+              <div className="group relative h-16 w-16 cursor-pointer rounded-full bg-white p-2">
                 <Link href="#">
                   <svg
                     className="svg-inline--fa fa-phone-volume p-2 text-[32px] text-blue-500"
@@ -110,9 +126,17 @@ export default function ButtonFooter() {
                     ></path>
                   </svg>
                 </Link>
-                <span className="absolute right-20 top-4 flex h-14 w-36 flex-col items-center justify-center rounded-lg bg-black p-1 text-sm text-white opacity-100">
+                <span className="absolute right-[75px] top-2 flex h-14 w-36 flex-col items-center justify-center rounded-lg bg-black p-1 text-sm text-white opacity-0 duration-300 ease-in-out group-hover:opacity-100">
                   <p>Liên hệ Hotline</p>
                   <p className="font-bold">0123 456 789</p>
+                  <Image
+                    src="/imgs/support/arrow-right.svg"
+                    alt="arrow-right"
+                    width={14}
+                    height={14}
+                    objectFit="cover"
+                    className="absolute -right-[10px]"
+                  />
                 </span>
               </div>
             </div>
