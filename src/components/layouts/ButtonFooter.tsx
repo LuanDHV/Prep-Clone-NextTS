@@ -66,8 +66,7 @@ export default function ButtonFooter() {
                     alt="zalo"
                     width={32}
                     height={32}
-                    objectFit="cover"
-                    className="absolute right-4 top-4"
+                    className="absolute right-4 top-4 object-cover"
                   />
                 </Link>
                 <span className="absolute right-[75px] top-2 flex h-10 w-16 items-center justify-center rounded-lg bg-black p-1 text-sm text-white opacity-0 duration-300 ease-in-out group-hover:opacity-100">
@@ -77,8 +76,7 @@ export default function ButtonFooter() {
                     alt="arrow-right"
                     width={14}
                     height={14}
-                    objectFit="cover"
-                    className="absolute -right-[10px]"
+                    className="absolute -right-[10px] object-cover"
                   />
                 </span>
               </div>
@@ -89,8 +87,7 @@ export default function ButtonFooter() {
                     alt="form-pen"
                     width={32}
                     height={32}
-                    objectFit="cover"
-                    className="absolute right-4 top-4"
+                    className="absolute right-4 top-4 object-cover"
                   />
                 </Link>
                 <span className="absolute right-[75px] top-2 flex h-10 w-48 items-center justify-center rounded-lg bg-black p-1 text-sm text-white opacity-0 duration-300 ease-in-out group-hover:opacity-100">
@@ -100,8 +97,7 @@ export default function ButtonFooter() {
                     alt="arrow-right"
                     width={14}
                     height={14}
-                    objectFit="cover"
-                    className="absolute -right-[10px]"
+                    className="absolute -right-[10px] object-cover"
                   />
                 </span>
               </div>
@@ -132,8 +128,7 @@ export default function ButtonFooter() {
                     alt="arrow-right"
                     width={14}
                     height={14}
-                    objectFit="cover"
-                    className="absolute -right-[10px]"
+                    className="absolute -right-[10px] object-cover"
                   />
                 </span>
               </div>
@@ -149,8 +144,8 @@ export default function ButtonFooter() {
               alt="bee-support"
               width={80}
               height={56}
-              objectFit="cover"
               loading="lazy"
+              className="object-cover"
             />
             <span className="absolute right-[75px] top-0 h-20 w-80 rounded-lg bg-black px-4 py-2 text-sm text-white opacity-0 duration-300 ease-in-out group-hover:opacity-100">
               <p>Xin chào, Prep rất vui được hỗ trợ bạn.</p>
@@ -163,8 +158,7 @@ export default function ButtonFooter() {
                 alt="arrow-right"
                 width={14}
                 height={14}
-                objectFit="cover"
-                className="absolute -right-[10px] top-8"
+                className="absolute -right-[10px] top-8 object-cover"
               />
             </span>
           </div>

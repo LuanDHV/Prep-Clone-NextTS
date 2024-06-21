@@ -44,9 +44,7 @@ export default function SliderPartners() {
               alt="partners"
               width={slide.width}
               height={80}
-              objectFit="cover"
-              loading="lazy"
-              className="mx-auto"
+              className="mx-auto object-cover"
             />
           </div>
         </SwiperSlide>

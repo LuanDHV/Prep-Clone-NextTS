@@ -104,8 +104,8 @@ export default function Header() {
                 alt="logo"
                 width={100}
                 height={28}
-                objectFit="cover"
                 loading="lazy"
+                className="object-cover"
               />
             </Link>
           </div>

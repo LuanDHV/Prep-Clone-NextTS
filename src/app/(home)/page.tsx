@@ -25,8 +25,8 @@ export default function Home() {
               alt="img-public"
               width={320}
               height={355.55}
-              objectFit="cover"
-              loading="lazy"
+              layout="fill"
+              className="object-cover"
             />
             <div className="mt-8 block text-center text-xl font-bold sm:hidden">
               Chọn mục tiêu của bạn:
@@ -48,8 +48,7 @@ export default function Home() {
                 alt="ic-school"
                 width={80}
                 height={80}
-                objectFit="cover"
-                loading="lazy"
+                className="object-cover"
               />
             </div>
             <h3 className="mt-8 text-center text-2xl font-bold">IELTS</h3>
@@ -67,8 +66,7 @@ export default function Home() {
                 alt="ic-graduation"
                 width={80}
                 height={80}
-                objectFit="cover"
-                loading="lazy"
+                className="object-cover"
               />
             </div>
             <h3 className="mt-8 text-center text-2xl font-bold">TOEIC</h3>
@@ -86,9 +84,7 @@ export default function Home() {
                 alt="ic-note"
                 width={35}
                 height={37.5}
-                objectFit="cover"
-                loading="lazy"
-                className="mx-auto"
+                className="mx-auto object-cover"
               />
             </div>
             <h3 className="mt-8 text-center text-2xl font-bold">HSK</h3>
@@ -106,9 +102,7 @@ export default function Home() {
                 alt="ic-talk"
                 width={40}
                 height={40}
-                objectFit="cover"
-                loading="lazy"
-                className="mx-auto"
+                className="mx-auto object-cover"
               />
             </div>
             <h3 className="mt-8 text-center text-2xl font-bold">
@@ -129,9 +123,7 @@ export default function Home() {
             alt="ic-award"
             width={128}
             height={66}
-            objectFit="cover"
-            loading="lazy"
-            className="mx-auto"
+            className="mx-auto object-cover"
           />
           <h2 className="mt-[18px] text-center text-2xl font-bold md:text-3xl">
             <span className="text-blue-600">Giải thưởng</span> đạt được
@@ -156,8 +148,7 @@ export default function Home() {
                   alt="ic-slide"
                   width={80}
                   height={80}
-                  objectFit="cover"
-                  loading="lazy"
+                  className="object-cover"
                 />
                 <h4 className="ml-2 text-lg font-bold md:ml-0 md:mt-8">
                   Video bài giảng chất lượng cao
@@ -175,8 +166,7 @@ export default function Home() {
                   alt="ic-check_note"
                   width={80}
                   height={80}
-                  objectFit="cover"
-                  loading="lazy"
+                  className="object-cover"
                 />
                 <h4 className="ml-2 text-lg font-bold md:ml-0 md:mt-8">
                   Đầy đủ bài mẫu, bài tập, mini test, progress test như thi thật
@@ -194,8 +184,7 @@ export default function Home() {
                   alt="ic-copy"
                   width={80}
                   height={80}
-                  objectFit="cover"
-                  loading="lazy"
+                  className="object-cover"
                 />
               </div>
               <h4 className="ml-2 text-lg font-bold md:ml-0 md:mt-8">
@@ -218,9 +207,7 @@ export default function Home() {
             alt="ic-slide"
             width={452}
             height={449}
-            objectFit="cover"
-            loading="lazy"
-            className="mx-auto"
+            className="mx-auto object-cover"
           />
           <div className="mx-auto w-full">
             <h2 className="mt-10 text-center text-2xl font-bold md:text-start md:text-3xl">
@@ -316,8 +303,7 @@ export default function Home() {
                     alt="ic-star"
                     width={40}
                     height={40}
-                    objectFit="cover"
-                    loading="lazy"
+                    className="object-cover"
                   />
                   <span className="ml-2 font-semibold text-[#ff9f00]">
                     Danh sách học viên điểm cao
@@ -330,8 +316,7 @@ export default function Home() {
                   alt="public-3"
                   width={575}
                   height={560}
-                  objectFit="cover"
-                  loading="lazy"
+                  className="object-cover"
                 />
               </div>
             </div>
@@ -342,90 +327,70 @@ export default function Home() {
               alt="circles"
               width={20}
               height={20}
-              objectFit="cover"
-              loading="lazy"
-              className="absolute left-1/2 top-2"
+              className="absolute left-1/2 top-2 object-cover"
             />
             <Image
               src="/imgs/circles/circle-1.svg"
               alt="circles"
               width={20}
               height={20}
-              objectFit="cover"
-              loading="lazy"
-              className="absolute bottom-36 left-16"
+              className="absolute bottom-36 left-16 object-cover"
             />
             <Image
               src="/imgs/circles/circle-2.svg"
               alt="circles"
               width={28}
               height={28}
-              objectFit="cover"
-              loading="lazy"
-              className="absolute left-20 top-48 hidden md:block"
+              className="absolute left-20 top-48 hidden object-cover md:block"
             />
             <Image
               src="/imgs/circles/circle-2.svg"
               alt="circles"
               width={28}
               height={28}
-              objectFit="cover"
-              loading="lazy"
-              className="absolute right-32 top-2 hidden md:block"
+              className="absolute right-32 top-2 hidden object-cover md:block"
             />
             <Image
               src="/imgs/circles/circle-2.svg"
               alt="circles"
               width={28}
               height={28}
-              objectFit="cover"
-              loading="lazy"
-              className="absolute right-16 top-32 hidden md:block"
+              className="absolute right-16 top-32 hidden object-cover md:block"
             />
             <Image
               src="/imgs/circles/circle-3.svg"
               alt="circles"
               width={9}
               height={9}
-              objectFit="cover"
-              loading="lazy"
-              className="absolute bottom-20 left-12"
+              className="absolute bottom-20 left-12 object-cover"
             />
             <Image
               src="/imgs/circles/circle-4.svg"
               alt="circles"
               width={12}
               height={12}
-              objectFit="cover"
-              loading="lazy"
-              className="absolute bottom-16 left-52"
+              className="absolute bottom-16 left-52 object-cover"
             />
             <Image
               src="/imgs/circles/circle-5.svg"
               alt="circles"
               width={33}
               height={33}
-              objectFit="cover"
-              loading="lazy"
-              className="absolute bottom-20 left-1/2 hidden md:block"
+              className="absolute bottom-20 left-1/2 hidden object-cover md:block"
             />
             <Image
               src="/imgs/circles/circle-5.svg"
               alt="circles"
               width={33}
               height={33}
-              objectFit="cover"
-              loading="lazy"
-              className="absolute bottom-2 right-60"
+              className="absolute bottom-2 right-60 object-cover"
             />
             <Image
               src="/imgs/circles/circle-6.svg"
               alt="circles"
               width={9}
               height={9}
-              objectFit="cover"
-              loading="lazy"
-              className="absolute bottom-0 right-32"
+              className="absolute bottom-0 right-32 object-cover"
             />
           </div>
         </div>
@@ -481,9 +446,7 @@ export default function Home() {
                 alt="step-1"
                 width={80}
                 height={80}
-                objectFit="cover"
-                loading="lazy"
-                className="mx-auto rounded-md bg-blue-600 p-4"
+                className="mx-auto rounded-md bg-blue-600 object-cover p-4"
               />
               <p className="relative z-10 mt-4 text-center font-semibold">
                 Chọn chương trình <br /> học bạn mong muốn
@@ -498,8 +461,7 @@ export default function Home() {
                 alt="step-line-1"
                 width={225}
                 height={90}
-                objectFit="cover"
-                loading="lazy"
+                className="object-cover"
               />
             </div>
             <div className="pt-16">
@@ -508,9 +470,7 @@ export default function Home() {
                 alt="step-2"
                 width={80}
                 height={80}
-                objectFit="cover"
-                loading="lazy"
-                className="mx-auto rounded-md bg-blue-600 p-4"
+                className="mx-auto rounded-md bg-blue-600 object-cover p-4"
               />
               <p className="relative z-10 mt-4 text-center font-semibold">
                 Chọn chương trình <br /> học bạn mong muốn
@@ -525,8 +485,7 @@ export default function Home() {
                 alt="step-line-2"
                 width={250}
                 height={200}
-                objectFit="cover"
-                loading="lazy"
+                className="object-cover"
               />
             </div>
             <div className="pt-16 md:pt-40">
@@ -535,9 +494,7 @@ export default function Home() {
                 alt="step-3"
                 width={80}
                 height={80}
-                objectFit="cover"
-                loading="lazy"
-                className="mx-auto rounded-md bg-blue-600 p-4"
+                className="mx-auto rounded-md bg-blue-600 object-cover p-4"
               />
               <p className="relative z-10 mt-4 text-center font-semibold">
                 Vào màn &#34;Khoá học của tôi&#34; <br /> để bắt đầu học ngay
@@ -552,90 +509,70 @@ export default function Home() {
                 alt="circles"
                 width={20}
                 height={20}
-                objectFit="cover"
-                loading="lazy"
-                className="absolute left-1/2 top-2"
+                className="absolute left-1/2 top-2 object-cover"
               />
               <Image
                 src="/imgs/circles/circle-1.svg"
                 alt="circles"
                 width={20}
                 height={20}
-                objectFit="cover"
-                loading="lazy"
-                className="absolute bottom-36 left-16"
+                className="absolute bottom-36 left-16 object-cover"
               />
               <Image
                 src="/imgs/circles/circle-2.svg"
                 alt="circles"
                 width={28}
                 height={28}
-                objectFit="cover"
-                loading="lazy"
-                className="absolute left-20 top-48 hidden md:block"
+                className="absolute left-20 top-48 hidden object-cover md:block"
               />
               <Image
                 src="/imgs/circles/circle-2.svg"
                 alt="circles"
                 width={28}
                 height={28}
-                objectFit="cover"
-                loading="lazy"
-                className="absolute right-32 top-2 hidden md:block"
+                className="absolute right-32 top-2 hidden object-cover md:block"
               />
               <Image
                 src="/imgs/circles/circle-2.svg"
                 alt="circles"
                 width={28}
                 height={28}
-                objectFit="cover"
-                loading="lazy"
-                className="absolute right-16 top-32 hidden md:block"
+                className="absolute right-16 top-32 hidden object-cover md:block"
               />
               <Image
                 src="/imgs/circles/circle-3.svg"
                 alt="circles"
                 width={9}
                 height={9}
-                objectFit="cover"
-                loading="lazy"
-                className="absolute bottom-20 left-12"
+                className="absolute bottom-20 left-12 object-cover"
               />
               <Image
                 src="/imgs/circles/circle-4.svg"
                 alt="circles"
                 width={12}
                 height={12}
-                objectFit="cover"
-                loading="lazy"
-                className="absolute bottom-16 left-52"
+                className="absolute bottom-16 left-52 object-cover"
               />
               <Image
                 src="/imgs/circles/circle-5.svg"
                 alt="circles"
                 width={33}
                 height={33}
-                objectFit="cover"
-                loading="lazy"
-                className="absolute bottom-20 left-1/2 hidden md:block"
+                className="absolute bottom-20 left-1/2 hidden object-cover md:block"
               />
               <Image
                 src="/imgs/circles/circle-5.svg"
                 alt="circles"
                 width={33}
                 height={33}
-                objectFit="cover"
-                loading="lazy"
-                className="absolute bottom-2 right-60"
+                className="absolute bottom-2 right-60 object-cover"
               />
               <Image
                 src="/imgs/circles/circle-6.svg"
                 alt="circles"
                 width={9}
                 height={9}
-                objectFit="cover"
-                loading="lazy"
-                className="absolute bottom-0 right-32"
+                className="absolute bottom-0 right-32 object-cover"
               />
             </div>
           </div>

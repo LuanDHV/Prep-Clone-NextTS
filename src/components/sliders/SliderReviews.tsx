@@ -107,9 +107,7 @@ export default function SliderReviews() {
                 alt="avt-students"
                 width={64}
                 height={64}
-                objectFit="cover"
-                loading="lazy"
-                className="rounded-full"
+                className="rounded-full object-cover"
               />
               <div className="ml-2 p-2">
                 <span className="font-bold">{slide.name}</span>

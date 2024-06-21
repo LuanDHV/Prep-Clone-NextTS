@@ -68,9 +68,7 @@ export default function SliderRewards() {
               alt="rewards"
               width={slide.width}
               height={slide.height}
-              objectFit="cover"
-              loading="lazy"
-              className="mx-auto"
+              className="mx-auto object-cover"
             />
           </div>
           <p className="mb-[50px] mt-[10px] text-center text-sm text-gray-600">

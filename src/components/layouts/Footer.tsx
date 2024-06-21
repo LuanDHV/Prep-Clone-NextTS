@@ -16,8 +16,8 @@ export default function Footer() {
                 alt="logo"
                 width={130}
                 height={30}
-                objectFit="cover"
                 loading="lazy"
+                className="object-cover"
               />
               <div className="text-base font-bold">
                 CÔNG TY CỔ PHẦN CÔNG NGHỆ PREP
@@ -66,8 +66,8 @@ export default function Footer() {
                       alt="ic-facebook"
                       width={24}
                       height={24}
-                      objectFit="cover"
                       loading="lazy"
+                      className="object-cover"
                     />
                   </Link>
                   <Link href="#">
@@ -76,8 +76,8 @@ export default function Footer() {
                       alt="ic-mail"
                       width={24}
                       height={24}
-                      objectFit="cover"
                       loading="lazy"
+                      className="object-cover"
                     />
                   </Link>
                 </div>
@@ -94,8 +94,8 @@ export default function Footer() {
                     alt="app-store"
                     width={160}
                     height={60}
-                    objectFit="cover"
                     loading="lazy"
+                    className="object-cover"
                   />
                 </Link>
                 <Link href="#">
@@ -104,8 +104,8 @@ export default function Footer() {
                     alt="gg-play"
                     width={160}
                     height={60}
-                    objectFit="cover"
                     loading="lazy"
+                    className="object-cover"
                   />
                 </Link>
               </div>
@@ -149,8 +149,8 @@ export default function Footer() {
                     alt="bct"
                     width={176}
                     height={66.58}
-                    objectFit="cover"
                     loading="lazy"
+                    className="object-cover"
                   />
                 </Link>
                 <Link href="#">
@@ -159,8 +159,8 @@ export default function Footer() {
                     alt="sectigo"
                     width={176}
                     height={67.18}
-                    objectFit="cover"
                     loading="lazy"
+                    className="object-cover"
                   />
                 </Link>
                 <Link href="#">
@@ -169,8 +169,8 @@ export default function Footer() {
                     alt="dmca"
                     width={224}
                     height={46.45}
-                    objectFit="cover"
                     loading="lazy"
+                    className="object-cover"
                   />
                 </Link>
               </div>

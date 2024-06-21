@@ -102,9 +102,7 @@ export default function SliderTeachers() {
             alt="teachers"
             width={320}
             height={320}
-            objectFit="cover"
-            loading="lazy"
-            className="mx-auto rounded-xl"
+            className="mx-auto rounded-xl object-cover"
           />
 
           <p className="mb-[50px] mt-[10px] text-center text-lg font-bold">

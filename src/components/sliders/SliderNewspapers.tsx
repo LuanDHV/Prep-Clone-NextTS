@@ -83,18 +83,14 @@ export default function SliderNewspapers() {
                 alt="newspapers"
                 width={432}
                 height={165}
-                objectFit="cover"
-                loading="lazy"
-                className="mb-2"
+                className="mb-2 object-cover"
               />
               <Image
                 src={slide.logo}
                 alt="newspapers"
                 width={48}
                 height={48}
-                objectFit="cover"
-                loading="lazy"
-                className="mx-auto"
+                className="mx-auto object-cover"
               />
               <h3 className="mt-2 h-14">{slide.content}</h3>
             </Link>
