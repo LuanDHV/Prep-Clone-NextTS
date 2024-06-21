@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/layouts/Header";
-import Footer from "@/components/layouts/Footer";
+
+import { ClerkProvider } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Nền Tảng Học & Luyện Thi Thông Minh | Prep",
   description: "Nền Tảng Học & Luyện Thi Thông Minh | Prep",
+  icons: "/imgs/header/icon-meta.png",
 };
 
 export default function RootLayout({
@@ -17,12 +18,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <Header />
-        {children}
-        <Footer />
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body className={inter.className}>{children}</body>
+      </html>
+    </ClerkProvider>
   );
 }
