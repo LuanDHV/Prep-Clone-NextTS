@@ -146,11 +146,11 @@ export default function ButtonFooter() {
               height={56}
               className="object-cover"
             />
-            <span className="absolute right-[75px] top-0 h-20 w-80 rounded-lg bg-black px-4 py-2 text-sm text-white opacity-0 duration-300 ease-in-out group-hover:opacity-100">
+            <span className="absolute right-[75px] top-0 w-60 rounded-lg bg-black px-4 py-2 text-sm text-white opacity-0 duration-300 ease-in-out group-hover:opacity-100 md:h-20 md:w-80">
               <p>Xin chào, Prep rất vui được hỗ trợ bạn.</p>
               <p>
-                Hãy chọn cách thức kết nối và gửi vấn đề <br /> cụ thể mà bạn
-                cần Prep hỗ trợ nhé !
+                Hãy chọn cách thức kết nối và gửi vấn đề cụ thể mà bạn cần Prep
+                hỗ trợ nhé !
               </p>
               <Image
                 src="/imgs/support/arrow-right.svg"

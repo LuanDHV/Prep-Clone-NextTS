@@ -112,7 +112,7 @@ export default function Header() {
             <div className="z-10 flex w-full justify-end gap-3">
               <Link
                 href="#"
-                className="flex h-[40px] w-[120px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
+                className="flex h-[40px] w-[100px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
               >
                 Bắt đầu học
               </Link>
@@ -121,9 +121,9 @@ export default function Header() {
           ) : (
             <Link
               href="sign-in"
-              className="z-10 flex h-[40px] w-[120px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
+              className="z-10 flex h-[40px] w-[75px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
             >
-              Đăng nhập
+              Bắt đầu
             </Link>
           )}
         </div>
