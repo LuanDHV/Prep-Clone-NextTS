@@ -50,3 +50,8 @@ body {
 .cl-formButtonPrimary:hover {
   background-color: #1a56d8;
 }
+
+.cl-avatarBox {
+  width: 40px;
+  height: 40px;
+}

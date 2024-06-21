@@ -9,8 +9,10 @@ import {
   faCaretUp,
 } from "@fortawesome/free-solid-svg-icons";
 import { IMenu } from "@/types/interfaces";
+import { UserButton, useAuth } from "@clerk/nextjs";
 
 export default function Header() {
+  const { isSignedIn } = useAuth();
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isCourseOpen, setCourseOpen] = useState<boolean>(false);
   const [isPracticeMenuOpen, setPracticeMenuOpen] = useState<boolean>(false);
@@ -107,13 +109,26 @@ export default function Header() {
               />
             </Link>
           </div>
-          <Link
-            href="#"
-            className="z-10 flex h-[40px] w-[120px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
-          >
-            Bắt đầu học
-          </Link>
+          {isSignedIn ? (
+            <div className="z-10 flex w-full justify-end gap-3">
+              <Link
+                href="#"
+                className="flex h-[40px] w-[120px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
+              >
+                Bắt đầu học
+              </Link>
+              <UserButton afterSignOutUrl="/" />
+            </div>
+          ) : (
+            <Link
+              href="sign-in"
+              className="z-10 flex h-[40px] w-[120px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
+            >
+              Đăng nhập
+            </Link>
+          )}
         </div>
+
         <div
           className={`flex w-full flex-col gap-5 bg-white bg-opacity-100 p-5 text-start font-semibold shadow lg:h-[60px] ${isOpen ? "block" : "hidden"} lg:absolute lg:top-0 lg:flex lg:flex-row lg:items-center lg:justify-center lg:bg-opacity-0 lg:shadow-none`}
         >
