@@ -144,7 +144,6 @@ export default function ButtonFooter() {
               alt="bee-support"
               width={80}
               height={56}
-              loading="lazy"
               className="object-cover"
             />
             <span className="absolute right-[75px] top-0 h-20 w-80 rounded-lg bg-black px-4 py-2 text-sm text-white opacity-0 duration-300 ease-in-out group-hover:opacity-100">

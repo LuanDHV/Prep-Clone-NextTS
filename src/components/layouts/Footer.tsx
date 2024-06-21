@@ -16,7 +16,6 @@ export default function Footer() {
                 alt="logo"
                 width={130}
                 height={30}
-                loading="lazy"
                 className="object-cover"
               />
               <div className="text-base font-bold">
@@ -66,7 +65,6 @@ export default function Footer() {
                       alt="ic-facebook"
                       width={24}
                       height={24}
-                      loading="lazy"
                       className="object-cover"
                     />
                   </Link>
@@ -76,7 +74,6 @@ export default function Footer() {
                       alt="ic-mail"
                       width={24}
                       height={24}
-                      loading="lazy"
                       className="object-cover"
                     />
                   </Link>
@@ -94,7 +91,6 @@ export default function Footer() {
                     alt="app-store"
                     width={160}
                     height={60}
-                    loading="lazy"
                     className="object-cover"
                   />
                 </Link>
@@ -104,7 +100,6 @@ export default function Footer() {
                     alt="gg-play"
                     width={160}
                     height={60}
-                    loading="lazy"
                     className="object-cover"
                   />
                 </Link>
@@ -149,7 +144,6 @@ export default function Footer() {
                     alt="bct"
                     width={176}
                     height={66.58}
-                    loading="lazy"
                     className="object-cover"
                   />
                 </Link>
@@ -159,7 +153,6 @@ export default function Footer() {
                     alt="sectigo"
                     width={176}
                     height={67.18}
-                    loading="lazy"
                     className="object-cover"
                   />
                 </Link>
@@ -169,7 +162,6 @@ export default function Footer() {
                     alt="dmca"
                     width={224}
                     height={46.45}
-                    loading="lazy"
                     className="object-cover"
                   />
                 </Link>

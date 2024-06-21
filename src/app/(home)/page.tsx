@@ -25,7 +25,6 @@ export default function Home() {
               alt="img-public"
               width={320}
               height={355.55}
-              layout="fill"
               className="object-cover"
             />
             <div className="mt-8 block text-center text-xl font-bold sm:hidden">
