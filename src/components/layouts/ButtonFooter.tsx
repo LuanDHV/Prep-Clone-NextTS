@@ -38,7 +38,7 @@ export default function ButtonFooter() {
         {isButtonOpen ? (
           <>
             <div
-              className="fixed bottom-60 right-5 z-[200] flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-gray-800 p-5"
+              className="fixed bottom-56 right-5 z-[200] flex h-16 w-16 cursor-pointer items-center justify-center rounded-full bg-gray-800 p-5"
               onClick={toggleButtonClose}
             >
               <svg
@@ -67,7 +67,6 @@ export default function ButtonFooter() {
                     width={32}
                     height={32}
                     objectFit="cover"
-                    loading="lazy"
                     className="absolute right-4 top-4"
                   />
                 </Link>
@@ -91,7 +90,6 @@ export default function ButtonFooter() {
                     width={32}
                     height={32}
                     objectFit="cover"
-                    loading="lazy"
                     className="absolute right-4 top-4"
                   />
                 </Link>
@@ -143,7 +141,7 @@ export default function ButtonFooter() {
           </>
         ) : (
           <div
-            className="fixed bottom-60 right-5 z-[200] cursor-pointer"
+            className="group fixed bottom-56 right-5 z-[200] cursor-pointer"
             onClick={toggleButtonOpen}
           >
             <Image
@@ -154,6 +152,21 @@ export default function ButtonFooter() {
               objectFit="cover"
               loading="lazy"
             />
+            <span className="absolute right-[75px] top-0 h-20 w-80 rounded-lg bg-black px-4 py-2 text-sm text-white opacity-0 duration-300 ease-in-out group-hover:opacity-100">
+              <p>Xin chào, Prep rất vui được hỗ trợ bạn.</p>
+              <p>
+                Hãy chọn cách thức kết nối và gửi vấn đề <br /> cụ thể mà bạn
+                cần Prep hỗ trợ nhé !
+              </p>
+              <Image
+                src="/imgs/support/arrow-right.svg"
+                alt="arrow-right"
+                width={14}
+                height={14}
+                objectFit="cover"
+                className="absolute -right-[10px] top-8"
+              />
+            </span>
           </div>
         )}
         {isVisible && (
