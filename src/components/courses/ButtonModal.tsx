@@ -25,8 +25,11 @@ export default function ButtonModal() {
       >
         <div className="text-[20px] text-[#0071F9]">
           <p className="">
-            <FontAwesomeIcon icon={faHeadphones} />
-            <span className="ml-2"> Đăng ký nhận tư vấn</span>
+            <FontAwesomeIcon
+              icon={faHeadphones}
+              className="inline-block h-5 w-5 object-cover"
+            />
+            <span className="ml-2 inline-block"> Đăng ký nhận tư vấn</span>
           </p>
         </div>
       </Button>
@@ -35,6 +38,7 @@ export default function ButtonModal() {
         onOpenChange={onOpenChange}
         isDismissable={false}
         isKeyboardDismissDisabled={true}
+        placement="center"
       >
         <ModalContent>
           {(onClose) => (
