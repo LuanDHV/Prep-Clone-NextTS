@@ -76,41 +76,46 @@ export default function ButtonModal() {
                     placeholder="Nhập email của bạn"
                   />
                 </p>
-                <p className="text-sm font-medium text-gray-600">Bạn là</p>
-                <RadioGroup defaultValue="other">
-                  <div className="grid grid-cols-2">
-                    <div className="grid grid-rows-2 gap-2">
-                      <Radio value="buenos-aires">Học sinh</Radio>
-                      <Radio value="sydney">Người đi làm</Radio>
+                <p className="text-sm font-medium text-gray-600">
+                  Bạn là
+                  <RadioGroup
+                    label="Select your favorite city"
+                    defaultValue="other"
+                  >
+                    <div className="grid grid-cols-2">
+                      <div className="grid grid-rows-2 gap-2">
+                        <Radio value="buenos-aires">Học sinh</Radio>
+                        <Radio value="sydney">Người đi làm</Radio>
+                      </div>
+                      <div className="grid grid-rows-2 gap-2">
+                        <Radio value="student">Sinh viên</Radio>
+                        <Radio value="other">Khác</Radio>
+                      </div>
                     </div>
-                    <div className="grid grid-rows-2 gap-2">
-                      <Radio value="student">Sinh viên</Radio>
-                      <Radio value="other">Khác</Radio>
-                    </div>
-                  </div>
-                </RadioGroup>
+                  </RadioGroup>
+                </p>
                 <p className="text-sm font-medium text-gray-600">
                   Bạn đang quan tâm
+                  <RadioGroup defaultValue="ielts">
+                    <div className="grid grid-cols-2">
+                      <div className="grid grid-rows-2 gap-2">
+                        <Radio value="ielts">IELTS</Radio>
+                        <Radio value="toeic">TOEIC</Radio>
+                      </div>
+                      <div className="grid grid-rows-2 gap-2">
+                        <Radio value="hsk">HSK</Radio>
+                      </div>
+                    </div>
+                  </RadioGroup>
                 </p>
-                <RadioGroup defaultValue="ielts">
-                  <div className="grid grid-cols-2">
-                    <div className="grid grid-rows-2 gap-2">
-                      <Radio value="ielts">IELTS</Radio>
-                      <Radio value="toeic">TOEIC</Radio>
-                    </div>
-                    <div className="grid grid-rows-2 gap-2">
-                      <Radio value="hsk">HSK</Radio>
-                    </div>
-                  </div>
-                </RadioGroup>
                 <p className="text-sm font-medium text-gray-600">
                   Lộ trình học và mục tiêu bạn cần tư vấn
+                  <Textarea
+                    isRequired
+                    labelPlacement="outside"
+                    placeholder="Hãy cho Prep biết Trình độ hiện tại và Mục tiêu của bạn để Prep có thể tư vấn cho bạn chi tiết nha!"
+                  />
                 </p>
-                <Textarea
-                  isRequired
-                  labelPlacement="outside"
-                  placeholder="Hãy cho Prep biết Trình độ hiện tại và Mục tiêu của bạn để Prep có thể tư vấn cho bạn chi tiết nha!"
-                />
               </ModalBody>
               <div className="my-5 px-5">
                 <Button className="w-full bg-[#0071F9] font-bold text-white">
