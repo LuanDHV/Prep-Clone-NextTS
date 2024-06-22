@@ -76,7 +76,7 @@ export default function SliderNewspapers() {
     >
       {SliderNewspapers.map((slide, index) => (
         <SwiperSlide key={index}>
-          <div className="mb-[50px] h-auto w-full rounded-xl bg-white p-5 shadow-lg">
+          <div className="mb-[50px]">
             <Link href={slide.link} target="_blank">
               <Image
                 src={slide.img}

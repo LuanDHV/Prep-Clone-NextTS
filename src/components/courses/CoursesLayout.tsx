@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { Button, Avatar, AvatarGroup } from "@nextui-org/react";
 import ButtonModal from "./ButtonModal";
+import SliderCourses from "../sliders/SliderCourses";
+
 export default function CoursesLayout() {
   const DataIelts = [
     {
@@ -15,10 +17,10 @@ export default function CoursesLayout() {
     <>
       {DataIelts.map((items, index) => (
         <div
-          className="grid h-auto w-full grid-flow-row justify-items-center bg-[#E5EFFF] px-5 py-10"
+          className="grid h-auto w-full grid-flow-row justify-items-center bg-[#E5EFFF] px-5 py-10 md:h-screen md:grid-flow-col"
           key={index}
         >
-          <div className="grid items-center justify-items-center text-center">
+          <div className="text-center">
             <h1 className="mb-4 mt-16 text-5xl font-bold text-black">
               {items.text1}
             </h1>
@@ -48,6 +50,9 @@ export default function CoursesLayout() {
                 <p className="text-sm text-black">Học viên đạt ielts 7.0+</p>
               </div>
             </div>
+          </div>
+          <div className="w-[450px] md:w-[800px]">
+            <SliderCourses />
           </div>
         </div>
       ))}

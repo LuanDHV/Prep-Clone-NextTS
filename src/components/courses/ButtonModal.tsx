@@ -39,6 +39,7 @@ export default function ButtonModal() {
         isDismissable={false}
         isKeyboardDismissDisabled={true}
         placement="center"
+        size="lg"
       >
         <ModalContent>
           {(onClose) => (
@@ -52,65 +53,50 @@ export default function ButtonModal() {
                 </p>
               </ModalHeader>
               <ModalBody>
-                <p className="text-sm font-medium text-gray-500">
-                  Tên đầy đủ <strong className="text-red-600">*</strong>
-                  <Input
-                    isRequired
-                    type="fullname"
-                    placeholder="Nhập họ và tên của bạn"
-                  />
-                </p>
-                <p className="text-sm font-medium text-gray-500">
-                  Số điện thoại <strong className="text-red-600">*</strong>
-                  <Input
-                    isRequired
-                    type="phone"
-                    placeholder="Nhập số điện thoại của bạn"
-                  />
-                </p>
-                <p className="text-sm font-medium text-gray-500">
-                  Email <strong className="text-red-600">*</strong>
-                  <Input
-                    isRequired
-                    type="email"
-                    placeholder="Nhập email của bạn"
-                  />
-                </p>
-                Bạn là
+                <Input
+                  isRequired
+                  label=" Tên đầy đủ"
+                  type="fullname"
+                  placeholder="Nhập họ và tên của bạn"
+                />
+
+                <Input
+                  isRequired
+                  label="Số điện thoại"
+                  type="phone"
+                  placeholder="Nhập số điện thoại của bạn"
+                />
+
+                <Input
+                  isRequired
+                  label="Email"
+                  type="email"
+                  placeholder="Nhập email của bạn"
+                />
                 <RadioGroup
                   label="Bạn là"
                   defaultValue="other"
+                  orientation="horizontal"
                   className="text-sm font-medium"
                 >
-                  <div className="grid grid-cols-2">
-                    <div className="grid grid-rows-2 gap-2">
-                      <Radio value="buenos-aires">Học sinh</Radio>
-                      <Radio value="sydney">Người đi làm</Radio>
-                    </div>
-                    <div className="grid grid-rows-2 gap-2">
-                      <Radio value="student">Sinh viên</Radio>
-                      <Radio value="other">Khác</Radio>
-                    </div>
-                  </div>
+                  <Radio value="buenos-aires">Học sinh</Radio>
+                  <Radio value="sydney">Người đi làm</Radio>
+
+                  <Radio value="student">Sinh viên</Radio>
                 </RadioGroup>
                 <RadioGroup
                   label="Bạn đang quan tâm"
                   defaultValue="ielts"
+                  orientation="horizontal"
                   className="text-sm font-medium"
                 >
-                  <div className="grid grid-cols-2">
-                    <div className="grid grid-rows-2 gap-2">
-                      <Radio value="ielts">IELTS</Radio>
-                      <Radio value="toeic">TOEIC</Radio>
-                    </div>
-                    <div className="grid grid-rows-2 gap-2">
-                      <Radio value="hsk">HSK</Radio>
-                    </div>
-                  </div>
+                  <Radio value="ielts">IELTS</Radio>
+                  <Radio value="toeic">TOEIC</Radio>
+
+                  <Radio value="hsk">HSK</Radio>
                 </RadioGroup>
                 <Textarea
                   label=" Lộ trình học và mục tiêu bạn cần tư vấn"
-                  isRequired
                   labelPlacement="outside"
                   placeholder="Hãy cho Prep biết Trình độ hiện tại và Mục tiêu của bạn để Prep có thể tư vấn cho bạn chi tiết nha!"
                   className="text-sm font-medium"

@@ -11,7 +11,7 @@ export default function Home() {
     <>
       {/* Banner */}
       <section>
-        <div className="container mx-auto h-auto w-full pt-40">
+        <div className="container mx-auto h-auto w-full bg-[#f5f6fa] pt-40">
           <div className="flex h-auto flex-col items-center justify-center md:flex-row md:justify-evenly">
             <div className="mb-7 text-center text-3xl font-bold md:text-5xl">
               Nền Tảng
@@ -36,10 +36,10 @@ export default function Home() {
 
       {/* Target */}
       <section id="target">
-        <div className="relative mx-auto mt-16 grid h-auto w-full grid-cols-1 gap-10 px-5 md:grid-cols-4">
+        <div className="relative mx-auto mt-16 grid h-auto w-full grid-cols-1 gap-10 bg-[#f5f6fa] px-5 md:mt-10 md:grid-cols-4">
           <Link
             href="#"
-            className="relative top-5 h-auto w-full rounded-lg bg-white p-10 duration-300 ease-in-out hover:top-0"
+            className="relative top-5 h-auto w-full rounded-lg border bg-white p-10 duration-300 ease-in-out hover:top-0"
           >
             <div className="mx-auto -mt-20 flex h-20 w-20 items-center justify-center rounded-full">
               <Image
@@ -57,7 +57,7 @@ export default function Home() {
           </Link>
           <Link
             href="#"
-            className="relative top-5 h-auto w-full rounded-lg bg-white p-10 duration-300 ease-in-out hover:top-0"
+            className="relative top-5 h-auto w-full rounded-lg border bg-white p-10 duration-300 ease-in-out hover:top-0"
           >
             <div className="mx-auto -mt-20 flex h-20 w-20 items-center justify-center rounded-full">
               <Image
@@ -75,7 +75,7 @@ export default function Home() {
           </Link>
           <Link
             href="#"
-            className="relative top-5 h-auto w-full rounded-lg bg-white p-10 duration-300 ease-in-out hover:top-0"
+            className="relative top-5 h-auto w-full rounded-lg border bg-white p-10 duration-300 ease-in-out hover:top-0"
           >
             <div className="mx-auto -mt-20 flex h-20 w-20 items-center justify-center rounded-full bg-[#DCFFE5]">
               <Image
@@ -93,7 +93,7 @@ export default function Home() {
           </Link>
           <Link
             href="#"
-            className="relative top-5 h-auto w-full rounded-lg bg-white p-10 duration-300 ease-in-out hover:top-0"
+            className="relative top-5 h-auto w-full rounded-lg border bg-white p-10 duration-300 ease-in-out hover:top-0"
           >
             <div className="mx-auto -mt-20 flex h-20 w-20 items-center justify-center rounded-full bg-[#E6EDFF]">
               <Image
@@ -135,7 +135,7 @@ export default function Home() {
 
       {/* About */}
       <section>
-        <div className="container mx-auto mt-14 h-auto w-full">
+        <div className="container mx-auto mt-14 h-auto w-full bg-white md:mb-32 md:pt-10">
           <h2 className="text-center text-2xl font-bold md:text-3xl">
             Những gì chỉ có tại <span className="text-blue-600">Prep.vn</span>
           </h2>
@@ -194,13 +194,85 @@ export default function Home() {
                 Speaking, kết hợp bài kiểm tra phát âm bằng AI
               </p>
             </div>
+            <div className="circle">
+              <Image
+                src="/imgs/circles/circle-1.svg"
+                alt="circles"
+                width={20}
+                height={20}
+                className="absolute left-1/2 top-2 object-cover"
+              />
+              <Image
+                src="/imgs/circles/circle-1.svg"
+                alt="circles"
+                width={20}
+                height={20}
+                className="absolute bottom-36 left-16 object-cover"
+              />
+              <Image
+                src="/imgs/circles/circle-2.svg"
+                alt="circles"
+                width={28}
+                height={28}
+                className="absolute left-20 top-48 hidden object-cover md:block"
+              />
+              <Image
+                src="/imgs/circles/circle-2.svg"
+                alt="circles"
+                width={28}
+                height={28}
+                className="absolute right-32 top-2 hidden object-cover md:block"
+              />
+              <Image
+                src="/imgs/circles/circle-2.svg"
+                alt="circles"
+                width={28}
+                height={28}
+                className="absolute right-16 top-32 hidden object-cover md:block"
+              />
+              <Image
+                src="/imgs/circles/circle-3.svg"
+                alt="circles"
+                width={9}
+                height={9}
+                className="absolute bottom-20 left-12 object-cover"
+              />
+              <Image
+                src="/imgs/circles/circle-4.svg"
+                alt="circles"
+                width={12}
+                height={12}
+                className="absolute bottom-16 left-52 object-cover"
+              />
+              <Image
+                src="/imgs/circles/circle-5.svg"
+                alt="circles"
+                width={33}
+                height={33}
+                className="absolute bottom-20 left-1/2 hidden object-cover md:block"
+              />
+              <Image
+                src="/imgs/circles/circle-5.svg"
+                alt="circles"
+                width={33}
+                height={33}
+                className="absolute bottom-2 right-60 object-cover"
+              />
+              <Image
+                src="/imgs/circles/circle-6.svg"
+                alt="circles"
+                width={9}
+                height={9}
+                className="absolute bottom-0 right-32 object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Course */}
       <section>
-        <div className="container mx-auto w-full px-5 py-24 md:grid md:grid-cols-2 md:items-center">
+        <div className="container mx-auto w-full bg-[#f5f6fa] px-5 py-24 md:grid md:grid-cols-2 md:items-center">
           <Image
             src="/imgs/homepage/public-2.png"
             alt="ic-slide"
@@ -397,7 +469,7 @@ export default function Home() {
 
       {/* Slider Reviews */}
       <section>
-        <div className="container mx-auto w-full px-5 py-24">
+        <div className="container mx-auto w-full bg-[#f5f6fa] px-5 py-24">
           <h2 className="mb-24 text-center text-3xl font-bold">
             <span className="text-[#1479f4]">Học viên nói gì</span> về Prep.vn
           </h2>
@@ -409,7 +481,7 @@ export default function Home() {
 
       {/* Slider Newspapers */}
       <section>
-        <div className="container mx-auto h-auto w-full px-5 pb-24">
+        <div className="container mx-auto h-auto w-full bg-[#f5f6fa] px-5 pb-24">
           <h2 className="mb-5 text-center text-2xl font-bold">
             Báo chí nói gì về<span className="text-[#1479f4]"> Prep.vn</span>
           </h2>
@@ -421,7 +493,7 @@ export default function Home() {
 
       {/* Slider Partners */}
       <section>
-        <div className="container mx-auto h-auto w-full px-5 pb-24">
+        <div className="container mx-auto h-auto w-full bg-[#f5f6fa] px-5 pb-24">
           <h2 className="mb-5 text-center text-2xl font-bold">
             Chúng tôi tự hào là đối tác của
           </h2>
