@@ -40,12 +40,12 @@ export default function Header() {
   };
 
   const menuItems: IMenu[] = [
-    { title: "Trang chủ", href: "" },
+    { title: "Trang chủ", href: "/" },
     {
       title: "Khóa học",
       subItems: [
-        { title: "Luyện thi IELTS", href: "" },
-        { title: "Luyện thi TOEIC", href: "" },
+        { title: "Luyện thi IELTS", href: "/ielts" },
+        { title: "Luyện thi TOEIC", href: "/toeic" },
         { title: "Luyện thi HSK", href: "" },
         { title: "PrepTalk English", href: "" },
       ],
