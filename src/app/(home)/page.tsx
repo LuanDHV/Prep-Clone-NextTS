@@ -36,7 +36,7 @@ export default function Home() {
 
       {/* Target */}
       <section id="target">
-        <div className="relative mx-auto mt-16 grid h-auto w-full grid-cols-1 gap-10 bg-[#f5f6fa] px-5 md:mt-10 md:grid-cols-4">
+        <div className="relative mx-auto grid h-auto w-full grid-cols-1 gap-10 bg-[#f5f6fa] px-5 pt-16 md:grid-cols-4">
           <Link
             href="#"
             className="relative top-5 h-auto w-full rounded-lg border bg-white p-10 duration-300 ease-in-out hover:top-0"
