@@ -36,7 +36,7 @@ export default function ButtonModal() {
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        isDismissable={false}
+        isDismissable={true}
         isKeyboardDismissDisabled={true}
         placement="center"
         size="lg"
@@ -81,8 +81,8 @@ export default function ButtonModal() {
                 >
                   <Radio value="buenos-aires">Học sinh</Radio>
                   <Radio value="sydney">Người đi làm</Radio>
-
                   <Radio value="student">Sinh viên</Radio>
+                  <Radio value="student">Khác</Radio>
                 </RadioGroup>
                 <RadioGroup
                   label="Bạn đang quan tâm"
@@ -92,7 +92,6 @@ export default function ButtonModal() {
                 >
                   <Radio value="ielts">IELTS</Radio>
                   <Radio value="toeic">TOEIC</Radio>
-
                   <Radio value="hsk">HSK</Radio>
                 </RadioGroup>
                 <Textarea

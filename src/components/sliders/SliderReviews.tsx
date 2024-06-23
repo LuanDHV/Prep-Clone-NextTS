@@ -100,7 +100,7 @@ export default function SliderReviews() {
     >
       {SliderReviews.map((slide, index) => (
         <SwiperSlide key={index}>
-          <div className="mb-[50px] h-auto w-full rounded-xl bg-white p-5 shadow-lg">
+          <div className="mb-[50px] h-[450px] w-full rounded-xl bg-white p-5 shadow-lg">
             <div className="flex h-16 w-full justify-start">
               <Image
                 src={slide.avatar}
@@ -111,7 +111,7 @@ export default function SliderReviews() {
               />
               <div className="ml-2 p-2">
                 <span className="font-bold">{slide.name}</span>
-                <div className="">
+                <div className="flex">
                   <FontAwesomeIcon
                     icon={faStar}
                     style={{ color: "#FFD43B" }}
