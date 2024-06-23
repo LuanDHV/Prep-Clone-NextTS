@@ -17,10 +17,10 @@ export default function CoursesLayout() {
     <>
       {DataIelts.map((items, index) => (
         <div
-          className="grid h-auto w-full grid-flow-row justify-items-center bg-[#E5EFFF] px-5 py-10 md:h-screen md:grid-flow-col"
+          className="grid h-auto w-full grid-flow-row items-center justify-items-center bg-[#E5EFFF] px-5 py-10 lg:grid-flow-col"
           key={index}
         >
-          <div className="text-center">
+          <div className="text-center md:text-start">
             <h1 className="mb-4 mt-16 text-5xl font-bold text-black">
               {items.text1}
             </h1>
@@ -51,7 +51,7 @@ export default function CoursesLayout() {
               </div>
             </div>
           </div>
-          <div className="w-[450px] md:w-[800px]">
+          <div className="w-[320px] md:w-[490px] lg:w-[700px]">
             <SliderCourses />
           </div>
         </div>

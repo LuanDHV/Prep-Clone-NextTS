@@ -35,10 +35,11 @@ export default function SliderCourses() {
           <Image
             src={slide.img}
             alt="slide-courses"
-            width={450}
+            width={320}
             height={400}
             className="mx-auto mb-[50px] object-cover"
             layout="responsive"
+            loading="lazy"
           />
         </SwiperSlide>
       ))}

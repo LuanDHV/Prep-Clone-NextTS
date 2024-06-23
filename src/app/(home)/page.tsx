@@ -11,7 +11,7 @@ export default function Home() {
     <>
       {/* Banner */}
       <section>
-        <div className="container mx-auto h-auto w-full bg-[#f5f6fa] pt-40">
+        <div className="mx-auto h-auto w-full bg-[#f5f6fa] pt-40">
           <div className="flex h-auto flex-col items-center justify-center md:flex-row md:justify-evenly">
             <div className="mb-7 text-center text-3xl font-bold md:text-5xl">
               Nền Tảng
@@ -116,7 +116,7 @@ export default function Home() {
 
       {/* Slider Rewards */}
       <section>
-        <div className="container mx-auto mt-14 h-auto w-full bg-white px-5 py-10">
+        <div className="mt-14 h-auto w-full px-5 py-10 lg:mt-0">
           <Image
             src="/imgs/homepage/award.svg"
             alt="ic-award"
@@ -135,7 +135,7 @@ export default function Home() {
 
       {/* About */}
       <section>
-        <div className="container mx-auto mt-14 h-auto w-full bg-white md:mb-32 md:pt-10">
+        <div className="mt-14 h-auto w-full md:mb-32 md:pt-10">
           <h2 className="text-center text-2xl font-bold md:text-3xl">
             Những gì chỉ có tại <span className="text-blue-600">Prep.vn</span>
           </h2>
@@ -272,7 +272,7 @@ export default function Home() {
 
       {/* Course */}
       <section>
-        <div className="container mx-auto w-full bg-[#f5f6fa] px-5 py-24 md:grid md:grid-cols-2 md:items-center">
+        <div className="mx-auto w-full bg-[#f5f6fa] px-5 py-24 md:grid md:grid-cols-2 md:items-center">
           <Image
             src="/imgs/homepage/public-2.png"
             alt="ic-slide"
@@ -323,7 +323,7 @@ export default function Home() {
       {/* Slider Teachers */}
       <section>
         <div className="relative">
-          <div className="container mx-auto h-auto bg-white px-5 py-24">
+          <div className="mx-auto h-auto px-5 py-24">
             <h2 className="text-center text-2xl font-bold md:text-3xl">
               100% Giáo viên trên Prep đạt <br />
               <span className="text-blue-600">IELTS 8.0-8.5</span>
@@ -469,7 +469,7 @@ export default function Home() {
 
       {/* Slider Reviews */}
       <section>
-        <div className="container mx-auto w-full bg-[#f5f6fa] px-5 py-24">
+        <div className="mx-auto w-full bg-[#f5f6fa] px-5 py-24">
           <h2 className="mb-24 text-center text-3xl font-bold">
             <span className="text-[#1479f4]">Học viên nói gì</span> về Prep.vn
           </h2>
@@ -481,7 +481,7 @@ export default function Home() {
 
       {/* Slider Newspapers */}
       <section>
-        <div className="container mx-auto h-auto w-full bg-[#f5f6fa] px-5 pb-24">
+        <div className="mx-auto h-auto w-full bg-[#f5f6fa] px-5 pb-24">
           <h2 className="mb-5 text-center text-2xl font-bold">
             Báo chí nói gì về<span className="text-[#1479f4]"> Prep.vn</span>
           </h2>
@@ -493,7 +493,7 @@ export default function Home() {
 
       {/* Slider Partners */}
       <section>
-        <div className="container mx-auto h-auto w-full bg-[#f5f6fa] px-5 pb-24">
+        <div className="mx-auto h-auto w-full bg-[#f5f6fa] px-5 pb-24">
           <h2 className="mb-5 text-center text-2xl font-bold">
             Chúng tôi tự hào là đối tác của
           </h2>
@@ -505,7 +505,7 @@ export default function Home() {
 
       {/* Step  */}
       <section>
-        <div className="container relative mx-auto h-auto w-full bg-white px-5 py-24">
+        <div className="relative mx-auto h-auto w-full px-5 py-24">
           <h2 className="text-center text-2xl font-bold md:mb-10 md:text-3xl">
             Bắt đầu<span className="text-[#1479f4]"> khoá học dễ dàng</span> với
             3 bước
