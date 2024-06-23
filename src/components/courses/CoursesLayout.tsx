@@ -95,7 +95,7 @@ export default function CoursesLayout() {
           </section>
 
           <section>
-            <div className="px-10 py-12 md:px-20">
+            <div className="px-10 pb-12 md:px-20">
               <Questions />
             </div>
           </section>
