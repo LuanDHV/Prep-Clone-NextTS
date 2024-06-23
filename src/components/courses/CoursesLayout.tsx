@@ -32,7 +32,7 @@ export default function CoursesLayout() {
         <>
           <section>
             <div
-              className={`grid h-auto w-full grid-flow-row items-center ${items.bg1} justify-items-center px-10 py-10 lg:grid-flow-col`}
+              className={`grid h-auto w-full grid-flow-row items-center ${items.bg1} justify-items-center px-5 py-10 md:px-10 lg:grid-flow-col`}
               key={index}
             >
               <div className="text-center font-bold text-black lg:text-start">
@@ -70,7 +70,7 @@ export default function CoursesLayout() {
           </section>
 
           <section>
-            <div className="mt-12 h-auto w-full px-10 lg:mt-24">
+            <div className="mt-12 h-auto w-full px-5 md:px-10 lg:mt-24">
               <div className="mb-3 grid justify-items-center text-center text-2xl font-bold md:text-4xl">
                 <p className="text-gray-800">{items.text7}</p>
                 <p className="text-[#0071F9]">{items.text8}</p>
@@ -83,7 +83,7 @@ export default function CoursesLayout() {
 
           {/* Slider Reviews */}
           <section>
-            <div className="mx-auto w-full px-10 py-24 md:px-20">
+            <div className="mx-auto w-full px-5 py-24 md:px-10 md:px-20">
               <h2 className="mb-24 text-center text-3xl font-bold">
                 <span className="text-[#1479f4]">Học viên nói gì</span> về
                 Prep.vn
@@ -95,14 +95,14 @@ export default function CoursesLayout() {
           </section>
 
           <section>
-            <div className="px-10 pb-12 md:px-20">
+            <div className="px-5 pb-12 md:px-10">
               <Questions />
             </div>
           </section>
 
           <section>
             <div
-              className={`grid h-auto w-full grid-flow-row items-center ${items.bg2} justify-items-center px-5 py-10 lg:grid-flow-col`}
+              className={`grid h-auto w-full grid-flow-row items-center ${items.bg2} justify-items-center px-5 py-10 md:px-10 lg:grid-flow-col`}
               key={index}
             >
               <div className="mt-16 w-4/5 text-center text-4xl font-bold text-white md:text-3xl lg:text-start">

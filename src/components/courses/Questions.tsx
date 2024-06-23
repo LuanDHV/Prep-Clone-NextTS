@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Questions() {
   return (
-    <div className="rounded-3xl bg-blue-50 px-10 py-12">
+    <div className="rounded-3xl bg-blue-50 px-5 py-12 md:px-10">
       <div className="mb-10 text-center">
         <p className="text-2xl font-bold">
           <span className="text-[#0071F9]">Câu Hỏi</span> Thường Gặp !

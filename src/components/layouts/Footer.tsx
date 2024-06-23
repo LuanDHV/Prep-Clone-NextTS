@@ -8,7 +8,7 @@ export default function Footer() {
       {/* Footer */}
       <ButtonFooter />
       <section>
-        <div className="mx-auto h-auto w-full bg-white px-10 py-10 text-sm">
+        <div className="mx-auto h-auto w-full bg-white px-5 py-10 text-sm md:px-10">
           <div className="first-footer md:grid md:grid-cols-3">
             <div className="grid gap-2 md:gap-5">
               <Image
