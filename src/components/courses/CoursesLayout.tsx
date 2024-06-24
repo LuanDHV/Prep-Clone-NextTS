@@ -4,6 +4,7 @@ import SliderCourses from "./SliderCourses";
 import Image from "next/image";
 import SliderReviews from "../sliders/SliderReviews";
 import Questions from "./Questions";
+import Roadmap from "./Roadmap";
 
 export default function CoursesLayout() {
   const ContentIelts = [
@@ -69,7 +70,7 @@ export default function CoursesLayout() {
             </div>
           </section>
 
-          <section>
+          <section id="roadmap">
             <div className="mt-12 h-auto w-full px-5 md:px-10 lg:mt-24">
               <div className="mb-3 grid justify-items-center text-center text-2xl font-bold md:text-4xl">
                 <p className="text-gray-800">{items.text7}</p>
@@ -77,6 +78,9 @@ export default function CoursesLayout() {
                 <p className="text-base font-normal text-gray-800">
                   {items.text9}
                 </p>
+              </div>
+              <div className="mt-20 h-auto rounded-2xl bg-blue-50 p-5">
+                <Roadmap />
               </div>
             </div>
           </section>

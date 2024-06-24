@@ -7,7 +7,7 @@ export default function AuthLayout({
 }) {
   return (
     <>
-      <div className="h-full w-full lg:p-8">
+      <div className="h-screen w-full lg:p-8">
         <div className="flex h-full w-full items-center justify-center rounded-2xl bg-[#E5EFFF] lg:grid lg:grid-cols-2 lg:justify-items-center">
           <div className="hidden w-[550px] lg:block">
             <Image
