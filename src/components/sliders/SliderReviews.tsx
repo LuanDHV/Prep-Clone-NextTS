@@ -56,7 +56,7 @@ export default function SliderReviews() {
       name: "Nguyễn Diệu Vân",
       avatar: "/imgs/students/avt-5.png",
       content:
-        "Cũng như mọi người, trước đây mình học Speaking chẳng theo phương pháp gì cả, chính vì vậy mà không có ứng dụng được nhiều kiến thức. Học PREP xong mình mới vỡ lẽ ra khi học IELTS, mình có thể vận dụng và khai thác cả từ cuộc sống chứ không chỉ học lý thuyết học thuật. Và đặc biệt khoá Speaking trong combo IELTS chuyên sâu 4 kỹ năng PLUS thì...",
+        "Cũng như mọi người, trước đây mình học Speaking chẳng theo phương pháp gì cả, chính vì vậy mà không có ứng dụng được nhiều kiến thức. Học PREP xong mình mới vỡ lẽ ra khi học IELTS, mình có thể vận dụng và khai thác cả từ cuộc sống chứ không chỉ học lý thuyết học thuật. Và đặc biệt khoá Speaking trong combo IELTS chuyên sâu 4 kỹ năng PLUS thì đỉnh miễn bàn, vì được học theo phương pháp Guided Discovery - vừa mang tính học thuật lại vẫn có cả tình huống giao tiếp - một công đôi việc luôn.",
     },
     {
       name: "Mạnh Khanh",
@@ -100,7 +100,7 @@ export default function SliderReviews() {
     >
       {SliderReviews.map((slide, index) => (
         <SwiperSlide key={index}>
-          <div className="mb-[50px] h-[450px] w-full rounded-xl bg-white p-5 shadow-lg">
+          <div className="mb-[50px] h-auto w-full rounded-xl bg-white p-5 shadow-lg">
             <div className="flex h-16 w-full justify-start">
               <Image
                 src={slide.avatar}
@@ -141,7 +141,9 @@ export default function SliderReviews() {
                 </div>
               </div>
             </div>
-            <p className="mt-4">{renderContent(slide.content, index)}</p>
+            <p className="mt-4 h-56 lg:h-72 xl:h-40">
+              {renderContent(slide.content, index)}
+            </p>
             {slide.content.length > 300 && (
               <button
                 onClick={() => toggleContent(index)}

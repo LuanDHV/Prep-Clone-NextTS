@@ -92,7 +92,6 @@ export default function ButtonModal() {
                 >
                   <Radio value="ielts">IELTS</Radio>
                   <Radio value="toeic">TOEIC</Radio>
-                  <Radio value="hsk">HSK</Radio>
                 </RadioGroup>
                 <Textarea
                   label=" Lộ trình học và mục tiêu bạn cần tư vấn"

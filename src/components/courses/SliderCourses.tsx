@@ -4,19 +4,7 @@ import "swiper/swiper-bundle.css";
 import { Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
 
-export default function SliderCourses() {
-  const SliderCourses = [
-    {
-      img: "/imgs/courses/ielts/ielts_1.png",
-    },
-    {
-      img: "/imgs/courses/ielts/ielts_2.png",
-    },
-    {
-      img: "/imgs/courses/ielts/ielts_3.png",
-    },
-  ];
-
+export default function SliderCourses({ sliders }) {
   return (
     <Swiper
       modules={[Pagination, Autoplay]}
@@ -30,7 +18,7 @@ export default function SliderCourses() {
       slidesPerView={1}
       className="custom-swiper-pagination"
     >
-      {SliderCourses.map((slide, index) => (
+      {sliders.map((slide, index) => (
         <SwiperSlide key={index}>
           <Image
             src={slide.img}

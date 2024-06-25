@@ -46,8 +46,6 @@ export default function Header() {
       subItems: [
         { title: "Luyện thi IELTS", href: "/ielts" },
         { title: "Luyện thi TOEIC", href: "/toeic" },
-        { title: "Luyện thi HSK", href: "" },
-        { title: "PrepTalk English", href: "" },
       ],
       isOpen: isCourseOpen,
       toggle: toggleCourseMenu,
@@ -57,7 +55,6 @@ export default function Header() {
       title: "Luyện đề",
       subItems: [
         { title: "Luyện đề IELTS", href: "" },
-        { title: "Luyện đề THPTQG", href: "" },
         { title: "Luyện đề TOEIC", href: "" },
       ],
       isOpen: isPracticeMenuOpen,
@@ -68,10 +65,6 @@ export default function Header() {
       subItems: [
         { title: "Học IELTS", href: "" },
         { title: "Học TOEIC", href: "" },
-        { title: "Ôn VSTEP", href: "" },
-        { title: "Học HSK", href: "" },
-        { title: "Học JLPT", href: "" },
-        { title: "Học TOPIK", href: "" },
       ],
       isOpen: isBlogMenuOpen,
       toggle: toggleBlogMenu,

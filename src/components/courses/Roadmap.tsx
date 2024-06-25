@@ -1,28 +1,11 @@
 "use client";
-import { RadioGroup, Radio, Button, ButtonGroup } from "@nextui-org/react";
+import { RadioGroup, Radio, Button } from "@nextui-org/react";
 import Link from "next/link";
 
-export default function Roadmap() {
-  const RoadmapIelts = [
-    {
-      course: "IELTS:",
-      brand1: "1.0 - 3.5",
-      brand2: "4.0 - 5.0",
-      brand3: "5.0 - 5.5",
-      brand4: "6.0 - 6.5",
-      des1: "Mất gốc",
-      des2: "Có nền tảng",
-      des3: "Nền tảng tốt",
-      des4: "Khá",
-      aim1: "Cơ bản",
-      aim2: "Trung cấp",
-      aim3: "Chuyên sâu",
-    },
-  ];
-
+export default function Roadmap({ roadmap }) {
   return (
     <>
-      {RoadmapIelts.map((items, index) => (
+      {roadmap.map((items, index) => (
         <div className="relative" key={index}>
           <div className="mt-5">
             <div className="mb-5 grid text-xl font-bold text-gray-800 md:grid-cols-2">
@@ -32,7 +15,7 @@ export default function Roadmap() {
               </Link>
             </div>
             <RadioGroup orientation="horizontal">
-              <div className="item grid w-full justify-items-center lg:grid-cols-4">
+              <div className="item grid w-full justify-items-center lg:grid-flow-col">
                 <div className="my-2 grid h-20 w-full items-center rounded-xl bg-white px-5 shadow-lg lg:w-[90%]">
                   <Radio value="1" description={`${items.des1}`}>
                     <p className="font-bold">
@@ -75,23 +58,26 @@ export default function Roadmap() {
             <RadioGroup orientation="horizontal">
               <div className="item grid w-full justify-items-center lg:grid-cols-3">
                 <div className="my-2 grid h-20 w-full items-center rounded-xl bg-white px-5 shadow-lg lg:w-[90%]">
-                  <Radio value="1" description={`${items.aim1}`}>
+                  <Radio value="1" description={`${items.des5}`}>
                     <p className="font-bold">
-                      IELTS:<span className="text-xl"> {items.aim1}</span>
+                      {items.course}
+                      <span className="text-xl"> {items.aim1}</span>
                     </p>
                   </Radio>
                 </div>
                 <div className="my-2 grid h-20 w-full items-center rounded-xl bg-white px-5 shadow-lg lg:w-[90%]">
-                  <Radio value="2" description={`${items.aim2}`}>
+                  <Radio value="2" description={`${items.des6}`}>
                     <p className="font-bold">
-                      IELTS:<span className="text-xl"> {`${items.aim2}`}</span>
+                      {items.course}
+                      <span className="text-xl"> {`${items.aim2}`}</span>
                     </p>
                   </Radio>
                 </div>
                 <div className="my-2 grid h-20 w-full items-center rounded-xl bg-white px-5 shadow-lg lg:w-[90%]">
-                  <Radio value="3" description={`${items.aim3}`}>
+                  <Radio value="3" description={`${items.des7}`}>
                     <p className="font-bold">
-                      IELTS:<span className="text-xl"> {`${items.aim3}`}</span>
+                      {items.course}
+                      <span className="text-xl"> {`${items.aim3}`}</span>
                     </p>
                   </Radio>
                 </div>
