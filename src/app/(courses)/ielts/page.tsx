@@ -35,31 +35,54 @@ export default function Ielts() {
     },
   ];
 
-  const RoadMapIeltsPage = [
+  const BrandIeltsPage = [
     {
       course: "IELTS:",
-      brand1: "1.0 - 3.5",
-      brand2: "4.0 - 5.0",
-      brand3: "5.0 - 5.5",
-      brand4: "6.0 - 6.5",
-      des1: "Mất gốc",
-      des2: "Có nền tảng",
-      des3: "Nền tảng tốt",
-      des4: "Khá",
-      aim1: "Cơ bản",
-      aim2: "Trung cấp",
-      aim3: "Chuyên sâu",
-      des5: "Cơ bản",
-      des6: "Trung cấp",
-      des7: "Chuyên sâu",
+      brand: "1.0 - 3.5",
+      description: "Mất gốc",
+    },
+    {
+      course: "IELTS:",
+      brand: "4.0 - 5.0",
+      description: "Có nền tảng",
+    },
+    {
+      course: "IELTS:",
+      brand: "5.0 - 5.5",
+      description: "Nền tảng tốt",
+    },
+    {
+      course: "IELTS:",
+      brand: "6.0 - 6.5",
+      description: "Khá",
     },
   ];
+
+  const AimIeltsPage = [
+    {
+      course: "IELTS:",
+      aim: "Cơ bản",
+      description: "Cơ bản",
+    },
+    {
+      course: "IELTS:",
+      aim: "Trung cấp",
+      description: "Trung cấp",
+    },
+    {
+      course: "IELTS:",
+      aim: "Chuyên sâu",
+      description: "Chuyên sâu",
+    },
+  ];
+
   return (
     <>
       <CoursesLayout
         contents={ContentsIeltsPage}
         sliders={SlidersIeltsPage}
-        roadmap={RoadMapIeltsPage}
+        brand={BrandIeltsPage}
+        aim={AimIeltsPage}
       />
     </>
   );

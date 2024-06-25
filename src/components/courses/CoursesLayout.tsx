@@ -6,7 +6,7 @@ import SliderReviews from "../sliders/SliderReviews";
 import Questions from "./Questions";
 import Roadmap from "./Roadmap";
 
-export default function CoursesLayout({ contents, sliders, roadmap }) {
+export default function CoursesLayout({ contents, sliders, brand, aim }) {
   return (
     <>
       {contents.map((items, index) => (
@@ -62,7 +62,7 @@ export default function CoursesLayout({ contents, sliders, roadmap }) {
                 </p>
               </div>
               <div className="mt-20 h-auto rounded-2xl bg-blue-50 p-5">
-                <Roadmap roadmap={roadmap} />
+                <Roadmap brand={brand} aim={aim} />
               </div>
             </div>
           </section>

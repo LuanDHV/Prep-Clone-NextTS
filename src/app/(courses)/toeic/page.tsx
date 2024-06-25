@@ -34,21 +34,39 @@ export default function Toeic() {
     },
   ];
 
-  const RoadMapToeicPage = [
+  const BrandToeicPage = [
     {
       course: "TOEIC:",
-      brand1: "1 - 295",
-      brand2: "300 - 595",
-      brand3: "600 - 650",
-      des1: "Mất gốc",
-      des2: "Có nền tảng",
-      des3: "Nền tảng tốt",
-      aim1: "300",
-      aim2: "600",
-      aim3: "800",
-      des5: "Cơ bản",
-      des6: "Khá",
-      des7: "Xuất Sắc",
+      brand: "1 - 295",
+      description: "Mất gốc",
+    },
+    {
+      course: "TOEIC:",
+      brand: "300 - 595",
+      description: "Có nền tảng",
+    },
+    {
+      course: "TOEIC:",
+      brand: "600 - 650",
+      description: "Nền tảng tốt",
+    },
+  ];
+
+  const AimToeicPage = [
+    {
+      course: "TOEIC:",
+      aim: "300",
+      description: "Cơ bản",
+    },
+    {
+      course: "TOEIC:",
+      aim: "600",
+      description: "Khá",
+    },
+    {
+      course: "TOEIC:",
+      aim: "800",
+      description: "Xuất Sắc",
     },
   ];
 
@@ -57,7 +75,8 @@ export default function Toeic() {
       <CoursesLayout
         contents={ContentsToeicPage}
         sliders={SlidersToeicPage}
-        roadmap={RoadMapToeicPage}
+        brand={BrandToeicPage}
+        aim={AimToeicPage}
       />
     </>
   );
