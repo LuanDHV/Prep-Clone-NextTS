@@ -46,6 +46,8 @@ export default function Header() {
       subItems: [
         { title: "Luyện thi IELTS", href: "/ielts" },
         { title: "Luyện thi TOEIC", href: "/toeic" },
+        { title: "Luyện thi HSK", href: "" },
+        { title: "PrepTalk English", href: "" },
       ],
       isOpen: isCourseOpen,
       toggle: toggleCourseMenu,
@@ -102,7 +104,7 @@ export default function Header() {
             </Link>
           </div>
           {isSignedIn ? (
-            <div className="z-10 flex w-full justify-end gap-3">
+            <div className="z-10 flex justify-end gap-3">
               <Link
                 href="#"
                 className="flex h-[40px] w-[100px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"

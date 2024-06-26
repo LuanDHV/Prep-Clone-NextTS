@@ -107,6 +107,7 @@ export default function SliderReviews() {
                 alt="avt-students"
                 width={64}
                 height={64}
+                quality={100}
                 className="rounded-full object-cover"
               />
               <div className="ml-2 p-2">
