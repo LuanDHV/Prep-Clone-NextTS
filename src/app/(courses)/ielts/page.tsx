@@ -76,6 +76,30 @@ export default function Ielts() {
     },
   ];
 
+  const BenefitIeltsPage = [
+    {
+      text: "12 đề cambridge",
+    },
+    {
+      text: "Bộ đề thi Ielts writing cập nhật",
+    },
+    {
+      text: "Bộ đề thi và dự đoán Ielts speaking cập nhật",
+    },
+    {
+      text: "Hỗ trợ qua chat trực tiếp",
+    },
+    {
+      text: "Tham gia sự kiện cùng thầy cô, chuyên gia",
+    },
+    {
+      text: "Hỗ trợ qua email và cộng đồng học tập",
+    },
+    {
+      text: "Trao đổi với giáo viên chấm bài",
+    },
+  ];
+
   return (
     <>
       <CoursesLayout
@@ -83,6 +107,7 @@ export default function Ielts() {
         sliders={SlidersIeltsPage}
         brand={BrandIeltsPage}
         aim={AimIeltsPage}
+        benefit={BenefitIeltsPage}
       />
     </>
   );

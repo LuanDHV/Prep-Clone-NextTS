@@ -70,6 +70,21 @@ export default function Toeic() {
     },
   ];
 
+  const BenefitToeicPage = [
+    {
+      text: "Luyện Test Practice Toeic Miễn Phí",
+    },
+    {
+      text: "Tham gia sự kiện cùng thầy cô, chuyên gia",
+    },
+    {
+      text: "Hỗ trợ qua email và cộng đồng học tập",
+    },
+    {
+      text: "Hỗ trợ qua chat trực tiếp",
+    },
+  ];
+
   return (
     <>
       <CoursesLayout
@@ -77,6 +92,7 @@ export default function Toeic() {
         sliders={SlidersToeicPage}
         brand={BrandToeicPage}
         aim={AimToeicPage}
+        benefit={BenefitToeicPage}
       />
     </>
   );

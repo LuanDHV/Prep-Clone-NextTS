@@ -21,16 +21,10 @@ export default function ButtonModal() {
     <>
       <Button
         onPress={onOpen}
-        className="h-16 w-full rounded-xl bg-white font-bold hover:scale-105"
+        className="h-16 w-full rounded-xl border border-blue-500 bg-white font-bold hover:scale-105"
       >
         <div className="text-[20px] text-[#0071F9]">
-          <p className="">
-            <FontAwesomeIcon
-              icon={faHeadphones}
-              className="inline-block h-5 w-5 object-cover"
-            />
-            <span className="ml-2 inline-block"> Đăng ký nhận tư vấn</span>
-          </p>
+          <span className="ml-2"> Đăng ký nhận tư vấn</span>
         </div>
       </Button>
       <Modal

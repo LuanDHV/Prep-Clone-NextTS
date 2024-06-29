@@ -13,13 +13,19 @@ import {
   useDisclosure,
   Accordion,
   AccordionItem,
+  Input,
+  Checkbox,
 } from "@nextui-org/react";
 import { useState } from "react";
+import ButtonModal from "./ButtonModal";
 
-export default function Roadmap({ brand, aim }) {
+export default function Roadmap({ brand, aim, benefit }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [selectedAim, setSelectedAim] = useState(null);
+  const [couponCode, setCouponCode] = useState("");
+
+  const defaultContent = "content";
 
   const handleBrandChange = (index) => {
     setSelectedBrand(index);
@@ -28,7 +34,16 @@ export default function Roadmap({ brand, aim }) {
   const handleAimChange = (index) => {
     setSelectedAim(index);
   };
-  const defaultContent = "content";
+
+  const handleInputChange = (e) => {
+    setCouponCode(e.target.value);
+  };
+
+  const handleApplyCoupon = () => {
+    // Xử lý khi người dùng nhấn nút "Áp dụng" ở đây
+    console.log("Áp dụng mã coupon:", couponCode);
+    setCouponCode("");
+  };
 
   return (
     <>
@@ -139,16 +154,14 @@ export default function Roadmap({ brand, aim }) {
               </div>
             </div>
             <div className="mt-10 rounded-xl bg-white p-5 shadow-lg md:p-10">
-              <div className="">
-                <h4 className="text-lg font-bold uppercase text-[#004B8D]">
-                  CHẶNG 1: LẤY LẠI CĂN BẢN
-                </h4>
-                <p className="text-gray-500">
-                  Học sinh sẽ cần bổ sung vốn từ vựng của các chủ đề phổ biến
-                  cùng chủ điểm ngữ pháp trọng tâm làm tiền đề cho việc làm bài
-                  TOEIC Listening và Reading ở lộ trình sau.
-                </p>
-              </div>
+              <h4 className="text-lg font-bold uppercase text-[#004B8D]">
+                CHẶNG 1: LẤY LẠI CĂN BẢN
+              </h4>
+              <p className="text-gray-500">
+                Học sinh sẽ cần bổ sung vốn từ vựng của các chủ đề phổ biến cùng
+                chủ điểm ngữ pháp trọng tâm làm tiền đề cho việc làm bài TOEIC
+                Listening và Reading ở lộ trình sau.
+              </p>
               <div className="rounded-xl bg-slate-100 p-2 lg:grid lg:grid-cols-2 lg:items-center lg:justify-items-center lg:p-5">
                 <div className="lg:grid lg:justify-items-center lg:p-5">
                   <div className="mt-5 h-full w-full lg:my-0 lg:w-[300px]">
@@ -304,6 +317,121 @@ export default function Roadmap({ brand, aim }) {
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+              <div className="pt-10">
+                <div className="flex">
+                  <Image
+                    src="/imgs/courses/filled.svg"
+                    alt="filled"
+                    width={25}
+                    height={25}
+                    className="mr-2 object-cover"
+                  />
+                  <h4 className="text-lg font-bold md:text-xl">
+                    Quyền lợi học tập
+                  </h4>
+                </div>
+                <div className="mt-4 grid gap-4">
+                  {benefit.map((items, index) => (
+                    <>
+                      <div className="flex items-center" key={index}>
+                        <FontAwesomeIcon
+                          icon={faCheck}
+                          className="h4 mr-2 w-4 object-cover text-green-600"
+                        />
+                        {items.text}
+                      </div>
+                    </>
+                  ))}
+                </div>
+                <div className="pt-10">
+                  <div className="flex">
+                    <Image
+                      src="/imgs/courses/discount-icon.svg"
+                      alt="filled"
+                      width={25}
+                      height={25}
+                      className="mr-2 object-cover"
+                    />
+                    <h4 className="text-lg font-bold md:text-xl">
+                      Nhập mã khuyến mãi
+                    </h4>
+                  </div>
+                  <div className="relative pt-5">
+                    <Input
+                      type="text"
+                      placeholder="Nhập mã"
+                      size="lg"
+                      value={couponCode}
+                      onChange={handleInputChange}
+                      className="md:w-2/5"
+                    />
+                    <Button
+                      isDisabled={!couponCode}
+                      color="primary"
+                      size="lg"
+                      onClick={handleApplyCoupon}
+                      className="absolute bottom-0 right-0 md:right-80"
+                    >
+                      Áp dụng
+                    </Button>
+                  </div>
+                </div>
+                <div className="pt-10">
+                  <div className="flex">
+                    <Image
+                      src="/imgs/courses/user-icon.svg"
+                      alt="filled"
+                      width={25}
+                      height={25}
+                      className="mr-2 object-cover"
+                    />
+                    <h4 className="text-lg font-bold md:text-xl">
+                      Thông tin thanh toán
+                    </h4>
+                  </div>
+                  <div className="grid gap-4 pt-5">
+                    <Input
+                      type="text"
+                      placeholder="Họ và tên"
+                      size="lg"
+                      className="md:w-2/5"
+                    />
+                    <Input
+                      type="email"
+                      placeholder="Email"
+                      size="lg"
+                      className="md:w-2/5"
+                    />
+                    <Input
+                      type="text"
+                      placeholder="Số điện thoại"
+                      size="lg"
+                      className="md:w-2/5"
+                    />
+                  </div>
+                </div>
+                <div className="pt-10">
+                  <Checkbox defaultSelected className="flex items-start">
+                    Tôi đã đọc và đồng ý với
+                    <Link href="#" className="ml-1 text-blue-500">
+                      Điều kiện & Điều khoản giao dịch,
+                    </Link>
+                    <Link href="#" className="ml-1 text-blue-500">
+                      Chính sách bảo mật thông tin,
+                    </Link>
+                    <Link href="#" className="mx-1 text-blue-500">
+                      Chính sách sử dụng AI
+                    </Link>
+                    của Prep giao dịch của Prep
+                  </Checkbox>
+                </div>
+                <div className="grid pt-10 md:mx-auto md:grid-cols-2 md:gap-4 lg:w-2/5">
+                  <ButtonModal />
+                  <Button className="my-5 h-16 w-full rounded-xl bg-[#004b8d] py-4 text-[20px] font-bold text-white outline-none hover:scale-105 md:my-0">
+                    Thanh Toán
+                  </Button>
                 </div>
               </div>
             </div>
