@@ -1,6 +1,6 @@
 import CoursesLayout from "@/components/courses/CoursesLayout";
 
-export default function Toeic() {
+export default function ToeicPage() {
   const ContentsToeicPage = [
     {
       bg1: "bg-slate-100",

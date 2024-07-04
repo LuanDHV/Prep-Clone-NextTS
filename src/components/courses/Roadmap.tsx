@@ -427,7 +427,7 @@ export default function Roadmap({ brand, aim, benefit }) {
                     của Prep giao dịch của Prep
                   </Checkbox>
                 </div>
-                <div className="grid pt-10 md:mx-auto md:grid-cols-2 md:gap-4 lg:w-2/5">
+                <div className="grid pt-10 md:mx-auto md:grid-cols-2 md:gap-4 xl:w-2/5">
                   <ButtonModal />
                   <Button className="my-5 h-16 w-full rounded-xl bg-[#004b8d] py-4 text-[20px] font-bold text-white outline-none hover:scale-105 md:my-0">
                     Thanh Toán
