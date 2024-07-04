@@ -6,11 +6,14 @@ interface AimIelts extends Document {
   description: string;
 }
 
-const AimIeltsSchema: Schema<AimIelts> = new mongoose.Schema({
-  course: { type: String, required: true },
-  aim: { type: String, required: true },
-  description: { type: String, required: true },
-});
+const AimIeltsSchema: Schema<AimIelts> = new mongoose.Schema(
+  {
+    course: { type: String, required: true },
+    aim: { type: String, required: true },
+    description: { type: String, required: true },
+  },
+  { timestamps: true },
+);
 
 const AimIeltsModel: Model<AimIelts> = mongoose.model<AimIelts>(
   "AimIelts",

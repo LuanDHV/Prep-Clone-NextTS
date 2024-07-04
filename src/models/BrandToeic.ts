@@ -6,11 +6,14 @@ interface BrandToeic extends Document {
   description: string;
 }
 
-const BrandToeicSchema: Schema<BrandToeic> = new mongoose.Schema({
-  course: { type: String, required: true },
-  brand: { type: String, required: true },
-  description: { type: String, required: true },
-});
+const BrandToeicSchema: Schema<BrandToeic> = new mongoose.Schema(
+  {
+    course: { type: String, required: true },
+    brand: { type: String, required: true },
+    description: { type: String, required: true },
+  },
+  { timestamps: true },
+);
 
 const BrandToeicModel: Model<BrandToeic> = mongoose.model<BrandToeic>(
   "BrandToeic",

@@ -6,11 +6,14 @@ interface BrandIelts extends Document {
   description: string;
 }
 
-const BrandIeltsSchema: Schema<BrandIelts> = new mongoose.Schema({
-  course: { type: String, required: true },
-  brand: { type: String, required: true },
-  description: { type: String, required: true },
-});
+const BrandIeltsSchema: Schema<BrandIelts> = new mongoose.Schema(
+  {
+    course: { type: String, required: true },
+    brand: { type: String, required: true },
+    description: { type: String, required: true },
+  },
+  { timestamps: true },
+);
 
 const BrandIeltsModel: Model<BrandIelts> = mongoose.model<BrandIelts>(
   "BrandIelts",
