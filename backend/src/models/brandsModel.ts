@@ -4,7 +4,7 @@ import { IBrands } from "../types/interface";
 
 const BrandsSchema: Schema<IBrands> = new mongoose.Schema(
   {
-    course: { type: String, required: true },
+    courseType: { type: String, required: true }, // 'IELTS' or 'TOEIC'
     brand: { type: String, required: true },
     description: { type: String, required: true },
   },

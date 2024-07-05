@@ -4,7 +4,7 @@ import { IAims } from "../types/interface";
 
 const AimsSchema: Schema<IAims> = new mongoose.Schema(
   {
-    course: { type: String, required: true },
+    courseType: { type: String, required: true }, // 'IELTS' or 'TOEIC'
     aim: { type: String, required: true },
     description: { type: String, required: true },
   },

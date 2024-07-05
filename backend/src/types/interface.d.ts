@@ -1,11 +1,11 @@
 export interface IAims {
-  course: string;
+  courseType: string;
   aim: string;
   description: string;
 }
 
 export interface IBrands {
-  course: string;
+  courseType: string;
   brand: string;
   description: string;
 }
