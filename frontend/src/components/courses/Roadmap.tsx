@@ -19,11 +19,12 @@ import {
 import { useState } from "react";
 import ButtonModal from "./ButtonModal";
 
-export default function Roadmap({ brand, aim, benefit }) {
+export default function Roadmap({ brands, aims, benefits, courses }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [selectedAim, setSelectedAim] = useState(null);
   const [couponCode, setCouponCode] = useState("");
+  const [selectedCourse, setSelectedCourse] = useState(null);
 
   const defaultContent = "content";
 
@@ -56,7 +57,7 @@ export default function Roadmap({ brand, aim, benefit }) {
             </Link>
           </div>
           <div className="grid grid-flow-row lg:grid-flow-col">
-            {brand.map((items, index) => (
+            {brands.map((items, index) => (
               <div
                 key={index}
                 className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl px-5 shadow-lg lg:w-4/5 ${
@@ -75,7 +76,7 @@ export default function Roadmap({ brand, aim, benefit }) {
                   />
                   <div>
                     <p className="font-bold">
-                      {items.course}
+                      {items.courseType}:
                       <span className="w-full text-xl"> {items.brand}</span>
                     </p>
                     <p>{items.description}</p>
@@ -90,7 +91,7 @@ export default function Roadmap({ brand, aim, benefit }) {
             <p>Chọn tiếp mục tiêu bạn muốn</p>
           </div>
           <div className="grid grid-flow-row lg:grid-flow-col">
-            {aim.map((items, index) => (
+            {aims.map((items, index) => (
               <div
                 key={index}
                 className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl px-5 shadow-lg lg:w-4/5 ${
@@ -107,7 +108,7 @@ export default function Roadmap({ brand, aim, benefit }) {
                   />
                   <div>
                     <p className="font-bold">
-                      {items.course}
+                      {items.courseType}:
                       <span className="w-full text-xl"> {items.aim}</span>
                     </p>
                     <p>{items.description}</p>
@@ -154,171 +155,173 @@ export default function Roadmap({ brand, aim, benefit }) {
               </div>
             </div>
             <div className="mt-10 rounded-xl bg-white p-5 shadow-lg md:p-10">
-              <h4 className="text-lg font-bold uppercase text-[#004B8D]">
-                CHẶNG 1: LẤY LẠI CĂN BẢN
-              </h4>
-              <p className="text-gray-500">
-                Học sinh sẽ cần bổ sung vốn từ vựng của các chủ đề phổ biến cùng
-                chủ điểm ngữ pháp trọng tâm làm tiền đề cho việc làm bài TOEIC
-                Listening và Reading ở lộ trình sau.
-              </p>
-              <div className="rounded-xl bg-slate-100 p-2 lg:grid lg:grid-cols-2 lg:items-center lg:justify-items-center lg:p-5">
-                <div className="lg:grid lg:justify-items-center lg:p-5">
-                  <div className="mt-5 h-full w-full lg:my-0 lg:w-[300px]">
-                    <img
-                      src="https://storage.googleapis.com/prep-storage-service/course/cover/ypZicNkO76ZyVx4ZKfujVGi41eeoCgyVsC83Zcgl.jpg"
-                      alt=""
-                      className="rounded-xl object-cover"
-                    />
-                  </div>
-                  <div className="mt-5 text-xl font-bold lg:text-center">
-                    <h5 className="text-gray-800">Nền Tảng TOEIC</h5>
-                    <p className="text-[#004B8D]">
-                      850.000 đ
-                      <span className="ml-2 text-base font-normal text-gray-400 line-through lg:block">
-                        1.000.000 đ
-                      </span>
-                    </p>
-                  </div>
-                </div>
+              {courses.map((items, index) => (
+                <>
+                  <h4
+                    className="mt-10 text-lg font-bold uppercase text-[#004B8D]"
+                    key={index}
+                  >
+                    {items.title}
+                  </h4>
+                  <p className="text-gray-500">{items.description}</p>
+                  <div className="rounded-xl bg-slate-100 p-2 lg:grid lg:grid-cols-2 lg:items-center lg:justify-items-center lg:p-5">
+                    <div className="lg:grid lg:justify-items-center lg:p-5">
+                      <div className="mt-5 h-full w-full lg:my-0 lg:w-[300px]">
+                        <img
+                          src={items.image}
+                          alt="courses-img"
+                          className="rounded-xl object-cover"
+                        />
+                      </div>
+                      <div className="mt-5 text-xl font-bold lg:text-center">
+                        <h5 className="text-gray-800">{items.name}</h5>
+                        <p className="text-[#004B8D]">
+                          {items.price}
+                          <span className="ml-2 text-base font-normal text-gray-400 line-through lg:block">
+                            {items.discount}
+                          </span>
+                        </p>
+                      </div>
+                    </div>
 
-                <div className="grid h-full w-full items-center lg:p-5">
-                  <div className="mt-5 grid gap-2 md:gap-5 lg:mt-0 lg:p-5">
-                    <div className="flex items-center">
-                      <FontAwesomeIcon
-                        icon={faCheck}
-                        className="h4 mr-4 w-4 object-cover text-green-600"
-                      />
-                      Đầu vào: <span className="ml-2 font-bold">300</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div className="">
-                        <FontAwesomeIcon
-                          icon={faCheck}
-                          className="h4 mr-4 w-4 object-cover text-green-600"
-                        />
-                        <span className="inline-block md:hidden">
-                          Danh sách:
-                        </span>
-                        <span className="hidden md:inline-block">
-                          Danh sách bài học:
-                        </span>
-                        <span className="ml-2 font-bold">36</span>
-                      </div>
-                      <div className="">
-                        <button className="text-blue-500" onClick={onOpen}>
-                          Chi tiết
-                        </button>
-                        <Modal
-                          isOpen={isOpen}
-                          onOpenChange={onOpenChange}
-                          placement="center"
-                          size="lg"
-                        >
-                          <ModalContent>
-                            {(onClose) => (
-                              <>
-                                <ModalHeader className="flex flex-col gap-1">
-                                  Modal Title
-                                </ModalHeader>
-                                <ModalBody>
-                                  <Accordion>
-                                    <AccordionItem
-                                      key="1"
-                                      aria-label="Accordion 1"
-                                      title="Accordion 1"
-                                    >
-                                      {defaultContent}
-                                    </AccordionItem>
-                                    <AccordionItem
-                                      key="2"
-                                      aria-label="Accordion 2"
-                                      title="Accordion 2"
-                                    >
-                                      {defaultContent}
-                                    </AccordionItem>
-                                    <AccordionItem
-                                      key="3"
-                                      aria-label="Accordion 3"
-                                      title="Accordion 3"
-                                    >
-                                      {defaultContent}
-                                    </AccordionItem>
-                                  </Accordion>
-                                </ModalBody>
-                                <ModalFooter>
-                                  <Button
-                                    color="danger"
-                                    variant="light"
-                                    onPress={onClose}
-                                  >
-                                    Close
-                                  </Button>
-                                  <Button color="primary" onPress={onClose}>
-                                    Action
-                                  </Button>
-                                </ModalFooter>
-                              </>
-                            )}
-                          </ModalContent>
-                        </Modal>
-                      </div>
-                    </div>
-                    <div className="flex items-center">
-                      <FontAwesomeIcon
-                        icon={faCheck}
-                        className="h4 mr-4 w-4 object-cover text-green-600"
-                      />
+                    <div className="grid h-full w-full items-center lg:p-5">
+                      <div className="mt-5 grid gap-2 md:gap-5 lg:mt-0 lg:p-5">
+                        <div className="flex items-center">
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            className="h4 mr-4 w-4 object-cover text-green-600"
+                          />
+                          Đầu vào:
+                          <span className="ml-2 font-bold">
+                            {items.inputLevel}
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between">
+                          <div className="">
+                            <FontAwesomeIcon
+                              icon={faCheck}
+                              className="h4 mr-4 w-4 object-cover text-green-600"
+                            />
+                            <span className="inline-block md:hidden">
+                              Danh sách:
+                            </span>
+                            <span className="hidden md:inline-block">
+                              Danh sách bài học:
+                            </span>
+                            <span className="ml-2 font-bold">{items.list}</span>
+                          </div>
+                          <div className="">
+                            <button className="text-blue-500" onClick={onOpen}>
+                              Chi tiết
+                            </button>
+                            <Modal
+                              isOpen={isOpen}
+                              onOpenChange={onOpenChange}
+                              placement="center"
+                              size="lg"
+                            >
+                              <ModalContent>
+                                {(onClose) => (
+                                  <>
+                                    <ModalHeader className="flex flex-col gap-1">
+                                      Chi tiết khóa học
+                                    </ModalHeader>
+                                    <ModalBody>
+                                      <Accordion>
+                                        {/* {selectedCourse?.lessons?.map(
+                                          (lesson, index) => (
+                                            <AccordionItem
+                                              key={lesson._id}
+                                              aria-label={`Lesson ${index + 1}`}
+                                              title={lesson.title}
+                                            >
+                                              <div>
+                                                <p>{lesson.video}</p>
+                                              </div>
+                                            </AccordionItem>
+                                          ),
+                                        )} */}
+                                      </Accordion>
+                                    </ModalBody>
+                                    <ModalFooter>
+                                      <Button
+                                        color="danger"
+                                        variant="light"
+                                        onPress={onClose}
+                                      >
+                                        Close
+                                      </Button>
+                                      <Button color="primary" onPress={onClose}>
+                                        Action
+                                      </Button>
+                                    </ModalFooter>
+                                  </>
+                                )}
+                              </ModalContent>
+                            </Modal>
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            className="h4 mr-4 w-4 object-cover text-green-600"
+                          />
 
-                      <span className="inline-block md:hidden">Thời gian:</span>
-                      <span className="hidden md:inline-block">
-                        Thời gian hoàn thành:
-                      </span>
-                      <span className="ml-2 font-bold">1 tháng</span>
-                    </div>
-                    <div className="flex items-center">
-                      <FontAwesomeIcon
-                        icon={faCheck}
-                        className="h4 mr-4 w-4 object-cover text-green-600"
-                      />
-                      Số người đã học:
-                      <span className="ml-2 font-bold">18242</span>
-                    </div>
-                    <div className="flex items-center">
-                      <div className="hidden xl:block">
-                        <FontAwesomeIcon
-                          icon={faCheck}
-                          className="h4 mr-4 w-4 object-cover text-green-600"
-                        />
-                        Đánh giá:
-                      </div>
-                      <div className="ml-3">
-                        <FontAwesomeIcon
-                          icon={faStar}
-                          className="h-4 w-4 object-cover text-orange-400"
-                        />
-                        <FontAwesomeIcon
-                          icon={faStar}
-                          className="h-4 w-4 object-cover text-orange-400"
-                        />
-                        <FontAwesomeIcon
-                          icon={faStar}
-                          className="h-4 w-4 object-cover text-orange-400"
-                        />
-                        <FontAwesomeIcon
-                          icon={faStar}
-                          className="h-4 w-4 object-cover text-orange-400"
-                        />
-                        <FontAwesomeIcon
-                          icon={faStar}
-                          className="h-4 w-4 object-cover text-orange-400"
-                        />
-                        <span className="ml-2">(18111+)</span>
+                          <span className="inline-block md:hidden">
+                            Thời gian:
+                          </span>
+                          <span className="hidden md:inline-block">
+                            Thời gian hoàn thành:
+                          </span>
+                          <span className="ml-2 font-bold">
+                            {items.duration}
+                          </span>
+                        </div>
+                        <div className="flex items-center">
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            className="h4 mr-4 w-4 object-cover text-green-600"
+                          />
+                          Số người đã học:
+                          <span className="ml-2 font-bold">{items.people}</span>
+                        </div>
+                        <div className="flex items-center">
+                          <div className="hidden xl:block">
+                            <FontAwesomeIcon
+                              icon={faCheck}
+                              className="h4 mr-4 w-4 object-cover text-green-600"
+                            />
+                            Đánh giá:
+                          </div>
+                          <div className="ml-3">
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              className="h-4 w-4 object-cover text-orange-400"
+                            />
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              className="h-4 w-4 object-cover text-orange-400"
+                            />
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              className="h-4 w-4 object-cover text-orange-400"
+                            />
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              className="h-4 w-4 object-cover text-orange-400"
+                            />
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              className="h-4 w-4 object-cover text-orange-400"
+                            />
+                            <span className="ml-2">({items.review})</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
+                </>
+              ))}
               <div className="pt-10">
                 <div className="flex">
                   <Image
@@ -333,7 +336,7 @@ export default function Roadmap({ brand, aim, benefit }) {
                   </h4>
                 </div>
                 <div className="mt-4 grid gap-4">
-                  {benefit.map((items, index) => (
+                  {benefits.map((items, index) => (
                     <>
                       <div className="flex items-center" key={index}>
                         <FontAwesomeIcon
@@ -435,6 +438,7 @@ export default function Roadmap({ brand, aim, benefit }) {
                 </div>
               </div>
             </div>
+            ;
           </>
         ) : (
           <>

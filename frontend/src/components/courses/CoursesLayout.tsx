@@ -9,9 +9,10 @@ import Roadmap from "./Roadmap";
 export default function CoursesLayout({
   contents,
   sliders,
-  brand,
-  aim,
-  benefit,
+  brands,
+  aims,
+  courses,
+  benefits,
 }) {
   return (
     <>
@@ -68,7 +69,12 @@ export default function CoursesLayout({
                 </p>
               </div>
               <div className="mt-20 h-auto rounded-2xl bg-blue-50 p-5">
-                <Roadmap brand={brand} aim={aim} benefit={benefit} />
+                <Roadmap
+                  brands={brands}
+                  aims={aims}
+                  benefits={benefits}
+                  courses={courses}
+                />
               </div>
             </div>
           </section>

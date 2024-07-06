@@ -1,6 +1,7 @@
+import axios from "axios";
 import CoursesLayout from "@/components/courses/CoursesLayout";
 
-export default function ToeicPage() {
+export default async function ToeicPage() {
   const ContentsToeicPage = [
     {
       bg1: "bg-slate-100",
@@ -34,43 +35,7 @@ export default function ToeicPage() {
     },
   ];
 
-  const BrandToeicPage = [
-    {
-      course: "TOEIC:",
-      brand: "1 - 295",
-      description: "Mất gốc",
-    },
-    {
-      course: "TOEIC:",
-      brand: "300 - 595",
-      description: "Có nền tảng",
-    },
-    {
-      course: "TOEIC:",
-      brand: "600 - 650",
-      description: "Nền tảng tốt",
-    },
-  ];
-
-  const AimToeicPage = [
-    {
-      course: "TOEIC:",
-      aim: "300",
-      description: "Cơ bản",
-    },
-    {
-      course: "TOEIC:",
-      aim: "600",
-      description: "Khá",
-    },
-    {
-      course: "TOEIC:",
-      aim: "800",
-      description: "Xuất Sắc",
-    },
-  ];
-
-  const BenefitToeicPage = [
+  const BenefitsToeicPage = [
     {
       text: "Luyện Test Practice Toeic Miễn Phí",
     },
@@ -85,14 +50,41 @@ export default function ToeicPage() {
     },
   ];
 
+  // Fetch data from the API
+  let AimsToeicPage = [];
+  let BrandsToeicPage = [];
+  let CoursesToeicPage = [];
+
+  try {
+    const [aimsResponse, brandsResponse, coursesResponse] = await Promise.all([
+      axios.get("http://localhost:5000/api/aims"),
+      axios.get("http://localhost:5000/api/brands"),
+      axios.get("http://localhost:5000/api/courses"),
+    ]);
+
+    AimsToeicPage = aimsResponse.data.filter(
+      (item: any) => item.courseType === "TOEIC",
+    );
+
+    BrandsToeicPage = brandsResponse.data.filter(
+      (item: any) => item.courseType === "TOEIC",
+    );
+    CoursesToeicPage = coursesResponse.data.filter(
+      (item: any) => item.courseType === "TOEIC",
+    );
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
+
   return (
     <>
       <CoursesLayout
         contents={ContentsToeicPage}
         sliders={SlidersToeicPage}
-        brand={BrandToeicPage}
-        aim={AimToeicPage}
-        benefit={BenefitToeicPage}
+        brands={BrandsToeicPage}
+        aims={AimsToeicPage}
+        courses={CoursesToeicPage}
+        benefits={BenefitsToeicPage}
       />
     </>
   );

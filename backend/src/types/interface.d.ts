@@ -19,13 +19,13 @@ export interface ICourses {
   courseType: string;
   title: string;
   description: string;
+  image: string;
   name: string;
-  price: number;
-  discount: number;
-  duration: string;
+  price: string;
+  discount: string;
   inputLevel: string;
+  duration: string;
   list: number;
-  time: string;
   people: number;
   review: number;
   lessons: ILessons[];

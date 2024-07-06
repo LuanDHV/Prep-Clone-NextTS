@@ -1,6 +1,4 @@
 "use client";
-import { faHeadphones } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Modal,
   ModalContent,

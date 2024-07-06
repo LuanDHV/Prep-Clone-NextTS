@@ -1,6 +1,7 @@
+import axios from "axios";
 import CoursesLayout from "@/components/courses/CoursesLayout";
 
-export default function Ielts() {
+export default async function Ielts() {
   const ContentsIeltsPage = [
     {
       bg1: "bg-[#E5EFFF]",
@@ -35,48 +36,7 @@ export default function Ielts() {
     },
   ];
 
-  const BrandIeltsPage = [
-    {
-      course: "IELTS:",
-      brand: "1.0 - 3.5",
-      description: "Mất gốc",
-    },
-    {
-      course: "IELTS:",
-      brand: "4.0 - 5.0",
-      description: "Có nền tảng",
-    },
-    {
-      course: "IELTS:",
-      brand: "5.0 - 5.5",
-      description: "Nền tảng tốt",
-    },
-    {
-      course: "IELTS:",
-      brand: "6.0 - 6.5",
-      description: "Khá",
-    },
-  ];
-
-  const AimIeltsPage = [
-    {
-      course: "IELTS:",
-      aim: "Cơ bản",
-      description: "Cơ bản",
-    },
-    {
-      course: "IELTS:",
-      aim: "Trung cấp",
-      description: "Trung cấp",
-    },
-    {
-      course: "IELTS:",
-      aim: "Chuyên sâu",
-      description: "Chuyên sâu",
-    },
-  ];
-
-  const BenefitIeltsPage = [
+  const BenefitsIeltsPage = [
     {
       text: "12 đề cambridge",
     },
@@ -100,14 +60,41 @@ export default function Ielts() {
     },
   ];
 
+  // Fetch data from the API
+  let AimsIeltsPage = [];
+  let BrandsIeltsPage = [];
+  let CoursesIeltsPage = [];
+
+  try {
+    const [aimsResponse, brandsResponse, coursesResponse] = await Promise.all([
+      axios.get("http://localhost:5000/api/aims"),
+      axios.get("http://localhost:5000/api/brands"),
+      axios.get("http://localhost:5000/api/courses"),
+    ]);
+
+    AimsIeltsPage = aimsResponse.data.filter(
+      (item: any) => item.courseType === "IELTS",
+    );
+
+    BrandsIeltsPage = brandsResponse.data.filter(
+      (item: any) => item.courseType === "IELTS",
+    );
+    CoursesIeltsPage = coursesResponse.data.filter(
+      (item: any) => item.courseType === "IELTS",
+    );
+  } catch (error) {
+    console.error("Error fetching data: ", error);
+  }
+
   return (
     <>
       <CoursesLayout
         contents={ContentsIeltsPage}
         sliders={SlidersIeltsPage}
-        brand={BrandIeltsPage}
-        aim={AimIeltsPage}
-        benefit={BenefitIeltsPage}
+        brands={BrandsIeltsPage}
+        aims={AimsIeltsPage}
+        courses={CoursesIeltsPage}
+        benefits={BenefitsIeltsPage}
       />
     </>
   );
