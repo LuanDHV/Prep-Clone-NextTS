@@ -5,6 +5,7 @@ import Image from "next/image";
 import SliderReviews from "../sliders/SliderReviews";
 import Questions from "./Questions";
 import Roadmap from "./Roadmap";
+import { ICoursesLayout } from "@/types/interfaces";
 
 export default function CoursesLayout({
   contents,
@@ -13,7 +14,7 @@ export default function CoursesLayout({
   aims,
   courses,
   benefits,
-}) {
+}: ICoursesLayout) {
   return (
     <>
       {contents.map((items, index) => (
@@ -26,7 +27,7 @@ export default function CoursesLayout({
             >
               <div className="text-center font-bold text-black lg:text-start">
                 <h1 className="mb-4 mt-16 text-5xl">{items.text1}</h1>
-                <h2 className={`mb-4 text-5xl font-bold ${items.colorText}`}>
+                <h2 className={`mb-4 text-5xl font-bold ${items.textColor}`}>
                   {items.courseType}
                 </h2>
                 <h3 className="mb-4 text-5xl">{items.text2}</h3>
@@ -53,7 +54,14 @@ export default function CoursesLayout({
               </div>
 
               <div className="flex h-full w-[320px] items-center md:w-[490px] xl:w-[700px]">
-                <SliderCourses sliders={sliders} />
+                <SliderCourses
+                  sliders={sliders}
+                  contents={[]}
+                  brands={[]}
+                  aims={[]}
+                  courses={[]}
+                  benefits={[]}
+                />
               </div>
             </div>
           </section>
@@ -63,7 +71,7 @@ export default function CoursesLayout({
             <div className="mt-12 h-auto w-full px-5 md:px-10 lg:mt-24">
               <div className="mb-3 grid justify-items-center text-center text-2xl font-bold md:text-4xl">
                 <p className="text-gray-800">{items.text6}</p>
-                <p className={`${items.colorText} mt-4`}>{items.text7}</p>
+                <p className={`${items.textColor} mt-4`}>{items.text7}</p>
                 <p className="mt-4 text-base font-normal text-gray-800">
                   {items.text8}
                 </p>
@@ -74,6 +82,8 @@ export default function CoursesLayout({
                   aims={aims}
                   benefits={benefits}
                   courses={courses}
+                  contents={[]}
+                  sliders={[]}
                 />
               </div>
             </div>
@@ -108,7 +118,7 @@ export default function CoursesLayout({
               <div className="mt-16 w-4/5 text-center text-4xl font-bold text-white md:text-3xl lg:text-start">
                 <h1 className="mb-4">
                   {items.text9}{" "}
-                  <span className={`${items.colorText}`}>
+                  <span className={`${items.textColor}`}>
                     {items.courseType}
                   </span>
                 </h1>

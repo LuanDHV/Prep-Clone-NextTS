@@ -3,8 +3,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Pagination, Autoplay } from "swiper/modules";
 import Image from "next/image";
+import { ICoursesLayout } from "@/types/interfaces";
 
-export default function SliderCourses({ sliders }) {
+export default function SliderCourses({ sliders }: ICoursesLayout) {
   return (
     <Swiper
       modules={[Pagination, Autoplay]}

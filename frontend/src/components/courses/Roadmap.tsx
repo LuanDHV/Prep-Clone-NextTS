@@ -8,7 +8,6 @@ import {
   ModalContent,
   ModalHeader,
   ModalBody,
-  ModalFooter,
   Button,
   useDisclosure,
   Accordion,
@@ -18,30 +17,34 @@ import {
 } from "@nextui-org/react";
 import { useState } from "react";
 import ButtonModal from "./ButtonModal";
+import { ICoursesLayout } from "@/types/interfaces";
 
-export default function Roadmap({ brands, aims, benefits, courses }) {
+export default function Roadmap({
+  brands,
+  aims,
+  benefits,
+  courses,
+}: ICoursesLayout) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [selectedBrand, setSelectedBrand] = useState(null);
   const [selectedAim, setSelectedAim] = useState(null);
   const [couponCode, setCouponCode] = useState("");
-  const [selectedCourse, setSelectedCourse] = useState(null);
 
   const defaultContent = "content";
 
-  const handleBrandChange = (index) => {
+  const handleBrandChange = (index: any) => {
     setSelectedBrand(index);
   };
 
-  const handleAimChange = (index) => {
+  const handleAimChange = (index: any) => {
     setSelectedAim(index);
   };
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: any) => {
     setCouponCode(e.target.value);
   };
 
   const handleApplyCoupon = () => {
-    // Xử lý khi người dùng nhấn nút "Áp dụng" ở đây
     console.log("Áp dụng mã coupon:", couponCode);
     setCouponCode("");
   };
@@ -221,40 +224,22 @@ export default function Roadmap({ brands, aims, benefits, courses }) {
                               size="lg"
                             >
                               <ModalContent>
-                                {(onClose) => (
+                                {() => (
                                   <>
                                     <ModalHeader className="flex flex-col gap-1">
                                       Chi tiết khóa học
                                     </ModalHeader>
                                     <ModalBody>
                                       <Accordion>
-                                        {/* {selectedCourse?.lessons?.map(
-                                          (lesson, index) => (
-                                            <AccordionItem
-                                              key={lesson._id}
-                                              aria-label={`Lesson ${index + 1}`}
-                                              title={lesson.title}
-                                            >
-                                              <div>
-                                                <p>{lesson.video}</p>
-                                              </div>
-                                            </AccordionItem>
-                                          ),
-                                        )} */}
+                                        <AccordionItem
+                                          key="1"
+                                          aria-label="Accordion 1"
+                                          title="Accordion 1"
+                                        >
+                                          {defaultContent}
+                                        </AccordionItem>
                                       </Accordion>
                                     </ModalBody>
-                                    <ModalFooter>
-                                      <Button
-                                        color="danger"
-                                        variant="light"
-                                        onPress={onClose}
-                                      >
-                                        Close
-                                      </Button>
-                                      <Button color="primary" onPress={onClose}>
-                                        Action
-                                      </Button>
-                                    </ModalFooter>
                                   </>
                                 )}
                               </ModalContent>
@@ -343,7 +328,7 @@ export default function Roadmap({ brands, aims, benefits, courses }) {
                           icon={faCheck}
                           className="h4 mr-2 w-4 object-cover text-green-600"
                         />
-                        {items.text}
+                        {items.contents}
                       </div>
                     </>
                   ))}
