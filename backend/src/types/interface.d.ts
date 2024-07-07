@@ -32,3 +32,30 @@ export interface ICourses {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface ISliders {
+  courseType: string;
+  image: string;
+}
+export interface IBenefits {
+  courseType: string;
+  text: string;
+}
+export interface IContents {
+  courseType: string;
+  image: string;
+  bgBanner1: string;
+  bgBanner2: string;
+  textColor: string;
+  text1: string;
+  text2: string;
+  text3: string;
+  text4: string;
+  text5: string;
+  text6: string;
+  text7: string;
+  text8: string;
+  text9: string;
+  text10: string;
+  text11: string;
+}
