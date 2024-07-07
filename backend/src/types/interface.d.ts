@@ -39,7 +39,7 @@ export interface ISliders {
 }
 export interface IBenefits {
   courseType: string;
-  text: string;
+  contents: string[];
 }
 export interface IContents {
   courseType: string;

@@ -21,7 +21,7 @@ export default function SliderCourses({ sliders }) {
       {sliders.map((slide, index) => (
         <SwiperSlide key={index}>
           <Image
-            src={slide.img}
+            src={slide.image}
             alt="slide-courses"
             width={320}
             height={400}

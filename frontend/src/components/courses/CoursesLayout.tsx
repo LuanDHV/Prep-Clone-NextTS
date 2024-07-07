@@ -21,17 +21,17 @@ export default function CoursesLayout({
           {/* Header */}
           <section>
             <div
-              className={`grid h-auto w-full grid-flow-row items-center ${items.bg1} justify-items-center px-5 py-10 md:px-10 lg:grid-flow-col`}
+              className={`grid h-auto w-full grid-flow-row items-center ${items.bgBanner1} justify-items-center px-5 py-10 md:px-10 lg:grid-flow-col`}
               key={index}
             >
               <div className="text-center font-bold text-black lg:text-start">
                 <h1 className="mb-4 mt-16 text-5xl">{items.text1}</h1>
                 <h2 className={`mb-4 text-5xl font-bold ${items.colorText}`}>
-                  {items.textMain}
+                  {items.courseType}
                 </h2>
-                <h3 className="mb-4 text-5xl">{items.text3}</h3>
+                <h3 className="mb-4 text-5xl">{items.text2}</h3>
+                <p className="">{items.text3}</p>
                 <p className="">{items.text4}</p>
-                <p className="">{items.text5}</p>
                 <Button className="my-5 h-16 w-full rounded-xl bg-[#0071F9] py-4 text-[20px] font-bold text-white outline-none hover:scale-105">
                   Xây Lộ Trình Cho Tôi
                 </Button>
@@ -47,7 +47,7 @@ export default function CoursesLayout({
                   </AvatarGroup>
                   <div className="pl-4">
                     <p className="text-4xl font-extrabold">700+</p>
-                    <p className="text-sm font-normal">{items.text6}</p>
+                    <p className="text-sm font-normal">{items.text5}</p>
                   </div>
                 </div>
               </div>
@@ -62,10 +62,10 @@ export default function CoursesLayout({
           <section id="roadmap">
             <div className="mt-12 h-auto w-full px-5 md:px-10 lg:mt-24">
               <div className="mb-3 grid justify-items-center text-center text-2xl font-bold md:text-4xl">
-                <p className="text-gray-800">{items.text7}</p>
-                <p className={`${items.colorText} mt-4`}>{items.text8}</p>
+                <p className="text-gray-800">{items.text6}</p>
+                <p className={`${items.colorText} mt-4`}>{items.text7}</p>
                 <p className="mt-4 text-base font-normal text-gray-800">
-                  {items.text9}
+                  {items.text8}
                 </p>
               </div>
               <div className="mt-20 h-auto rounded-2xl bg-blue-50 p-5">
@@ -102,16 +102,18 @@ export default function CoursesLayout({
           {/* Footer */}
           <section>
             <div
-              className={`grid h-auto w-full grid-flow-row items-center ${items.bgFooter} justify-items-center px-5 py-10 md:px-10 lg:grid-flow-col`}
+              className={`grid h-auto w-full grid-flow-row items-center ${items.bgBanner2} justify-items-center px-5 py-10 md:px-10 lg:grid-flow-col`}
               key={index}
             >
               <div className="mt-16 w-4/5 text-center text-4xl font-bold text-white md:text-3xl lg:text-start">
                 <h1 className="mb-4">
-                  {items.text10}{" "}
-                  <span className={`${items.colorText}`}>{items.textMain}</span>
+                  {items.text9}{" "}
+                  <span className={`${items.colorText}`}>
+                    {items.courseType}
+                  </span>
                 </h1>
-                <h2 className="mb-4">{items.text11}</h2>
-                <h3 className="my-4 text-base font-normal">{items.text12}</h3>
+                <h2 className="mb-4">{items.text10}</h2>
+                <h3 className="my-4 text-base font-normal">{items.text11}</h3>
                 <Button className="my-5 h-16 w-full rounded-xl bg-[#0071F9] py-4 text-[20px] font-bold text-white outline-none hover:scale-105">
                   Xây Lộ Trình Cho Tôi
                 </Button>
@@ -120,7 +122,7 @@ export default function CoursesLayout({
 
               <div className="w-[320px] md:w-[490px] lg:w-[700px]">
                 <Image
-                  src={items.img}
+                  src={items.image}
                   alt="footer"
                   width={320}
                   height={230}
