@@ -29,18 +29,9 @@ export default function Roadmap({
   const [couponCode, setCouponCode] = useState("");
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedAim, setSelectedAim] = useState("");
+  const [roadMapName, setRoadMapName] = useState("");
 
   const defaultContent = "content";
-
-  const handleBrandChange = (courseType: string, brand: string) => {
-    setSelectedBrand(`${courseType} ${brand}`);
-    console.log("Brand:", `${courseType} ${brand}`);
-  };
-
-  const handleAimChange = (courseType: string, aim: string) => {
-    setSelectedAim(`${courseType} ${aim}`);
-    console.log("Aim:", `${courseType} ${aim}`);
-  };
 
   const handleInputChange = (e: any) => {
     setCouponCode(e.target.value);
@@ -49,6 +40,111 @@ export default function Roadmap({
   const handleApplyCoupon = () => {
     console.log("Áp dụng mã coupon:", couponCode);
     setCouponCode("");
+  };
+
+  const handleBrandChange = (courseType: string, brand: string) => {
+    const selectedBrand = `${courseType} ${brand}`;
+    setSelectedBrand(selectedBrand);
+    console.log("Brand:", selectedBrand);
+
+    handleCourseRoadMap(selectedBrand, selectedAim);
+  };
+
+  const handleAimChange = (courseType: string, aim: string) => {
+    const selectedAim = `${courseType} ${aim}`;
+    setSelectedAim(selectedAim);
+    console.log("Aim:", selectedAim);
+
+    handleCourseRoadMap(selectedBrand, selectedAim);
+  };
+
+  const handleCourseRoadMap = (selectedBrand: string, selectedAim: string) => {
+    let roadMapName: string = "";
+
+    if (selectedBrand.startsWith("IELTS")) {
+      switch (selectedBrand) {
+        case "IELTS 1.0 - 3.5":
+          if (selectedAim === "IELTS Cơ bản") {
+            roadMapName = "Mất Gốc đến 5.0";
+          } else if (selectedAim === "IELTS Trung cấp") {
+            roadMapName = "Mất Gốc đến 6.0";
+          } else if (selectedAim === "IELTS Chuyên sâu") {
+            roadMapName = "Mất Gốc đến 6.5+";
+          }
+          break;
+        case "IELTS 4.0 - 5.0":
+          if (selectedAim === "IELTS Cơ bản") {
+            roadMapName = "Từ 4.0 đến 5.0";
+          } else if (selectedAim === "IELTS Trung cấp") {
+            roadMapName = "Từ 4.0 đến 6.0";
+          } else if (selectedAim === "IELTS Chuyên sâu") {
+            roadMapName = "Từ 4.0 đến 6.5+";
+          }
+          break;
+        case "IELTS 5.0 - 5.5":
+          if (selectedAim === "IELTS Trung cấp") {
+            roadMapName = "Từ 5.0 đến 6.0";
+          }
+          if (selectedAim === "IELTS Chuyên sâu") {
+            roadMapName = "Từ 5.0 đến 6.5+";
+          } else {
+            console.error(
+              "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
+            );
+          }
+          break;
+        case "IELTS 6.0 - 6.5":
+          if (selectedAim === "IELTS Chuyên sâu") {
+            roadMapName = "Từ 6.0 đến 6.5+";
+          } else {
+            console.error(
+              "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
+            );
+          }
+
+          break;
+        default:
+          break;
+      }
+    } else if (selectedBrand.startsWith("TOEIC")) {
+      switch (selectedBrand) {
+        case "TOEIC 1 - 295":
+          if (selectedAim === "TOEIC 300") {
+            roadMapName = "Mất Gốc đến 300";
+          } else if (selectedAim === "TOEIC 600") {
+            roadMapName = "Mất Gốc đến 600";
+          } else if (selectedAim === "TOEIC 800") {
+            roadMapName = "Mất Gốc đến 800";
+          }
+          break;
+        case "TOEIC 300 - 595":
+          if (selectedAim === "TOEIC 600") {
+            roadMapName = "Có Nền Tảng đến 600";
+          } else if (selectedAim === "TOEIC 800") {
+            roadMapName = "Có Nền Tảng đến 800";
+          } else {
+            console.error(
+              "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
+            );
+          }
+          break;
+        case "TOEIC 600 - 650":
+          if (selectedAim === "TOEIC 800") {
+            roadMapName = "TOEIC Nền Tảng Tốt đến 800";
+          } else {
+            console.error(
+              "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
+            );
+          }
+          break;
+        default:
+          break;
+      }
+    }
+
+    setRoadMapName(roadMapName); // Update roadMapName state
+    // Log the results for debugging
+    console.log("RoadMap Name:", roadMapName);
   };
 
   return (
@@ -129,7 +225,7 @@ export default function Roadmap({
             ))}
           </div>
         </div>
-        {selectedBrand !== null && selectedAim !== null ? (
+        {selectedBrand !== "" && selectedAim !== "" ? (
           <>
             <div className="mt-10">
               <div className="mb-5 text-xl font-bold text-gray-800">
@@ -139,7 +235,7 @@ export default function Roadmap({
                 <p className="mb-3 grid grid-cols-2 font-medium lg:grid-cols-5">
                   Lộ trình
                   <span className="ml-2 font-bold text-gray-800">
-                    Mất gốc đến 5.0
+                    {roadMapName}
                   </span>
                 </p>
                 <p className="mb-3 grid grid-cols-2 font-medium lg:grid-cols-5">
