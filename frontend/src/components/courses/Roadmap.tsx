@@ -26,18 +26,20 @@ export default function Roadmap({
   courses,
 }: ICoursesLayout) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [selectedBrand, setSelectedBrand] = useState(null);
-  const [selectedAim, setSelectedAim] = useState(null);
   const [couponCode, setCouponCode] = useState("");
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedAim, setSelectedAim] = useState("");
 
   const defaultContent = "content";
 
-  const handleBrandChange = (index: any) => {
-    setSelectedBrand(index);
+  const handleBrandChange = (courseType: string, brand: string) => {
+    setSelectedBrand(`${courseType} ${brand}`);
+    console.log("Brand:", `${courseType} ${brand}`);
   };
 
-  const handleAimChange = (index: any) => {
-    setSelectedAim(index);
+  const handleAimChange = (courseType: string, aim: string) => {
+    setSelectedAim(`${courseType} ${aim}`);
+    console.log("Aim:", `${courseType} ${aim}`);
   };
 
   const handleInputChange = (e: any) => {
@@ -64,7 +66,7 @@ export default function Roadmap({
               <div
                 key={index}
                 className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl px-5 shadow-lg lg:w-4/5 ${
-                  selectedBrand === index
+                  selectedBrand === `${items.courseType} ${items.brand}`
                     ? "bg-blue-500 text-white"
                     : "bg-white"
                 }`}
@@ -75,7 +77,9 @@ export default function Roadmap({
                     name="brandGroup"
                     value={index}
                     className="mr-2 h-6 w-6"
-                    onChange={() => handleBrandChange(index)}
+                    onChange={() =>
+                      handleBrandChange(items.courseType, items.brand)
+                    }
                   />
                   <div>
                     <p className="font-bold">
@@ -98,7 +102,9 @@ export default function Roadmap({
               <div
                 key={index}
                 className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl px-5 shadow-lg lg:w-4/5 ${
-                  selectedAim === index ? "bg-blue-500 text-white" : "bg-white"
+                  selectedAim === `${items.courseType} ${items.aim}`
+                    ? "bg-blue-500 text-white"
+                    : "bg-white"
                 }`}
               >
                 <label className="flex cursor-pointer items-center">
@@ -107,7 +113,9 @@ export default function Roadmap({
                     name="brandGroup"
                     value={index}
                     className="mr-2 h-6 w-6"
-                    onChange={() => handleAimChange(index)}
+                    onChange={() =>
+                      handleAimChange(items.courseType, items.aim)
+                    }
                   />
                   <div>
                     <p className="font-bold">
