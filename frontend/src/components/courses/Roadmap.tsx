@@ -17,7 +17,7 @@ import {
 } from "@nextui-org/react";
 import { useState } from "react";
 import ButtonModal from "./ButtonModal";
-import { ICoursesLayout } from "@/types/interfaces";
+import { ICoursesLayout, IRoadMapDetails } from "@/types/interfaces";
 
 export default function Roadmap({
   brands,
@@ -30,6 +30,13 @@ export default function Roadmap({
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedAim, setSelectedAim] = useState("");
   const [roadMapName, setRoadMapName] = useState("");
+  const [roadMapDetails, setRoadMapDetails] = useState({
+    duration: "",
+    courses: "",
+    price: "",
+    discount: "",
+    period: "",
+  });
 
   const defaultContent = "content";
 
@@ -47,7 +54,7 @@ export default function Roadmap({
     setSelectedBrand(selectedBrand);
     console.log("Brand:", selectedBrand);
 
-    handleCourseRoadMap(selectedBrand, selectedAim);
+    handleRoadMap(selectedBrand, selectedAim);
   };
 
   const handleAimChange = (courseType: string, aim: string) => {
@@ -55,38 +62,101 @@ export default function Roadmap({
     setSelectedAim(selectedAim);
     console.log("Aim:", selectedAim);
 
-    handleCourseRoadMap(selectedBrand, selectedAim);
+    handleRoadMap(selectedBrand, selectedAim);
   };
 
-  const handleCourseRoadMap = (selectedBrand: string, selectedAim: string) => {
+  const handleRoadMap = (selectedBrand: string, selectedAim: string) => {
     let roadMapName: string = "";
+    let roadMapDetails: IRoadMapDetails = {
+      duration: "",
+      courses: "",
+      price: "",
+      discount: "",
+      period: "",
+    };
 
     if (selectedBrand.startsWith("IELTS")) {
       switch (selectedBrand) {
         case "IELTS 1.0 - 3.5":
           if (selectedAim === "IELTS Cơ bản") {
             roadMapName = "Mất Gốc đến 5.0";
+            roadMapDetails = {
+              duration: "4 tháng",
+              courses: "2 khóa",
+              price: "3.400.000 đ",
+              discount: "4.000.000 đ",
+              period: "30 tháng",
+            };
           } else if (selectedAim === "IELTS Trung cấp") {
             roadMapName = "Mất Gốc đến 6.0";
+            roadMapDetails = {
+              duration: "8 tháng",
+              courses: "3 khóa",
+              price: "6.000.000 đ",
+              discount: "7.500.000 đ",
+              period: "45 tháng",
+            };
           } else if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Mất Gốc đến 6.5+";
+            roadMapDetails = {
+              duration: "13 tháng",
+              courses: "4 khóa",
+              price: "9.000.000 đ",
+              discount: "12.000.000 đ",
+              period: "60 tháng",
+            };
           }
           break;
         case "IELTS 4.0 - 5.0":
           if (selectedAim === "IELTS Cơ bản") {
             roadMapName = "Từ 4.0 đến 5.0";
+            roadMapDetails = {
+              duration: "3 tháng",
+              courses: "1 khóa",
+              price: "2.250.000 đ",
+              discount: "3.000.000 đ",
+              period: "15 tháng",
+            };
           } else if (selectedAim === "IELTS Trung cấp") {
             roadMapName = "Từ 4.0 đến 6.0";
+            roadMapDetails = {
+              duration: "7 tháng",
+              courses: "2 khóa",
+              price: "5.525.000 đ",
+              discount: "6.500.000 đ",
+              period: "30 tháng",
+            };
           } else if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Từ 4.0 đến 6.5+";
+            roadMapDetails = {
+              duration: "12 tháng",
+              courses: "3 khóa",
+              price: "8.800.000đ",
+              discount: "11.000.000 đ",
+              period: "45 tháng",
+            };
           }
           break;
         case "IELTS 5.0 - 5.5":
           if (selectedAim === "IELTS Trung cấp") {
             roadMapName = "Từ 5.0 đến 6.0";
+            roadMapDetails = {
+              duration: "4 tháng",
+              courses: "1 khóa",
+              price: "2.625.000 đ",
+              discount: "3.500.000đ",
+              period: "15 tháng",
+            };
           }
           if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Từ 5.0 đến 6.5+";
+            roadMapDetails = {
+              duration: "9 tháng",
+              courses: "2 khóa",
+              price: "6.800.000 đ",
+              discount: "8.000.000 đ",
+              period: "30 tháng",
+            };
           } else {
             console.error(
               "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
@@ -96,6 +166,13 @@ export default function Roadmap({
         case "IELTS 6.0 - 6.5":
           if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Từ 6.0 đến 6.5+";
+            roadMapDetails = {
+              duration: "5 tháng",
+              courses: "1 khóa",
+              price: "3.375.000 đ",
+              discount: "4.500.000đ",
+              period: "15 tháng",
+            };
           } else {
             console.error(
               "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
@@ -111,17 +188,52 @@ export default function Roadmap({
         case "TOEIC 1 - 295":
           if (selectedAim === "TOEIC 300") {
             roadMapName = "Mất Gốc đến 300";
+            roadMapDetails = {
+              duration: "2 tháng",
+              courses: "1 khóa",
+              price: "500.000 đ",
+              discount: "750.000 đ",
+              period: "9 tháng",
+            };
           } else if (selectedAim === "TOEIC 600") {
             roadMapName = "Mất Gốc đến 600";
+            roadMapDetails = {
+              duration: "5 tháng",
+              courses: "2 khóa",
+              price: "2.000.000 đ",
+              discount: "2.500.000 đ",
+              period: "18 tháng",
+            };
           } else if (selectedAim === "TOEIC 800") {
             roadMapName = "Mất Gốc đến 800";
+            roadMapDetails = {
+              duration: "27 tháng",
+              courses: "3 khóa",
+              price: "4.000.000 đ",
+              discount: "4.750.000 đ",
+              period: "27 tháng",
+            };
           }
           break;
         case "TOEIC 300 - 595":
           if (selectedAim === "TOEIC 600") {
             roadMapName = "Có Nền Tảng đến 600";
+            roadMapDetails = {
+              duration: "3 tháng",
+              courses: "1 khóa",
+              price: "1.500.000 đ",
+              discount: "1.750.000 đ",
+              period: "9 tháng",
+            };
           } else if (selectedAim === "TOEIC 800") {
             roadMapName = "Có Nền Tảng đến 800";
+            roadMapDetails = {
+              duration: "5 tháng",
+              courses: "2 khóa",
+              price: "3.500.000 đ",
+              discount: "4.000.000 đ",
+              period: "18 tháng",
+            };
           } else {
             console.error(
               "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
@@ -131,6 +243,13 @@ export default function Roadmap({
         case "TOEIC 600 - 650":
           if (selectedAim === "TOEIC 800") {
             roadMapName = "TOEIC Nền Tảng Tốt đến 800";
+            roadMapDetails = {
+              duration: "2 tháng",
+              courses: "1 khóa",
+              price: "2.000.000 đ",
+              discount: "2.250.000 đ",
+              period: "9 tháng",
+            };
           } else {
             console.error(
               "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
@@ -142,14 +261,19 @@ export default function Roadmap({
       }
     }
 
-    setRoadMapName(roadMapName); // Update roadMapName state
+    // Update  state
+    setRoadMapName(roadMapName);
+    setRoadMapDetails(roadMapDetails);
+
     // Log the results for debugging
-    console.log("RoadMap Name:", roadMapName);
+    console.log("Road Map Name:", roadMapName);
+    console.log("Road Map Details:", roadMapDetails);
   };
 
   return (
     <>
       <div className="relative">
+        {/* Select Brand */}
         <div className="mt-5">
           <div className="mb-5 grid text-xl font-bold text-gray-800 md:grid-cols-2">
             <p>Hãy trọn lộ trình của bạn</p>
@@ -189,6 +313,8 @@ export default function Roadmap({
             ))}
           </div>
         </div>
+
+        {/* Select Aim */}
         <div className="mt-5">
           <div className="mb-5 text-xl font-bold text-gray-800">
             <p>Chọn tiếp mục tiêu bạn muốn</p>
@@ -225,6 +351,8 @@ export default function Roadmap({
             ))}
           </div>
         </div>
+
+        {/* Show Road  Map*/}
         {selectedBrand !== "" && selectedAim !== "" ? (
           <>
             <div className="mt-10">
@@ -240,24 +368,30 @@ export default function Roadmap({
                 </p>
                 <p className="mb-3 grid grid-cols-2 font-medium lg:grid-cols-5">
                   Thời gian hoàn thành
-                  <span className="ml-2 font-bold text-gray-800"> 4 tháng</span>
+                  <span className="ml-2 font-bold text-gray-800">
+                    {roadMapDetails.duration}
+                  </span>
                 </p>
                 <p className="mb-3 grid grid-cols-2 font-medium lg:grid-cols-5">
                   Số lượng khóa học
-                  <span className="ml-2 font-bold text-gray-800"> 2 khóa</span>
+                  <span className="ml-2 font-bold text-gray-800">
+                    {roadMapDetails.courses}
+                  </span>
                 </p>
                 <p className="mb-3 grid grid-cols-2 font-medium lg:grid-cols-5">
                   Thành tiền
                   <span className="ml-2 font-bold text-gray-800">
-                    3.400.000 ₫
+                    {roadMapDetails.discount}
                     <span className="ml-4 inline-block text-sm font-normal text-[#23242D] line-through">
-                      4.000.000 ₫
+                      {roadMapDetails.price}
                     </span>
                   </span>
                 </p>
                 <p className="grid grid-cols-2 pt-3 font-medium lg:grid-cols-5">
                   Thời gian sở hữu
-                  <span className="ml-2 font-bold text-red-600"> 30 tháng</span>
+                  <span className="ml-2 font-bold text-red-600">
+                    {roadMapDetails.period}
+                  </span>
                 </p>
               </div>
             </div>

@@ -1,3 +1,5 @@
+import exp from "constants";
+
 export interface ISubMenu {
   title: string;
   href: string;
@@ -102,6 +104,14 @@ export interface IContents {
   text9: string;
   text10: string;
   text11: string;
+}
+
+export interface IRoadMapDetails {
+  duration: string;
+  courses: string;
+  price: string;
+  discount: string;
+  period: string;
 }
 
 export interface ICoursesLayout {
