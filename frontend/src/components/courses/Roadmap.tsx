@@ -15,9 +15,9 @@ import {
   Input,
   Checkbox,
 } from "@nextui-org/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ButtonModal from "./ButtonModal";
-import { ICoursesLayout, IRoadMapDetails } from "@/types/interfaces";
+import { ICourses, ICoursesLayout, IRoadMapDetails } from "@/types/interfaces";
 
 export default function Roadmap({
   brands,
@@ -37,8 +37,7 @@ export default function Roadmap({
     discount: "",
     period: "",
   });
-
-  const defaultContent = "content";
+  const [roadMapCourses, setRoadMapCourses] = useState<ICourses[]>([]);
 
   const handleInputChange = (e: any) => {
     setCouponCode(e.target.value);
@@ -49,20 +48,21 @@ export default function Roadmap({
     setCouponCode("");
   };
 
+  // Handle brand and aim changes
+  useEffect(() => {
+    handleRoadMap(selectedBrand, selectedAim);
+  }, [selectedBrand, selectedAim]);
+
   const handleBrandChange = (courseType: string, brand: string) => {
     const selectedBrand = `${courseType} ${brand}`;
     setSelectedBrand(selectedBrand);
     console.log("Brand:", selectedBrand);
-
-    handleRoadMap(selectedBrand, selectedAim);
   };
 
   const handleAimChange = (courseType: string, aim: string) => {
     const selectedAim = `${courseType} ${aim}`;
     setSelectedAim(selectedAim);
     console.log("Aim:", selectedAim);
-
-    handleRoadMap(selectedBrand, selectedAim);
   };
 
   const handleRoadMap = (selectedBrand: string, selectedAim: string) => {
@@ -74,6 +74,7 @@ export default function Roadmap({
       discount: "",
       period: "",
     };
+    let roadMapCourses: ICourses[] = [];
 
     if (selectedBrand.startsWith("IELTS")) {
       switch (selectedBrand) {
@@ -87,6 +88,9 @@ export default function Roadmap({
               discount: "4.000.000 đ",
               period: "30 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["Nền Tảng IELTS", "IELTS Cơ bản"].includes(course.name),
+            );
           } else if (selectedAim === "IELTS Trung cấp") {
             roadMapName = "Mất Gốc đến 6.0";
             roadMapDetails = {
@@ -96,6 +100,11 @@ export default function Roadmap({
               discount: "7.500.000 đ",
               period: "45 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["Nền Tảng IELTS", "IELTS Cơ bản", "IELTS Trung Cấp"].includes(
+                course.name,
+              ),
+            );
           } else if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Mất Gốc đến 6.5+";
             roadMapDetails = {
@@ -105,6 +114,14 @@ export default function Roadmap({
               discount: "12.000.000 đ",
               period: "60 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              [
+                "Nền Tảng IELTS",
+                "IELTS Cơ bản",
+                "IELTS Trung Cấp",
+                "IELTS Chuyên Sâu",
+              ].includes(course.name),
+            );
           }
           break;
         case "IELTS 4.0 - 5.0":
@@ -117,6 +134,9 @@ export default function Roadmap({
               discount: "3.000.000 đ",
               period: "15 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["Nền Tảng IELTS", ,].includes(course.name),
+            );
           } else if (selectedAim === "IELTS Trung cấp") {
             roadMapName = "Từ 4.0 đến 6.0";
             roadMapDetails = {
@@ -126,6 +146,9 @@ export default function Roadmap({
               discount: "6.500.000 đ",
               period: "30 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["IELTS Cơ bản", "IELTS Trung Cấp"].includes(course.name),
+            );
           } else if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Từ 4.0 đến 6.5+";
             roadMapDetails = {
@@ -135,6 +158,11 @@ export default function Roadmap({
               discount: "11.000.000 đ",
               period: "45 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["IELTS Cơ bản", "IELTS Trung Cấp", "IELTS Chuyên Sâu"].includes(
+                course.name,
+              ),
+            );
           }
           break;
         case "IELTS 5.0 - 5.5":
@@ -147,6 +175,9 @@ export default function Roadmap({
               discount: "3.500.000đ",
               period: "15 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["IELTS Trung Cấp"].includes(course.name),
+            );
           }
           if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Từ 5.0 đến 6.5+";
@@ -157,6 +188,9 @@ export default function Roadmap({
               discount: "8.000.000 đ",
               period: "30 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["IELTS Trung Cấp", "IELTS Chuyên Sâu"].includes(course.name),
+            );
           } else {
             console.error(
               "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
@@ -173,6 +207,9 @@ export default function Roadmap({
               discount: "4.500.000đ",
               period: "15 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["IELTS Chuyên Sâu"].includes(course.name),
+            );
           } else {
             console.error(
               "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
@@ -195,6 +232,9 @@ export default function Roadmap({
               discount: "750.000 đ",
               period: "9 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["Nền Tảng TOEIC"].includes(course.name),
+            );
           } else if (selectedAim === "TOEIC 600") {
             roadMapName = "Mất Gốc đến 600";
             roadMapDetails = {
@@ -204,6 +244,9 @@ export default function Roadmap({
               discount: "2.500.000 đ",
               period: "18 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["Nền Tảng TOEIC", "TOEIC Trung Cấp"].includes(course.name),
+            );
           } else if (selectedAim === "TOEIC 800") {
             roadMapName = "Mất Gốc đến 800";
             roadMapDetails = {
@@ -213,6 +256,13 @@ export default function Roadmap({
               discount: "4.750.000 đ",
               period: "27 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              [
+                "Nền Tảng TOEIC",
+                "TOEIC Trung Cấp",
+                "TOEIC Chuyên Sâu",
+              ].includes(course.name),
+            );
           }
           break;
         case "TOEIC 300 - 595":
@@ -225,6 +275,9 @@ export default function Roadmap({
               discount: "1.750.000 đ",
               period: "9 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["TOEIC Trung Cấp"].includes(course.name),
+            );
           } else if (selectedAim === "TOEIC 800") {
             roadMapName = "Có Nền Tảng đến 800";
             roadMapDetails = {
@@ -234,6 +287,9 @@ export default function Roadmap({
               discount: "4.000.000 đ",
               period: "18 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["TOEIC Trung Cấp", "TOEIC Chuyên Sâu"].includes(course.name),
+            );
           } else {
             console.error(
               "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
@@ -250,6 +306,9 @@ export default function Roadmap({
               discount: "2.250.000 đ",
               period: "9 tháng",
             };
+            roadMapCourses = courses.filter((course) =>
+              ["TOEIC Chuyên Sâu"].includes(course.name),
+            );
           } else {
             console.error(
               "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
@@ -264,10 +323,12 @@ export default function Roadmap({
     // Update  state
     setRoadMapName(roadMapName);
     setRoadMapDetails(roadMapDetails);
+    setRoadMapCourses(roadMapCourses);
 
     // Log the results for debugging
     console.log("Road Map Name:", roadMapName);
     console.log("Road Map Details:", roadMapDetails);
+    console.log("Road Map Courses:", roadMapCourses);
   };
 
   return (
@@ -353,7 +414,7 @@ export default function Roadmap({
         </div>
 
         {/* Show Road  Map*/}
-        {selectedBrand !== "" && selectedAim !== "" ? (
+        {selectedBrand && selectedAim ? (
           <>
             <div className="mt-10">
               <div className="mb-5 text-xl font-bold text-gray-800">
@@ -396,148 +457,183 @@ export default function Roadmap({
               </div>
             </div>
             <div className="mt-10 rounded-xl bg-white p-5 shadow-lg md:p-10">
-              {courses.map((items, index) => (
+              {roadMapCourses.map((items, index) => (
                 <>
-                  <h4
-                    className="mt-10 text-lg font-bold uppercase text-[#004B8D]"
-                    key={index}
-                  >
-                    {items.title}
-                  </h4>
-                  <p className="text-gray-500">{items.description}</p>
-                  <div className="rounded-xl bg-slate-100 p-2 lg:grid lg:grid-cols-2 lg:items-center lg:justify-items-center lg:p-5">
-                    <div className="lg:grid lg:justify-items-center lg:p-5">
-                      <div className="mt-5 h-full w-full lg:my-0 lg:w-[300px]">
-                        <img
-                          src={items.image}
-                          alt="courses-img"
-                          className="rounded-xl object-cover"
-                        />
-                      </div>
-                      <div className="mt-5 text-xl font-bold lg:text-center">
-                        <h5 className="text-gray-800">{items.name}</h5>
-                        <p className="text-[#004B8D]">
-                          {items.price}
-                          <span className="ml-2 text-base font-normal text-gray-400 line-through lg:block">
-                            {items.discount}
-                          </span>
+                  <div className="mt-10">
+                    <div className="flex items-start">
+                      <Image
+                        src="/imgs/courses/check-icon.svg"
+                        alt="check-icon"
+                        width={32}
+                        height={32}
+                      />
+                      <div className="ml-2">
+                        <h4
+                          className="text-lg font-bold uppercase text-[#004B8D]"
+                          key={index}
+                        >
+                          {items.title}
+                        </h4>
+                        <p className="mb-5 text-gray-500">
+                          {items.description}
                         </p>
                       </div>
                     </div>
-
-                    <div className="grid h-full w-full items-center lg:p-5">
-                      <div className="mt-5 grid gap-2 md:gap-5 lg:mt-0 lg:p-5">
-                        <div className="flex items-center">
-                          <FontAwesomeIcon
-                            icon={faCheck}
-                            className="h4 mr-4 w-4 object-cover text-green-600"
+                    <div className="rounded-xl bg-slate-100 p-2 lg:grid lg:grid-cols-2 lg:items-center lg:justify-items-center lg:p-5">
+                      <div className="p-2 lg:grid lg:justify-items-center lg:p-5">
+                        <div className="h-full w-full lg:my-0 lg:w-[300px]">
+                          <img
+                            src={items.image}
+                            alt="courses-img"
+                            className="rounded-xl object-cover"
                           />
-                          Đầu vào:
-                          <span className="ml-2 font-bold">
-                            {items.inputLevel}
-                          </span>
                         </div>
-                        <div className="flex items-center justify-between">
-                          <div className="">
+                        <div className="mt-5 text-xl font-bold lg:text-center">
+                          <h5 className="text-gray-800">{items.name}</h5>
+                          <p className="text-[#004B8D]">
+                            {items.price}
+                            <span className="ml-2 text-base font-normal text-gray-400 line-through lg:block">
+                              {items.discount}
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="grid h-full w-full items-center lg:p-5">
+                        <div className="mt-5 grid gap-2 md:gap-5 lg:mt-0 lg:p-5">
+                          <div className="flex items-center">
                             <FontAwesomeIcon
                               icon={faCheck}
                               className="h4 mr-4 w-4 object-cover text-green-600"
                             />
+                            Đầu vào:
+                            <span className="ml-2 font-bold">
+                              {items.inputLevel}
+                            </span>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <div className="">
+                              <FontAwesomeIcon
+                                icon={faCheck}
+                                className="h4 mr-4 w-4 object-cover text-green-600"
+                              />
+                              <span className="inline-block md:hidden">
+                                Danh sách:
+                              </span>
+                              <span className="hidden md:inline-block">
+                                Danh sách bài học:
+                              </span>
+                              <span className="ml-2 font-bold">
+                                {items.list}
+                              </span>
+                            </div>
+                            <div className="">
+                              <button
+                                className="text-blue-500"
+                                onClick={onOpen}
+                              >
+                                Chi tiết
+                              </button>
+                              <Modal
+                                isOpen={isOpen}
+                                onOpenChange={onOpenChange}
+                                placement="center"
+                                size="lg"
+                              >
+                                <ModalContent>
+                                  {() => (
+                                    <>
+                                      <ModalHeader className="flex flex-col gap-1">
+                                        Chi tiết khóa học
+                                      </ModalHeader>
+                                      <ModalBody>
+                                        <Accordion>
+                                          <AccordionItem
+                                            key="1"
+                                            aria-label="Danh sách khóa học"
+                                            title="Danh sách khóa học"
+                                          >
+                                            {/* {defaultContent} */}
+                                            {/* {roadMapCourses.map(
+                                              (items, index) => (
+                                                <div key={index}>
+                                                  {items.lessons.map(
+                                                    (lessons, lessonsIndex) => (
+                                                      <div key={lessonsIndex}>
+                                                        {lessons.title}
+                                                        {lessons.video}
+                                                      </div>
+                                                    ),
+                                                  )}
+                                                </div>
+                                              ),
+                                            )} */}
+                                          </AccordionItem>
+                                        </Accordion>
+                                      </ModalBody>
+                                    </>
+                                  )}
+                                </ModalContent>
+                              </Modal>
+                            </div>
+                          </div>
+                          <div className="flex items-center">
+                            <FontAwesomeIcon
+                              icon={faCheck}
+                              className="h4 mr-4 w-4 object-cover text-green-600"
+                            />
+
                             <span className="inline-block md:hidden">
-                              Danh sách:
+                              Thời gian:
                             </span>
                             <span className="hidden md:inline-block">
-                              Danh sách bài học:
+                              Thời gian hoàn thành:
                             </span>
-                            <span className="ml-2 font-bold">{items.list}</span>
+                            <span className="ml-2 font-bold">
+                              {items.duration}
+                            </span>
                           </div>
-                          <div className="">
-                            <button className="text-blue-500" onClick={onOpen}>
-                              Chi tiết
-                            </button>
-                            <Modal
-                              isOpen={isOpen}
-                              onOpenChange={onOpenChange}
-                              placement="center"
-                              size="lg"
-                            >
-                              <ModalContent>
-                                {() => (
-                                  <>
-                                    <ModalHeader className="flex flex-col gap-1">
-                                      Chi tiết khóa học
-                                    </ModalHeader>
-                                    <ModalBody>
-                                      <Accordion>
-                                        <AccordionItem
-                                          key="1"
-                                          aria-label="Accordion 1"
-                                          title="Accordion 1"
-                                        >
-                                          {defaultContent}
-                                        </AccordionItem>
-                                      </Accordion>
-                                    </ModalBody>
-                                  </>
-                                )}
-                              </ModalContent>
-                            </Modal>
-                          </div>
-                        </div>
-                        <div className="flex items-center">
-                          <FontAwesomeIcon
-                            icon={faCheck}
-                            className="h4 mr-4 w-4 object-cover text-green-600"
-                          />
-
-                          <span className="inline-block md:hidden">
-                            Thời gian:
-                          </span>
-                          <span className="hidden md:inline-block">
-                            Thời gian hoàn thành:
-                          </span>
-                          <span className="ml-2 font-bold">
-                            {items.duration}
-                          </span>
-                        </div>
-                        <div className="flex items-center">
-                          <FontAwesomeIcon
-                            icon={faCheck}
-                            className="h4 mr-4 w-4 object-cover text-green-600"
-                          />
-                          Số người đã học:
-                          <span className="ml-2 font-bold">{items.people}</span>
-                        </div>
-                        <div className="flex items-center">
-                          <div className="hidden xl:block">
+                          <div className="flex items-center">
                             <FontAwesomeIcon
                               icon={faCheck}
                               className="h4 mr-4 w-4 object-cover text-green-600"
                             />
-                            Đánh giá:
+                            Số người đã học:
+                            <span className="ml-2 font-bold">
+                              {items.people}
+                            </span>
                           </div>
-                          <div className="ml-3">
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              className="h-4 w-4 object-cover text-orange-400"
-                            />
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              className="h-4 w-4 object-cover text-orange-400"
-                            />
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              className="h-4 w-4 object-cover text-orange-400"
-                            />
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              className="h-4 w-4 object-cover text-orange-400"
-                            />
-                            <FontAwesomeIcon
-                              icon={faStar}
-                              className="h-4 w-4 object-cover text-orange-400"
-                            />
-                            <span className="ml-2">({items.review})</span>
+                          <div className="flex items-center">
+                            <div className="hidden xl:block">
+                              <FontAwesomeIcon
+                                icon={faCheck}
+                                className="h4 mr-4 w-4 object-cover text-green-600"
+                              />
+                              Đánh giá:
+                            </div>
+                            <div className="xl:ml-3">
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                className="h-4 w-4 object-cover text-orange-400"
+                              />
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                className="h-4 w-4 object-cover text-orange-400"
+                              />
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                className="h-4 w-4 object-cover text-orange-400"
+                              />
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                className="h-4 w-4 object-cover text-orange-400"
+                              />
+                              <FontAwesomeIcon
+                                icon={faStar}
+                                className="h-4 w-4 object-cover text-orange-400"
+                              />
+                              <span className="ml-2">({items.review})</span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -545,6 +641,7 @@ export default function Roadmap({
                   </div>
                 </>
               ))}
+              {/* Benefit */}
               <div className="pt-10">
                 <div className="flex">
                   <Image
@@ -558,17 +655,19 @@ export default function Roadmap({
                     Quyền lợi học tập
                   </h4>
                 </div>
-                <div className="mt-4 grid gap-4">
-                  {benefits.map((items, index) => (
-                    <>
-                      <div className="flex items-center" key={index}>
-                        <FontAwesomeIcon
-                          icon={faCheck}
-                          className="h4 mr-2 w-4 object-cover text-green-600"
-                        />
-                        {items.contents}
-                      </div>
-                    </>
+                <div className="mt-4 flex gap-4">
+                  {benefits.map((item, index) => (
+                    <div key={index}>
+                      {item.contents.map((content, contentIndex) => (
+                        <div key={contentIndex}>
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            className="h4 mr-2 w-4 object-cover text-green-600"
+                          />
+                          {content}
+                        </div>
+                      ))}
+                    </div>
                   ))}
                 </div>
                 <div className="pt-10">
@@ -661,7 +760,6 @@ export default function Roadmap({
                 </div>
               </div>
             </div>
-            ;
           </>
         ) : (
           <>
