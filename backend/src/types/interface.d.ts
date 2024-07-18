@@ -44,8 +44,7 @@ export interface IBenefits {
 export interface IContents {
   courseType: string;
   image: string;
-  bgBanner1: string;
-  bgBanner2: string;
+  bgBanner: string;
   textColor: string;
   text1: string;
   text2: string;

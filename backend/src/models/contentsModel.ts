@@ -4,8 +4,7 @@ import { IContents } from "../types/interface";
 const ContentsSchema: Schema<IContents> = new mongoose.Schema({
   courseType: { type: String, required: true }, // 'IELTS' or 'TOEIC'
   image: { type: String, required: true },
-  bgBanner1: { type: String, required: true },
-  bgBanner2: { type: String, required: true },
+  bgBanner: { type: String, required: true },
   textColor: { type: String, required: true },
   text1: { type: String, required: true },
   text2: { type: String, required: true },

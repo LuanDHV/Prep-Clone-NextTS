@@ -337,17 +337,17 @@ export default function Roadmap({
         {/* Select Brand */}
         <div className="mt-5">
           <div className="mb-5 grid text-xl font-bold text-gray-800 md:grid-cols-2">
-            <p>Hãy trọn lộ trình của bạn</p>
+            <p>Hãy chọn trình độ hiện tại của bạn</p>
             <Link href="#" className="text-base text-[#0071F9] md:text-end">
               Làm bài kiểm tra
             </Link>
           </div>
           <div className="grid grid-flow-row lg:grid-flow-col">
-            {brands.map((items, index) => (
+            {brands.map((brand) => (
               <div
-                key={index}
+                key={brand._id}
                 className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl px-5 shadow-lg lg:w-4/5 ${
-                  selectedBrand === `${items.courseType} ${items.brand}`
+                  selectedBrand === `${brand.courseType} ${brand.brand}`
                     ? "bg-blue-500 text-white"
                     : "bg-white"
                 }`}
@@ -356,18 +356,18 @@ export default function Roadmap({
                   <input
                     type="radio"
                     name="brandGroup"
-                    value={index}
+                    value={brand._id}
                     className="mr-2 h-6 w-6"
                     onChange={() =>
-                      handleBrandChange(items.courseType, items.brand)
+                      handleBrandChange(brand.courseType, brand.brand)
                     }
                   />
                   <div>
                     <p className="font-bold">
-                      {items.courseType}:
-                      <span className="w-full text-xl"> {items.brand}</span>
+                      {brand.courseType}:
+                      <span className="w-full text-xl"> {brand.brand}</span>
                     </p>
-                    <p>{items.description}</p>
+                    <p>{brand.description}</p>
                   </div>
                 </label>
               </div>
@@ -378,14 +378,14 @@ export default function Roadmap({
         {/* Select Aim */}
         <div className="mt-5">
           <div className="mb-5 text-xl font-bold text-gray-800">
-            <p>Chọn tiếp mục tiêu bạn muốn</p>
+            <p>Chọn mục tiêu bạn muốn chinh phục</p>
           </div>
           <div className="grid grid-flow-row lg:grid-flow-col">
-            {aims.map((items, index) => (
+            {aims.map((aim) => (
               <div
-                key={index}
+                key={aim._id}
                 className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl px-5 shadow-lg lg:w-4/5 ${
-                  selectedAim === `${items.courseType} ${items.aim}`
+                  selectedAim === `${aim.courseType} ${aim.aim}`
                     ? "bg-blue-500 text-white"
                     : "bg-white"
                 }`}
@@ -394,18 +394,16 @@ export default function Roadmap({
                   <input
                     type="radio"
                     name="brandGroup"
-                    value={index}
+                    value={aim._id}
                     className="mr-2 h-6 w-6"
-                    onChange={() =>
-                      handleAimChange(items.courseType, items.aim)
-                    }
+                    onChange={() => handleAimChange(aim.courseType, aim.aim)}
                   />
                   <div>
                     <p className="font-bold">
-                      {items.courseType}:
-                      <span className="w-full text-xl"> {items.aim}</span>
+                      {aim.courseType}:
+                      <span className="w-full text-xl"> {aim.aim}</span>
                     </p>
-                    <p>{items.description}</p>
+                    <p>{aim.description}</p>
                   </div>
                 </label>
               </div>
@@ -418,7 +416,7 @@ export default function Roadmap({
           <>
             <div className="mt-10">
               <div className="mb-5 text-xl font-bold text-gray-800">
-                <p>Chi tiết lộ trình học dành cho bạn</p>
+                <p>Chi tiết lộ trình học cho bạn</p>
               </div>
               <div className="mb-5 grid h-auto w-full rounded-xl bg-white p-5 shadow-lg">
                 <p className="mb-3 grid grid-cols-2 font-medium lg:grid-cols-5">
@@ -456,192 +454,178 @@ export default function Roadmap({
                 </p>
               </div>
             </div>
+            {/* Courses */}
             <div className="mt-10 rounded-xl bg-white p-5 shadow-lg md:p-10">
-              {roadMapCourses.map((items, index) => (
-                <>
-                  <div className="mt-10">
-                    <div className="flex items-start">
-                      <Image
-                        src="/imgs/courses/check-icon.svg"
-                        alt="check-icon"
-                        width={32}
-                        height={32}
-                      />
-                      <div className="ml-2">
-                        <h4
-                          className="text-lg font-bold uppercase text-[#004B8D]"
-                          key={index}
-                        >
-                          {items.title}
-                        </h4>
-                        <p className="mb-5 text-gray-500">
-                          {items.description}
+              {roadMapCourses.map((course) => (
+                <div className="mt-10" key={course._id}>
+                  <div className="flex items-start">
+                    <Image
+                      src="/imgs/courses/check-icon.svg"
+                      alt="check-icon"
+                      width={32}
+                      height={32}
+                    />
+                    <div className="ml-2">
+                      <h4 className="text-lg font-bold uppercase text-[#004B8D]">
+                        {course.title}
+                      </h4>
+                      <p className="mb-5 text-gray-500">{course.description}</p>
+                    </div>
+                  </div>
+                  <div className="rounded-xl bg-slate-100 p-2 lg:grid lg:grid-cols-2 lg:items-center lg:justify-items-center lg:p-5">
+                    <div className="p-2 lg:grid lg:justify-items-center lg:p-5">
+                      <div className="h-full w-full lg:my-0 lg:w-[300px]">
+                        <img
+                          src={course.image}
+                          alt="courses-img"
+                          className="rounded-xl object-cover"
+                        />
+                      </div>
+                      <div className="mt-5 text-xl font-bold lg:text-center">
+                        <h5 className="text-gray-800">{course.name}</h5>
+                        <p className="text-[#004B8D]">
+                          {course.price}
+                          <span className="ml-2 text-base font-normal text-gray-400 line-through lg:block">
+                            {course.discount}
+                          </span>
                         </p>
                       </div>
                     </div>
-                    <div className="rounded-xl bg-slate-100 p-2 lg:grid lg:grid-cols-2 lg:items-center lg:justify-items-center lg:p-5">
-                      <div className="p-2 lg:grid lg:justify-items-center lg:p-5">
-                        <div className="h-full w-full lg:my-0 lg:w-[300px]">
-                          <img
-                            src={items.image}
-                            alt="courses-img"
-                            className="rounded-xl object-cover"
+
+                    <div className="grid h-full w-full items-center lg:p-5">
+                      <div className="mt-5 grid gap-2 md:gap-5 lg:mt-0 lg:p-5">
+                        <div className="flex items-center">
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            className="h4 mr-4 w-4 object-cover text-green-600"
                           />
+                          Đầu vào:
+                          <span className="ml-2 font-bold">
+                            {course.inputLevel}
+                          </span>
                         </div>
-                        <div className="mt-5 text-xl font-bold lg:text-center">
-                          <h5 className="text-gray-800">{items.name}</h5>
-                          <p className="text-[#004B8D]">
-                            {items.price}
-                            <span className="ml-2 text-base font-normal text-gray-400 line-through lg:block">
-                              {items.discount}
-                            </span>
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="grid h-full w-full items-center lg:p-5">
-                        <div className="mt-5 grid gap-2 md:gap-5 lg:mt-0 lg:p-5">
-                          <div className="flex items-center">
+                        <div className="flex items-center justify-between">
+                          <div className="">
                             <FontAwesomeIcon
                               icon={faCheck}
                               className="h4 mr-4 w-4 object-cover text-green-600"
                             />
-                            Đầu vào:
-                            <span className="ml-2 font-bold">
-                              {items.inputLevel}
-                            </span>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <div className="">
-                              <FontAwesomeIcon
-                                icon={faCheck}
-                                className="h4 mr-4 w-4 object-cover text-green-600"
-                              />
-                              <span className="inline-block md:hidden">
-                                Danh sách:
-                              </span>
-                              <span className="hidden md:inline-block">
-                                Danh sách bài học:
-                              </span>
-                              <span className="ml-2 font-bold">
-                                {items.list}
-                              </span>
-                            </div>
-                            <div className="">
-                              <button
-                                className="text-blue-500"
-                                onClick={onOpen}
-                              >
-                                Chi tiết
-                              </button>
-                              <Modal
-                                isOpen={isOpen}
-                                onOpenChange={onOpenChange}
-                                placement="center"
-                                size="lg"
-                              >
-                                <ModalContent>
-                                  {() => (
-                                    <>
-                                      <ModalHeader className="flex flex-col gap-1">
-                                        Chi tiết khóa học
-                                      </ModalHeader>
-                                      <ModalBody>
-                                        <Accordion>
-                                          <AccordionItem
-                                            key="1"
-                                            aria-label="Danh sách khóa học"
-                                            title="Danh sách khóa học"
-                                          >
-                                            {/* {defaultContent} */}
-                                            {/* {roadMapCourses.map(
-                                              (items, index) => (
-                                                <div key={index}>
-                                                  {items.lessons.map(
-                                                    (lessons, lessonsIndex) => (
-                                                      <div key={lessonsIndex}>
-                                                        {lessons.title}
-                                                        {lessons.video}
-                                                      </div>
-                                                    ),
-                                                  )}
-                                                </div>
-                                              ),
-                                            )} */}
-                                          </AccordionItem>
-                                        </Accordion>
-                                      </ModalBody>
-                                    </>
-                                  )}
-                                </ModalContent>
-                              </Modal>
-                            </div>
-                          </div>
-                          <div className="flex items-center">
-                            <FontAwesomeIcon
-                              icon={faCheck}
-                              className="h4 mr-4 w-4 object-cover text-green-600"
-                            />
-
                             <span className="inline-block md:hidden">
-                              Thời gian:
+                              Danh sách:
                             </span>
                             <span className="hidden md:inline-block">
-                              Thời gian hoàn thành:
+                              Danh sách bài học:
                             </span>
                             <span className="ml-2 font-bold">
-                              {items.duration}
+                              {course.list}
                             </span>
                           </div>
-                          <div className="flex items-center">
+                          <div className="">
+                            <button
+                              className="font-bold text-blue-500"
+                              onClick={onOpen}
+                            >
+                              Xem chi tiết
+                            </button>
+
+                            <Modal
+                              isOpen={isOpen}
+                              onOpenChange={onOpenChange}
+                              placement="center"
+                              size="lg"
+                            >
+                              <ModalContent>
+                                {() => (
+                                  <>
+                                    <ModalHeader className="flex flex-col gap-1">
+                                      Chi tiết khóa học
+                                    </ModalHeader>
+                                    <ModalBody>
+                                      <Accordion>
+                                        {roadMapCourses.map((course) => (
+                                          <AccordionItem
+                                            key={course._id}
+                                            title={course.name}
+                                          >
+                                            {course.lessons.map((lesson) => (
+                                              <div key={lesson._id}>
+                                                {lesson.title}
+                                              </div>
+                                            ))}
+                                          </AccordionItem>
+                                        ))}
+                                      </Accordion>
+                                    </ModalBody>
+                                  </>
+                                )}
+                              </ModalContent>
+                            </Modal>
+                          </div>
+                        </div>
+                        <div className="flex items-center">
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            className="h4 mr-4 w-4 object-cover text-green-600"
+                          />
+
+                          <span className="inline-block md:hidden">
+                            Thời gian:
+                          </span>
+                          <span className="hidden md:inline-block">
+                            Thời gian hoàn thành:
+                          </span>
+                          <span className="ml-2 font-bold">
+                            {course.duration}
+                          </span>
+                        </div>
+                        <div className="flex items-center">
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            className="h4 mr-4 w-4 object-cover text-green-600"
+                          />
+                          Số người đã học:
+                          <span className="ml-2 font-bold">
+                            {course.people}
+                          </span>
+                        </div>
+                        <div className="flex items-center">
+                          <div className="hidden xl:block">
                             <FontAwesomeIcon
                               icon={faCheck}
                               className="h4 mr-4 w-4 object-cover text-green-600"
                             />
-                            Số người đã học:
-                            <span className="ml-2 font-bold">
-                              {items.people}
-                            </span>
+                            Đánh giá:
                           </div>
-                          <div className="flex items-center">
-                            <div className="hidden xl:block">
-                              <FontAwesomeIcon
-                                icon={faCheck}
-                                className="h4 mr-4 w-4 object-cover text-green-600"
-                              />
-                              Đánh giá:
-                            </div>
-                            <div className="xl:ml-3">
-                              <FontAwesomeIcon
-                                icon={faStar}
-                                className="h-4 w-4 object-cover text-orange-400"
-                              />
-                              <FontAwesomeIcon
-                                icon={faStar}
-                                className="h-4 w-4 object-cover text-orange-400"
-                              />
-                              <FontAwesomeIcon
-                                icon={faStar}
-                                className="h-4 w-4 object-cover text-orange-400"
-                              />
-                              <FontAwesomeIcon
-                                icon={faStar}
-                                className="h-4 w-4 object-cover text-orange-400"
-                              />
-                              <FontAwesomeIcon
-                                icon={faStar}
-                                className="h-4 w-4 object-cover text-orange-400"
-                              />
-                              <span className="ml-2">({items.review})</span>
-                            </div>
+                          <div className="xl:ml-3">
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              className="h-4 w-4 object-cover text-orange-400"
+                            />
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              className="h-4 w-4 object-cover text-orange-400"
+                            />
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              className="h-4 w-4 object-cover text-orange-400"
+                            />
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              className="h-4 w-4 object-cover text-orange-400"
+                            />
+                            <FontAwesomeIcon
+                              icon={faStar}
+                              className="h-4 w-4 object-cover text-orange-400"
+                            />
+                            <span className="ml-2">({course.review})</span>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </>
+                </div>
               ))}
-              {/* Benefit */}
+              {/* Benefits */}
               <div className="pt-10">
                 <div className="flex">
                   <Image
@@ -656,9 +640,9 @@ export default function Roadmap({
                   </h4>
                 </div>
                 <div className="mt-4 flex gap-4">
-                  {benefits.map((item, index) => (
-                    <div key={index}>
-                      {item.contents.map((content, contentIndex) => (
+                  {benefits.map((benefit) => (
+                    <div key={benefit._id}>
+                      {benefit.contents.map((content, contentIndex) => (
                         <div key={contentIndex}>
                           <FontAwesomeIcon
                             icon={faCheck}
@@ -697,7 +681,7 @@ export default function Roadmap({
                       color="primary"
                       size="lg"
                       onClick={handleApplyCoupon}
-                      className="absolute bottom-0 right-0 md:right-80"
+                      // className="absolute bottom-0 right-0 md:right-80"
                     >
                       Áp dụng
                     </Button>

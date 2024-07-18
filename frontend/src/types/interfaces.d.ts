@@ -45,23 +45,27 @@ export interface ITeacher {
 }
 
 export interface IAims {
+  _id: Key | null | undefined;
   courseType: string;
   aim: string;
   description: string;
 }
 
 export interface IBrands {
+  _id: Key | null | undefined;
   courseType: string;
   brand: string;
   description: string;
 }
 
 export interface ILessons {
+  _id: string;
   title: string;
   video: string;
 }
 
 export interface ICourses {
+  _id: string;
   courseType: string;
   title: string;
   description: string;
@@ -80,18 +84,20 @@ export interface ICourses {
 }
 
 export interface ISliders {
+  _id: string;
   courseType: string;
   image: string;
 }
 export interface IBenefits {
+  _id: string;
   courseType: string;
   contents: string[];
 }
 export interface IContents {
+  _id: string;
   courseType: string;
   image: string;
-  bgBanner1: string;
-  bgBanner2: string;
+  bgBanner: string;
   textColor: string;
   text1: string;
   text2: string;

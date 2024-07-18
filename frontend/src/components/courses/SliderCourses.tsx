@@ -19,10 +19,10 @@ export default function SliderCourses({ sliders }: ICoursesLayout) {
       slidesPerView={1}
       className="custom-swiper-pagination"
     >
-      {sliders.map((slide, index) => (
-        <SwiperSlide key={index}>
+      {sliders.map((slider) => (
+        <SwiperSlide key={slider._id}>
           <Image
-            src={slide.image}
+            src={slider.image}
             alt="slide-courses"
             width={320}
             height={400}
