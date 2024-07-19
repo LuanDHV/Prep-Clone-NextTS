@@ -39,32 +39,37 @@ export default function Roadmap({
   });
   const [roadMapCourses, setRoadMapCourses] = useState<ICourses[]>([]);
 
+  // Handle input change for the coupon code
   const handleInputChange = (e: any) => {
     setCouponCode(e.target.value);
   };
 
+  // Handle coupon application
   const handleApplyCoupon = () => {
     console.log("Áp dụng mã coupon:", couponCode);
     setCouponCode("");
   };
 
-  // Handle brand and aim changes
+  //Effect to handle roadmap calculation on selected brand or aim change
   useEffect(() => {
     handleRoadMap(selectedBrand, selectedAim);
   }, [selectedBrand, selectedAim]);
 
+  // Handle brand selection change
   const handleBrandChange = (courseType: string, brand: string) => {
     const selectedBrand = `${courseType} ${brand}`;
     setSelectedBrand(selectedBrand);
     console.log("Brand:", selectedBrand);
   };
 
+  // Handle aim selection change
   const handleAimChange = (courseType: string, aim: string) => {
     const selectedAim = `${courseType} ${aim}`;
     setSelectedAim(selectedAim);
     console.log("Aim:", selectedAim);
   };
 
+  // Handle roadmap calculation based on selected brand and aim
   const handleRoadMap = (selectedBrand: string, selectedAim: string) => {
     let roadMapName: string = "";
     let roadMapDetails: IRoadMapDetails = {
@@ -81,25 +86,11 @@ export default function Roadmap({
         case "IELTS 1.0 - 3.5":
           if (selectedAim === "IELTS Cơ bản") {
             roadMapName = "Mất Gốc đến 5.0";
-            roadMapDetails = {
-              duration: "4 tháng",
-              courses: "2 khóa",
-              price: "3.400.000 đ",
-              discount: "4.000.000 đ",
-              period: "30 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["Nền Tảng IELTS", "IELTS Cơ bản"].includes(course.name),
             );
           } else if (selectedAim === "IELTS Trung cấp") {
             roadMapName = "Mất Gốc đến 6.0";
-            roadMapDetails = {
-              duration: "8 tháng",
-              courses: "3 khóa",
-              price: "6.000.000 đ",
-              discount: "7.500.000 đ",
-              period: "45 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["Nền Tảng IELTS", "IELTS Cơ bản", "IELTS Trung Cấp"].includes(
                 course.name,
@@ -107,13 +98,6 @@ export default function Roadmap({
             );
           } else if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Mất Gốc đến 6.5+";
-            roadMapDetails = {
-              duration: "13 tháng",
-              courses: "4 khóa",
-              price: "9.000.000 đ",
-              discount: "12.000.000 đ",
-              period: "60 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               [
                 "Nền Tảng IELTS",
@@ -127,37 +111,16 @@ export default function Roadmap({
         case "IELTS 4.0 - 5.0":
           if (selectedAim === "IELTS Cơ bản") {
             roadMapName = "Từ 4.0 đến 5.0";
-            roadMapDetails = {
-              duration: "3 tháng",
-              courses: "1 khóa",
-              price: "2.250.000 đ",
-              discount: "3.000.000 đ",
-              period: "15 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["Nền Tảng IELTS", ,].includes(course.name),
             );
           } else if (selectedAim === "IELTS Trung cấp") {
             roadMapName = "Từ 4.0 đến 6.0";
-            roadMapDetails = {
-              duration: "7 tháng",
-              courses: "2 khóa",
-              price: "5.525.000 đ",
-              discount: "6.500.000 đ",
-              period: "30 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["IELTS Cơ bản", "IELTS Trung Cấp"].includes(course.name),
             );
           } else if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Từ 4.0 đến 6.5+";
-            roadMapDetails = {
-              duration: "12 tháng",
-              courses: "3 khóa",
-              price: "8.800.000đ",
-              discount: "11.000.000 đ",
-              period: "45 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["IELTS Cơ bản", "IELTS Trung Cấp", "IELTS Chuyên Sâu"].includes(
                 course.name,
@@ -168,26 +131,12 @@ export default function Roadmap({
         case "IELTS 5.0 - 5.5":
           if (selectedAim === "IELTS Trung cấp") {
             roadMapName = "Từ 5.0 đến 6.0";
-            roadMapDetails = {
-              duration: "4 tháng",
-              courses: "1 khóa",
-              price: "2.625.000 đ",
-              discount: "3.500.000đ",
-              period: "15 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["IELTS Trung Cấp"].includes(course.name),
             );
           }
           if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Từ 5.0 đến 6.5+";
-            roadMapDetails = {
-              duration: "9 tháng",
-              courses: "2 khóa",
-              price: "6.800.000 đ",
-              discount: "8.000.000 đ",
-              period: "30 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["IELTS Trung Cấp", "IELTS Chuyên Sâu"].includes(course.name),
             );
@@ -200,13 +149,6 @@ export default function Roadmap({
         case "IELTS 6.0 - 6.5":
           if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Từ 6.0 đến 6.5+";
-            roadMapDetails = {
-              duration: "5 tháng",
-              courses: "1 khóa",
-              price: "3.375.000 đ",
-              discount: "4.500.000đ",
-              period: "15 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["IELTS Chuyên Sâu"].includes(course.name),
             );
@@ -225,37 +167,16 @@ export default function Roadmap({
         case "TOEIC 1 - 295":
           if (selectedAim === "TOEIC 300") {
             roadMapName = "Mất Gốc đến 300";
-            roadMapDetails = {
-              duration: "2 tháng",
-              courses: "1 khóa",
-              price: "500.000 đ",
-              discount: "750.000 đ",
-              period: "9 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["Nền Tảng TOEIC"].includes(course.name),
             );
           } else if (selectedAim === "TOEIC 600") {
             roadMapName = "Mất Gốc đến 600";
-            roadMapDetails = {
-              duration: "5 tháng",
-              courses: "2 khóa",
-              price: "2.000.000 đ",
-              discount: "2.500.000 đ",
-              period: "18 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["Nền Tảng TOEIC", "TOEIC Trung Cấp"].includes(course.name),
             );
           } else if (selectedAim === "TOEIC 800") {
             roadMapName = "Mất Gốc đến 800";
-            roadMapDetails = {
-              duration: "27 tháng",
-              courses: "3 khóa",
-              price: "4.000.000 đ",
-              discount: "4.750.000 đ",
-              period: "27 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               [
                 "Nền Tảng TOEIC",
@@ -268,25 +189,11 @@ export default function Roadmap({
         case "TOEIC 300 - 595":
           if (selectedAim === "TOEIC 600") {
             roadMapName = "Có Nền Tảng đến 600";
-            roadMapDetails = {
-              duration: "3 tháng",
-              courses: "1 khóa",
-              price: "1.500.000 đ",
-              discount: "1.750.000 đ",
-              period: "9 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["TOEIC Trung Cấp"].includes(course.name),
             );
           } else if (selectedAim === "TOEIC 800") {
             roadMapName = "Có Nền Tảng đến 800";
-            roadMapDetails = {
-              duration: "5 tháng",
-              courses: "2 khóa",
-              price: "3.500.000 đ",
-              discount: "4.000.000 đ",
-              period: "18 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["TOEIC Trung Cấp", "TOEIC Chuyên Sâu"].includes(course.name),
             );
@@ -299,13 +206,6 @@ export default function Roadmap({
         case "TOEIC 600 - 650":
           if (selectedAim === "TOEIC 800") {
             roadMapName = "TOEIC Nền Tảng Tốt đến 800";
-            roadMapDetails = {
-              duration: "2 tháng",
-              courses: "1 khóa",
-              price: "2.000.000 đ",
-              discount: "2.250.000 đ",
-              period: "9 tháng",
-            };
             roadMapCourses = courses.filter((course) =>
               ["TOEIC Chuyên Sâu"].includes(course.name),
             );
@@ -319,6 +219,30 @@ export default function Roadmap({
           break;
       }
     }
+
+    // Calculate route details from course list
+    const totalDuration = roadMapCourses.reduce(
+      (acc, course) => acc + parseInt(course.duration),
+      0,
+    );
+    const totalPrice = roadMapCourses.reduce(
+      (acc, course) => acc + parseInt(course.price.replace(/\D/g, "")),
+      0,
+    );
+    const totalDiscount = roadMapCourses.reduce(
+      (acc, course) => acc + parseInt(course.discount.replace(/\D/g, "")),
+      0,
+    );
+    const periodMultiplier = selectedBrand.startsWith("IELTS") ? 15 : 9;
+    const totalPeriod = roadMapCourses.length * periodMultiplier;
+
+    roadMapDetails = {
+      duration: `${totalDuration} tháng`,
+      courses: `${roadMapCourses.length} khóa`,
+      price: `${totalPrice.toLocaleString()} đ`,
+      discount: `${totalDiscount.toLocaleString()} đ`,
+      period: `${totalPeriod} tháng`,
+    };
 
     // Update  state
     setRoadMapName(roadMapName);
@@ -484,9 +408,9 @@ export default function Roadmap({
                       <div className="mt-5 text-xl font-bold lg:text-center">
                         <h5 className="text-gray-800">{course.name}</h5>
                         <p className="text-[#004B8D]">
-                          {course.price}
+                          {course.discount}
                           <span className="ml-2 text-base font-normal text-gray-400 line-through lg:block">
-                            {course.discount}
+                            {course.price}
                           </span>
                         </p>
                       </div>
