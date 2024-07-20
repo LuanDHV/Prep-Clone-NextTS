@@ -18,6 +18,7 @@ import {
 import { useEffect, useState } from "react";
 import ButtonModal from "./ButtonModal";
 import { ICourses, ICoursesLayout, IRoadMapDetails } from "@/types/interfaces";
+import NotificationModal from "./NotificationModal";
 
 export default function Roadmap({
   brands,
@@ -38,6 +39,7 @@ export default function Roadmap({
     period: "",
   });
   const [roadMapCourses, setRoadMapCourses] = useState<ICourses[]>([]);
+  const [notificationMessage, setNotificationMessage] = useState("");
 
   // Handle input change for the coupon code
   const handleInputChange = (e: any) => {
@@ -67,6 +69,13 @@ export default function Roadmap({
     const selectedAim = `${courseType} ${aim}`;
     setSelectedAim(selectedAim);
     console.log("Aim:", selectedAim);
+  };
+
+  // Handle notifications when output target lower than current level
+  const handleNotification = (message: string) => {
+    setNotificationMessage(message);
+    onOpen();
+    console.log(message);
   };
 
   // Handle roadmap calculation based on selected brand and aim
@@ -134,15 +143,14 @@ export default function Roadmap({
             roadMapCourses = courses.filter((course) =>
               ["IELTS Trung Cấp"].includes(course.name),
             );
-          }
-          if (selectedAim === "IELTS Chuyên sâu") {
+          } else if (selectedAim === "IELTS Chuyên sâu") {
             roadMapName = "Từ 5.0 đến 6.5+";
             roadMapCourses = courses.filter((course) =>
               ["IELTS Trung Cấp", "IELTS Chuyên Sâu"].includes(course.name),
             );
           } else {
-            console.error(
-              "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
+            handleNotification(
+              "Bạn không thể lựa chọn Mục Tiêu Đầu ra thấp hơn Trình Độ Hiện Tại của bạn.",
             );
           }
           break;
@@ -153,8 +161,8 @@ export default function Roadmap({
               ["IELTS Chuyên Sâu"].includes(course.name),
             );
           } else {
-            console.error(
-              "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
+            handleNotification(
+              "Bạn không thể lựa chọn Mục Tiêu Đầu ra thấp hơn Trình Độ Hiện Tại của bạn.",
             );
           }
 
@@ -198,8 +206,8 @@ export default function Roadmap({
               ["TOEIC Trung Cấp", "TOEIC Chuyên Sâu"].includes(course.name),
             );
           } else {
-            console.error(
-              "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
+            handleNotification(
+              "Bạn không thể lựa chọn Mục Tiêu Đầu ra thấp hơn Trình Độ Hiện Tại của bạn.",
             );
           }
           break;
@@ -210,8 +218,8 @@ export default function Roadmap({
               ["TOEIC Chuyên Sâu"].includes(course.name),
             );
           } else {
-            console.error(
-              "Mục tiêu đầu ra không thể thấp hơn Trình độ hiện tại",
+            handleNotification(
+              "Bạn không thể lựa chọn Mục Tiêu Đầu ra thấp hơn Trình Độ Hiện Tại của bạn.",
             );
           }
           break;
@@ -248,6 +256,10 @@ export default function Roadmap({
     setRoadMapName(roadMapName);
     setRoadMapDetails(roadMapDetails);
     setRoadMapCourses(roadMapCourses);
+
+    // Reset selectedBrand and selectedAim to default values
+    setSelectedBrand("");
+    setSelectedAim("");
 
     // Log the results for debugging
     console.log("Road Map Name:", roadMapName);
@@ -335,6 +347,13 @@ export default function Roadmap({
           </div>
         </div>
 
+        {/* Notification Modal */}
+        <NotificationModal
+          isOpen={isOpen}
+          onOpenChange={onOpenChange}
+          message={notificationMessage}
+        />
+
         {/* Show Road  Map*/}
         {selectedBrand && selectedAim ? (
           <>
@@ -388,6 +407,7 @@ export default function Roadmap({
                       alt="check-icon"
                       width={32}
                       height={32}
+                      className="object-cover"
                     />
                     <div className="ml-2">
                       <h4 className="text-lg font-bold uppercase text-[#004B8D]">

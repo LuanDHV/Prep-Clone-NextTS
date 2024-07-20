@@ -45,14 +45,14 @@ export interface ITeacher {
 }
 
 export interface IAims {
-  _id: Key | null | undefined;
+  _id: string;
   courseType: string;
   aim: string;
   description: string;
 }
 
 export interface IBrands {
-  _id: Key | null | undefined;
+  _id: string;
   courseType: string;
   brand: string;
   description: string;
@@ -118,6 +118,12 @@ export interface IRoadMapDetails {
   price: string;
   discount: string;
   period: string;
+}
+
+export interface INotificationModal {
+  isOpen: boolean;
+  onOpenChange: any;
+  message: string;
 }
 
 export interface ICoursesLayout {
