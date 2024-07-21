@@ -19,6 +19,7 @@ import { useEffect, useState } from "react";
 import ButtonModal from "./ButtonModal";
 import { ICourses, ICoursesLayout, IRoadMapDetails } from "@/types/interfaces";
 import NotificationModal from "./NotificationModal";
+import axios from "axios";
 
 export default function Roadmap({
   brands,
@@ -40,6 +41,7 @@ export default function Roadmap({
   });
   const [roadMapCourses, setRoadMapCourses] = useState<ICourses[]>([]);
   const [notificationMessage, setNotificationMessage] = useState("");
+  const [discountPercentage, setDiscountPercentage] = useState(0);
 
   // Handle input change for the coupon code
   const handleInputChange = (e: any) => {
@@ -47,9 +49,38 @@ export default function Roadmap({
   };
 
   // Handle coupon application
-  const handleApplyCoupon = () => {
+  const handleApplyCoupon = async () => {
     console.log("Áp dụng mã coupon:", couponCode);
-    setCouponCode("");
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/coupons/${couponCode}`,
+      );
+      const couponData = response.data;
+
+      if (couponData) {
+        const discount = couponData.discountPercentage;
+        setDiscountPercentage(discount);
+        alert("Áp dụng mã thành công!");
+
+        // Calculate new price based on applied coupon
+        const totalPrice = roadMapCourses.reduce(
+          (acc, course) => acc + parseInt(course.price.replace(/\D/g, "")),
+          0,
+        );
+        const newTotalPrice = totalPrice * (1 - discount / 100);
+
+        setRoadMapDetails((prevDetails) => ({
+          ...prevDetails,
+          price: `${newTotalPrice.toLocaleString()} đ`,
+        }));
+      } else {
+        console.error("Không áp dụng mã thành công!");
+        alert("Mã khuyến mãi không hợp lệ!");
+      }
+    } catch (error) {
+      console.error("Lỗi kiểm tra mã khuyến mãi:", error);
+      alert("Không áp dụng mã thành công!");
+    }
   };
 
   //Effect to handle roadmap calculation on selected brand or aim change
@@ -71,7 +102,7 @@ export default function Roadmap({
     console.log("Aim:", selectedAim);
   };
 
-  // Handle notifications when output target lower than current level
+  // Handle notifications
   const handleNotification = (message: string) => {
     setNotificationMessage(message);
     onOpen();
@@ -241,25 +272,19 @@ export default function Roadmap({
       (acc, course) => acc + parseInt(course.discount.replace(/\D/g, "")),
       0,
     );
-    const periodMultiplier = selectedBrand.startsWith("IELTS") ? 15 : 9;
-    const totalPeriod = roadMapCourses.length * periodMultiplier;
 
     roadMapDetails = {
       duration: `${totalDuration} tháng`,
       courses: `${roadMapCourses.length} khóa`,
       price: `${totalPrice.toLocaleString()} đ`,
       discount: `${totalDiscount.toLocaleString()} đ`,
-      period: `${totalPeriod} tháng`,
+      period: `${roadMapCourses.length * (selectedBrand.startsWith("IELTS") ? 15 : 9)} tháng`,
     };
 
-    // Update  state
+    // Update state
     setRoadMapName(roadMapName);
     setRoadMapDetails(roadMapDetails);
     setRoadMapCourses(roadMapCourses);
-
-    // Reset selectedBrand and selectedAim to default values
-    setSelectedBrand("");
-    setSelectedAim("");
 
     // Log the results for debugging
     console.log("Road Map Name:", roadMapName);
@@ -383,9 +408,9 @@ export default function Roadmap({
                 <p className="mb-3 grid grid-cols-2 font-medium lg:grid-cols-5">
                   Thành tiền
                   <span className="ml-2 font-bold text-gray-800">
-                    {roadMapDetails.discount}
+                    {roadMapDetails.price}
                     <span className="ml-4 inline-block text-sm font-normal text-[#23242D] line-through">
-                      {roadMapDetails.price}
+                      {roadMapDetails.discount}
                     </span>
                   </span>
                 </p>
@@ -428,9 +453,9 @@ export default function Roadmap({
                       <div className="mt-5 text-xl font-bold lg:text-center">
                         <h5 className="text-gray-800">{course.name}</h5>
                         <p className="text-[#004B8D]">
-                          {course.discount}
+                          {course.price}
                           <span className="ml-2 text-base font-normal text-gray-400 line-through lg:block">
-                            {course.price}
+                            {course.discount}
                           </span>
                         </p>
                       </div>

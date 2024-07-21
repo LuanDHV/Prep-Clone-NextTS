@@ -6,6 +6,7 @@ import coursesRoutes from "./coursesRoutes";
 import slidersRoutes from "./slidersRoutes";
 import benefitsRoutes from "./benefitsRoutes";
 import contentsRoutes from "./contentsRoutes";
+import couponsRoutes from "./couponsRoutes";
 
 const router = express.Router();
 
@@ -15,5 +16,6 @@ router.use("/courses", coursesRoutes);
 router.use("/sliders", slidersRoutes);
 router.use("/benefits", benefitsRoutes);
 router.use("/contents", contentsRoutes);
+router.use("/coupons", couponsRoutes);
 
 export default router;

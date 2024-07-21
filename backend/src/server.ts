@@ -1,12 +1,21 @@
-//src/server.ts
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cors from "cors";
 import routes from "./routes/index";
 
 dotenv.config({ path: ".env" });
 
 const app = express();
+
+// Configure CORS middleware
+app.use(
+  cors({
+    origin: "http://localhost:3000", // Change this address if necessary
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+    allowedHeaders: ["Content-Type"], // Allowed HTTP headers
+  })
+);
 
 // Middleware
 app.use(express.json()); // Body parser middleware

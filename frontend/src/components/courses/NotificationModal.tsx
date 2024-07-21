@@ -8,7 +8,7 @@ const NotificationModal = ({
   message,
 }: INotificationModal) => {
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+    <Modal isOpen={isOpen} onOpenChange={onOpenChange} placement={"center"}>
       <ModalContent>
         {() => (
           <>

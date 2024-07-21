@@ -58,3 +58,8 @@ export interface IContents {
   text10: string;
   text11: string;
 }
+
+export interface ICoupon {
+  code: string;
+  discountPercentage: number;
+}
