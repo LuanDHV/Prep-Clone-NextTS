@@ -4,8 +4,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 export default function ButtonFooter() {
-  const [isButtonOpen, setButtonOpen] = useState(false);
-  const [isVisible, setVisible] = useState(false);
+  const [isButtonOpen, setButtonOpen] = useState<boolean>(false);
+  const [isVisible, setVisible] = useState<boolean>(false);
 
   const toggleButtonOpen = () => {
     setButtonOpen(!isButtonOpen);

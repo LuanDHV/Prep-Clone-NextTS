@@ -1,13 +1,14 @@
 "use client";
-import { faCheck, faStar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCaretDown,
+  faCaretUp,
+  faCheck,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
 import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
   Button,
   useDisclosure,
   Accordion,
@@ -17,7 +18,12 @@ import {
 } from "@nextui-org/react";
 import { useEffect, useState } from "react";
 import ButtonModal from "./ButtonModal";
-import { ICourses, ICoursesLayout, IRoadMapDetails } from "@/types/interfaces";
+import {
+  ICourses,
+  ICoursesLayout,
+  ILessons,
+  IRoadMapDetails,
+} from "@/types/interfaces";
 import NotificationModal from "./NotificationModal";
 import axios from "axios";
 
@@ -28,11 +34,11 @@ export default function Roadmap({
   courses,
 }: ICoursesLayout) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [couponCode, setCouponCode] = useState("");
-  const [selectedBrand, setSelectedBrand] = useState("");
-  const [selectedAim, setSelectedAim] = useState("");
-  const [roadMapName, setRoadMapName] = useState("");
-  const [roadMapDetails, setRoadMapDetails] = useState({
+  const [couponCode, setCouponCode] = useState<string>("");
+  const [selectedBrand, setSelectedBrand] = useState<string>("");
+  const [selectedAim, setSelectedAim] = useState<string>("");
+  const [roadMapName, setRoadMapName] = useState<string>("");
+  const [roadMapDetails, setRoadMapDetails] = useState<IRoadMapDetails>({
     duration: "",
     courses: "",
     price: "",
@@ -40,11 +46,39 @@ export default function Roadmap({
     period: "",
   });
   const [roadMapCourses, setRoadMapCourses] = useState<ICourses[]>([]);
-  const [notificationMessage, setNotificationMessage] = useState("");
-  const [discountPercentage, setDiscountPercentage] = useState(0);
+  const [notificationMessage, setNotificationMessage] = useState<string>("");
+  const [discountPercentage, setDiscountPercentage] = useState<number>(0);
   const [notificationType, setNotificationType] = useState<"success" | "error">(
     "error",
   );
+  const [openAccordions, setOpenAccordions] = useState<{
+    [key: string]: boolean;
+  }>({});
+  const [accordionData, setAccordionData] = useState<{ [key: string]: any }>(
+    {},
+  );
+
+  // Handle Accordion
+  const handleOpenAccordion = (courseId: string) => {
+    setOpenAccordions((prevState) => {
+      const isOpen = !prevState[courseId];
+
+      if (isOpen) {
+        // Fetch data for the opened accordion
+        const selectedCourse = roadMapCourses.find(
+          (course) => course._id === courseId,
+        );
+        if (selectedCourse) {
+          setAccordionData((prevData) => ({
+            ...prevData,
+            [courseId]: selectedCourse,
+          }));
+        }
+      }
+
+      return { ...prevState, [courseId]: isOpen };
+    });
+  };
 
   // Handle input change for the coupon code
   const handleInputChange = (e: any) => {
@@ -53,7 +87,6 @@ export default function Roadmap({
 
   // Handle coupon application
   const handleApplyCoupon = async () => {
-    console.log("Áp dụng mã coupon:", couponCode);
     try {
       const response = await axios.get(
         `http://localhost:5000/api/coupons/${couponCode}`,
@@ -64,6 +97,7 @@ export default function Roadmap({
         const discount = couponData.discountPercentage;
         setDiscountPercentage(discount);
         handleNotification("Áp dụng mã thành công!", "success");
+        setCouponCode("");
 
         // Calculate new price based on applied coupon
         const totalPrice = roadMapCourses.reduce(
@@ -78,12 +112,14 @@ export default function Roadmap({
         }));
       } else {
         console.error("Không áp dụng mã thành công!");
-        console.error("Mã khuyến mãi không hợp lệ!");
+        handleNotification("Mã khuyến mãi không hợp lệ!", "error");
       }
     } catch (error) {
       console.error("Lỗi kiểm tra mã khuyến mãi:", error);
       handleNotification("Mã khuyến mãi không hợp lệ!", "error");
     }
+
+    // console.log("Áp dụng mã coupon:", couponCode);
   };
 
   //Effect to handle roadmap calculation on selected brand or aim change
@@ -483,64 +519,65 @@ export default function Roadmap({
                             {course.inputLevel}
                           </span>
                         </div>
-                        <div className="flex items-center justify-between">
-                          <div className="">
-                            <FontAwesomeIcon
-                              icon={faCheck}
-                              className="h4 mr-4 w-4 object-cover text-green-600"
-                            />
-                            <span className="inline-block md:hidden">
-                              Danh sách:
-                            </span>
-                            <span className="hidden md:inline-block">
-                              Danh sách bài học:
-                            </span>
-                            <span className="ml-2 font-bold">
-                              {course.list}
-                            </span>
+                        {/* Lessons */}
+                        <div className="">
+                          <div className="flex items-center justify-between">
+                            <div className="">
+                              <FontAwesomeIcon
+                                icon={faCheck}
+                                className="h4 mr-4 w-4 object-cover text-green-600"
+                              />
+                              <span className="inline-block xl:hidden">
+                                Danh sách:
+                              </span>
+                              <span className="hidden xl:inline-block">
+                                Danh sách bài học:
+                              </span>
+                              <span className="ml-2 font-bold">
+                                {course.list}
+                              </span>
+                            </div>
+                            <div className="flex items-center">
+                              <button
+                                className="font-bold text-blue-500"
+                                onClick={() => handleOpenAccordion(course._id)}
+                              >
+                                Xem chi tiết
+                                <FontAwesomeIcon
+                                  icon={
+                                    openAccordions[course._id]
+                                      ? faCaretUp
+                                      : faCaretDown
+                                  }
+                                  className="ml-2 h-4 w-4 object-cover"
+                                />
+                              </button>
+                            </div>
                           </div>
-                          <div className="">
-                            <button
-                              className="font-bold text-blue-500"
-                              // onClick={onOpen}
-                            >
-                              Xem chi tiết
-                            </button>
-
-                            <Modal
-                              isOpen={isOpen}
-                              onOpenChange={onOpenChange}
-                              placement="center"
-                              size="lg"
-                            >
-                              <ModalContent>
-                                {() => (
-                                  <>
-                                    <ModalHeader className="flex flex-col gap-1">
-                                      Chi tiết khóa học
-                                    </ModalHeader>
-                                    <ModalBody>
-                                      <Accordion>
-                                        {roadMapCourses.map((course) => (
-                                          <AccordionItem
-                                            key={course._id}
-                                            title={course.name}
-                                          >
-                                            {course.lessons.map((lesson) => (
-                                              <div key={lesson._id}>
-                                                {lesson.title}
-                                              </div>
-                                            ))}
-                                          </AccordionItem>
-                                        ))}
-                                      </Accordion>
-                                    </ModalBody>
-                                  </>
-                                )}
-                              </ModalContent>
-                            </Modal>
-                          </div>
+                          {openAccordions[course._id] &&
+                          accordionData[course._id] ? (
+                            <div className="my-2">
+                              <Accordion isCompact>
+                                <AccordionItem
+                                  key={course._id}
+                                  title={accordionData[course._id].name}
+                                  className="rounded-xl bg-gray-200 px-6 font-semibold"
+                                >
+                                  {accordionData[course._id].lessons?.map(
+                                    (lesson: ILessons) => (
+                                      <div key={lesson._id}>
+                                        <p className="font-normal">
+                                          {lesson.title}
+                                        </p>
+                                      </div>
+                                    ),
+                                  )}
+                                </AccordionItem>
+                              </Accordion>
+                            </div>
+                          ) : null}
                         </div>
+
                         <div className="flex items-center">
                           <FontAwesomeIcon
                             icon={faCheck}
@@ -567,6 +604,7 @@ export default function Roadmap({
                             {course.people}
                           </span>
                         </div>
+
                         <div className="flex items-center">
                           <div className="hidden xl:block">
                             <FontAwesomeIcon
