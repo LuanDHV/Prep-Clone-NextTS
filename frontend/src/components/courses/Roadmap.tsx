@@ -42,6 +42,9 @@ export default function Roadmap({
   const [roadMapCourses, setRoadMapCourses] = useState<ICourses[]>([]);
   const [notificationMessage, setNotificationMessage] = useState("");
   const [discountPercentage, setDiscountPercentage] = useState(0);
+  const [notificationType, setNotificationType] = useState<"success" | "error">(
+    "error",
+  );
 
   // Handle input change for the coupon code
   const handleInputChange = (e: any) => {
@@ -60,7 +63,7 @@ export default function Roadmap({
       if (couponData) {
         const discount = couponData.discountPercentage;
         setDiscountPercentage(discount);
-        alert("Áp dụng mã thành công!");
+        handleNotification("Áp dụng mã thành công!", "success");
 
         // Calculate new price based on applied coupon
         const totalPrice = roadMapCourses.reduce(
@@ -75,11 +78,11 @@ export default function Roadmap({
         }));
       } else {
         console.error("Không áp dụng mã thành công!");
-        alert("Mã khuyến mãi không hợp lệ!");
+        console.error("Mã khuyến mãi không hợp lệ!");
       }
     } catch (error) {
       console.error("Lỗi kiểm tra mã khuyến mãi:", error);
-      alert("Không áp dụng mã thành công!");
+      handleNotification("Mã khuyến mãi không hợp lệ!", "error");
     }
   };
 
@@ -92,21 +95,23 @@ export default function Roadmap({
   const handleBrandChange = (courseType: string, brand: string) => {
     const selectedBrand = `${courseType} ${brand}`;
     setSelectedBrand(selectedBrand);
-    console.log("Brand:", selectedBrand);
+    // console.log("Brand:", selectedBrand);
   };
 
   // Handle aim selection change
   const handleAimChange = (courseType: string, aim: string) => {
     const selectedAim = `${courseType} ${aim}`;
     setSelectedAim(selectedAim);
-    console.log("Aim:", selectedAim);
+    // console.log("Aim:", selectedAim);
   };
 
   // Handle notifications
-  const handleNotification = (message: string) => {
+  const handleNotification = (message: string, type: "success" | "error") => {
     setNotificationMessage(message);
+    setNotificationType(type);
     onOpen();
-    console.log(message);
+    // console.log(message);
+    // console.log(type);
   };
 
   // Handle roadmap calculation based on selected brand and aim
@@ -182,6 +187,7 @@ export default function Roadmap({
           } else {
             handleNotification(
               "Bạn không thể lựa chọn Mục Tiêu Đầu ra thấp hơn Trình Độ Hiện Tại của bạn.",
+              "error",
             );
           }
           break;
@@ -194,6 +200,7 @@ export default function Roadmap({
           } else {
             handleNotification(
               "Bạn không thể lựa chọn Mục Tiêu Đầu ra thấp hơn Trình Độ Hiện Tại của bạn.",
+              "error",
             );
           }
 
@@ -239,6 +246,7 @@ export default function Roadmap({
           } else {
             handleNotification(
               "Bạn không thể lựa chọn Mục Tiêu Đầu ra thấp hơn Trình Độ Hiện Tại của bạn.",
+              "error",
             );
           }
           break;
@@ -251,6 +259,7 @@ export default function Roadmap({
           } else {
             handleNotification(
               "Bạn không thể lựa chọn Mục Tiêu Đầu ra thấp hơn Trình Độ Hiện Tại của bạn.",
+              "error",
             );
           }
           break;
@@ -287,9 +296,9 @@ export default function Roadmap({
     setRoadMapCourses(roadMapCourses);
 
     // Log the results for debugging
-    console.log("Road Map Name:", roadMapName);
-    console.log("Road Map Details:", roadMapDetails);
-    console.log("Road Map Courses:", roadMapCourses);
+    // console.log("Road Map Name:", roadMapName);
+    // console.log("Road Map Details:", roadMapDetails);
+    // console.log("Road Map Courses:", roadMapCourses);
   };
 
   return (
@@ -377,6 +386,7 @@ export default function Roadmap({
           isOpen={isOpen}
           onOpenChange={onOpenChange}
           message={notificationMessage}
+          type={notificationType}
         />
 
         {/* Show Road  Map*/}
@@ -492,7 +502,7 @@ export default function Roadmap({
                           <div className="">
                             <button
                               className="font-bold text-blue-500"
-                              onClick={onOpen}
+                              // onClick={onOpen}
                             >
                               Xem chi tiết
                             </button>
@@ -623,6 +633,8 @@ export default function Roadmap({
                     </div>
                   ))}
                 </div>
+
+                {/* Coupon */}
                 <div className="pt-10">
                   <div className="flex">
                     <Image
@@ -656,6 +668,14 @@ export default function Roadmap({
                     </Button>
                   </div>
                 </div>
+                {/* Notification Modal */}
+                <NotificationModal
+                  isOpen={isOpen}
+                  onOpenChange={onOpenChange}
+                  message={notificationMessage}
+                  type={notificationType}
+                />
+                {/* Information  */}
                 <div className="pt-10">
                   <div className="flex">
                     <Image

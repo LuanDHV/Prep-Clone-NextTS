@@ -121,8 +121,9 @@ export interface IRoadMapDetails {
 }
 
 export interface INotificationModal {
+  type: "success" | "error";
   isOpen: boolean;
-  onOpenChange: any;
+  onOpenChange: () => void;
   message: string;
 }
 
@@ -133,4 +134,9 @@ export interface ICoursesLayout {
   aims: IAims[];
   courses: ICourses[];
   benefits: IBenefits[];
+}
+
+export interface ICoupon {
+  code: string;
+  discountPercentage: number;
 }
