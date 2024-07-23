@@ -687,21 +687,21 @@ export default function Roadmap({
                       Nhập mã khuyến mãi
                     </h4>
                   </div>
-                  <div className="relative pt-5">
+                  <div className="relative flex pt-5 md:w-2/5">
                     <Input
                       type="text"
                       placeholder="Nhập mã"
                       size="lg"
                       value={couponCode}
                       onChange={handleInputChange}
-                      className="md:w-2/5"
+                      className="w-full"
                     />
                     <Button
                       isDisabled={!couponCode}
                       color="primary"
                       size="lg"
                       onClick={handleApplyCoupon}
-                      // className="absolute bottom-0 right-0 md:right-80"
+                      className="absolute right-0"
                     >
                       Áp dụng
                     </Button>
