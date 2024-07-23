@@ -417,17 +417,10 @@ export default function Roadmap({
           </div>
         </div>
 
-        {/* Notification Modal */}
-        <NotificationModal
-          isOpen={isOpen}
-          onOpenChange={onOpenChange}
-          message={notificationMessage}
-          type={notificationType}
-        />
-
-        {/* Show Road  Map*/}
+        {/* Show Road Map & Course*/}
         {selectedBrand && selectedAim ? (
           <>
+            {/* Road Map */}
             <div className="mt-10">
               <div className="mb-5 text-xl font-bold text-gray-800">
                 <p>Chi tiết lộ trình học cho bạn</p>
@@ -468,8 +461,9 @@ export default function Roadmap({
                 </p>
               </div>
             </div>
-            {/* Courses */}
+
             <div className="mt-10 rounded-xl bg-white p-5 shadow-lg md:p-10">
+              {/* Courses */}
               {roadMapCourses.map((course) => (
                 <div className="mt-10" key={course._id}>
                   <div className="flex items-start">
@@ -509,6 +503,7 @@ export default function Roadmap({
 
                     <div className="grid h-full w-full items-center lg:p-5">
                       <div className="mt-5 grid gap-2 md:gap-5 lg:mt-0 lg:p-5">
+                        {/* Input Level */}
                         <div className="flex items-center">
                           <FontAwesomeIcon
                             icon={faCheck}
@@ -519,6 +514,7 @@ export default function Roadmap({
                             {course.inputLevel}
                           </span>
                         </div>
+
                         {/* Lessons */}
                         <div className="">
                           <div className="flex items-center justify-between">
@@ -580,6 +576,8 @@ export default function Roadmap({
                             </div>
                           ) : null}
                         </div>
+
+                        {/* Complete Time */}
                         <div className="flex items-center">
                           <FontAwesomeIcon
                             icon={faCheck}
@@ -596,6 +594,8 @@ export default function Roadmap({
                             {course.duration}
                           </span>
                         </div>
+
+                        {/* Number Of People Who Have Studied */}
                         <div className="flex items-center">
                           <FontAwesomeIcon
                             icon={faCheck}
@@ -606,6 +606,8 @@ export default function Roadmap({
                             {course.people}
                           </span>
                         </div>
+
+                        {/* Evaluate */}
                         <div className="flex items-center">
                           <div className="hidden xl:block">
                             <FontAwesomeIcon
@@ -643,8 +645,9 @@ export default function Roadmap({
                   </div>
                 </div>
               ))}
+
               {/* Benefits */}
-              <div className="pt-10">
+              <div className="">
                 <div className="flex">
                   <Image
                     src="/imgs/courses/filled.svg"
@@ -672,139 +675,157 @@ export default function Roadmap({
                     </div>
                   ))}
                 </div>
+              </div>
 
-                {/* Coupon */}
-                <div className="pt-10">
-                  <div className="flex">
-                    <Image
-                      src="/imgs/courses/discount-icon.svg"
-                      alt="filled"
-                      width={25}
-                      height={25}
-                      className="mr-2 object-cover"
-                    />
-                    <h4 className="text-lg font-bold md:text-xl">
-                      Nhập mã khuyến mãi
-                    </h4>
-                  </div>
-                  <div className="relative flex pt-5 md:w-2/5">
-                    <Input
-                      type="text"
-                      placeholder="Nhập mã"
-                      size="lg"
-                      value={couponCode}
-                      onChange={handleInputChange}
-                      className="w-full"
-                    />
-                    <Button
-                      isDisabled={!couponCode}
-                      color="primary"
-                      size="lg"
-                      onClick={handleApplyCoupon}
-                      className="absolute right-0"
-                    >
-                      Áp dụng
-                    </Button>
-                  </div>
+              {/* Coupon */}
+              <div className="pt-10">
+                <div className="flex">
+                  <Image
+                    src="/imgs/courses/discount-icon.svg"
+                    alt="filled"
+                    width={25}
+                    height={25}
+                    className="mr-2 object-cover"
+                  />
+                  <h4 className="text-lg font-bold md:text-xl">
+                    Nhập mã khuyến mãi
+                  </h4>
                 </div>
-                {/* Notification Modal */}
-                <NotificationModal
-                  isOpen={isOpen}
-                  onOpenChange={onOpenChange}
-                  message={notificationMessage}
-                  type={notificationType}
-                />
-                {/* Information  */}
-                <div className="pt-10">
-                  <div className="flex">
-                    <Image
-                      src="/imgs/courses/user-icon.svg"
-                      alt="filled"
-                      width={25}
-                      height={25}
-                      className="mr-2 object-cover"
-                    />
-                    <h4 className="text-lg font-bold md:text-xl">
-                      Thông tin thanh toán
-                    </h4>
-                  </div>
-                  <div className="grid gap-4 pt-5">
-                    <Input
-                      type="text"
-                      placeholder="Họ và tên"
-                      size="lg"
-                      className="md:w-2/5"
-                    />
-                    <Input
-                      type="email"
-                      placeholder="Email"
-                      size="lg"
-                      className="md:w-2/5"
-                    />
-                    <Input
-                      type="text"
-                      placeholder="Số điện thoại"
-                      size="lg"
-                      className="md:w-2/5"
-                    />
-                  </div>
-                </div>
-                <div className="pt-10">
-                  <Checkbox defaultSelected className="flex items-start">
-                    Tôi đã đọc và đồng ý với
-                    <Link href="#" className="ml-1 text-blue-500">
-                      Điều kiện & Điều khoản giao dịch,
-                    </Link>
-                    <Link href="#" className="ml-1 text-blue-500">
-                      Chính sách bảo mật thông tin,
-                    </Link>
-                    <Link href="#" className="mx-1 text-blue-500">
-                      Chính sách sử dụng AI
-                    </Link>
-                    của Prep giao dịch của Prep
-                  </Checkbox>
-                </div>
-                <div className="grid pt-10 md:mx-auto md:grid-cols-2 md:gap-4 xl:w-2/5">
-                  <ButtonModal />
-                  <Button className="my-5 h-16 w-full rounded-xl bg-[#004b8d] py-4 text-[20px] font-bold text-white outline-none hover:scale-105 md:my-0">
-                    Thanh Toán
+                <div className="relative flex pt-5 md:w-2/5">
+                  <Input
+                    type="text"
+                    placeholder="Nhập mã"
+                    size="lg"
+                    value={couponCode}
+                    onChange={handleInputChange}
+                    className="w-full"
+                  />
+                  <Button
+                    isDisabled={!couponCode}
+                    color="primary"
+                    size="lg"
+                    onClick={handleApplyCoupon}
+                    className="absolute right-0"
+                  >
+                    Áp dụng
                   </Button>
                 </div>
               </div>
+
+              {/* Information  */}
+              <div className="pt-10">
+                <div className="flex">
+                  <Image
+                    src="/imgs/courses/user-icon.svg"
+                    alt="filled"
+                    width={25}
+                    height={25}
+                    className="mr-2 object-cover"
+                  />
+                  <h4 className="text-lg font-bold md:text-xl">
+                    Thông tin thanh toán
+                  </h4>
+                </div>
+                <div className="grid gap-4 pt-5">
+                  <Input
+                    type="text"
+                    placeholder="Họ và tên"
+                    size="lg"
+                    className="md:w-2/5"
+                  />
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    size="lg"
+                    className="md:w-2/5"
+                  />
+                  <Input
+                    type="text"
+                    placeholder="Số điện thoại"
+                    size="lg"
+                    className="md:w-2/5"
+                  />
+                </div>
+              </div>
+
+              {/* Terms */}
+              <div className="pt-10">
+                <Checkbox defaultSelected className="flex items-start">
+                  Tôi đã đọc và đồng ý với
+                  <Link href="#" className="ml-1 text-blue-500">
+                    Điều kiện & Điều khoản giao dịch,
+                  </Link>
+                  <Link href="#" className="ml-1 text-blue-500">
+                    Chính sách bảo mật thông tin,
+                  </Link>
+                  <Link href="#" className="mx-1 text-blue-500">
+                    Chính sách sử dụng AI
+                  </Link>
+                  của Prep giao dịch của Prep
+                </Checkbox>
+              </div>
+
+              {/* Button Pay */}
+              <div className="grid pt-10 md:mx-auto md:grid-cols-2 md:gap-4 xl:w-2/5">
+                <ButtonModal />
+                <Button className="my-5 h-16 w-full rounded-xl bg-[#004b8d] py-4 text-[20px] font-bold text-white outline-none hover:scale-105 md:my-0">
+                  Thanh Toán
+                </Button>
+              </div>
             </div>
+
+            {/* Notification Modal */}
+            <NotificationModal
+              isOpen={isOpen}
+              onOpenChange={onOpenChange}
+              message={notificationMessage}
+              type={notificationType}
+            />
           </>
         ) : (
           <>
+            {/* Road Map */}
             <div className="mt-10 blur-md">
               <div className="mb-5 text-xl font-bold text-gray-800">
-                <p>Chi tiết lộ trình học dành cho bạn</p>
+                <p>Chi tiết lộ trình học cho bạn</p>
               </div>
               <div className="mb-5 grid h-auto w-full rounded-xl bg-white p-5 shadow-lg">
                 <p className="mb-3 grid grid-cols-2 font-medium lg:grid-cols-5">
                   Lộ trình
-                  <span className="font-bold text-gray-800">
-                    Mất gốc đến 5.0
+                  <span className="ml-2 font-bold text-gray-800">
+                    {roadMapName}
                   </span>
                 </p>
                 <p className="mb-3 grid grid-cols-2 font-medium lg:grid-cols-5">
                   Thời gian hoàn thành
-                  <span className="font-bold text-gray-800"> 4 tháng</span>
+                  <span className="ml-2 font-bold text-gray-800">
+                    {roadMapDetails.duration}
+                  </span>
                 </p>
                 <p className="mb-3 grid grid-cols-2 font-medium lg:grid-cols-5">
-                  Số lượng khoá học
-                  <span className="font-bold text-gray-800">
-                    3.400.000 ₫
+                  Số lượng khóa học
+                  <span className="ml-2 font-bold text-gray-800">
+                    {roadMapDetails.courses}
+                  </span>
+                </p>
+                <p className="mb-3 grid grid-cols-2 font-medium lg:grid-cols-5">
+                  Thành tiền
+                  <span className="ml-2 font-bold text-gray-800">
+                    {roadMapDetails.price}
                     <span className="ml-4 inline-block text-sm font-normal text-[#23242D] line-through">
-                      4.000.000 ₫
+                      {roadMapDetails.discount}
                     </span>
                   </span>
                 </p>
                 <p className="grid grid-cols-2 pt-3 font-medium lg:grid-cols-5">
                   Thời gian sở hữu
-                  <span className="font-bold text-red-600"> 30 tháng</span>
+                  <span className="ml-2 font-bold text-red-600">
+                    {roadMapDetails.period}
+                  </span>
                 </p>
               </div>
             </div>
+            {/* Choose To See Road Map */}
             <div className="absolute bottom-10 left-0 right-0 mx-auto grid items-center justify-items-center">
               <p className="text-center text-lg font-bold">
                 Vui lòng chọn trình độ và mục tiêu đầu ra để xem lộ trình
