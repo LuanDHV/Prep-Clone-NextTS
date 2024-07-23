@@ -352,13 +352,13 @@ export default function Roadmap({
             {brands.map((brand) => (
               <div
                 key={brand._id}
-                className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl px-5 shadow-lg lg:w-4/5 ${
+                className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl shadow-lg lg:w-4/5 ${
                   selectedBrand === `${brand.courseType} ${brand.brand}`
                     ? "bg-blue-500 text-white"
                     : "bg-white"
                 }`}
               >
-                <label className="flex cursor-pointer items-center">
+                <label className="flex cursor-pointer items-center px-5">
                   <input
                     type="radio"
                     name="brandGroup"
@@ -390,13 +390,13 @@ export default function Roadmap({
             {aims.map((aim) => (
               <div
                 key={aim._id}
-                className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl px-5 shadow-lg lg:w-4/5 ${
+                className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl shadow-lg lg:w-4/5 ${
                   selectedAim === `${aim.courseType} ${aim.aim}`
                     ? "bg-blue-500 text-white"
                     : "bg-white"
                 }`}
               >
-                <label className="flex cursor-pointer items-center">
+                <label className="flex cursor-pointer items-center px-5">
                   <input
                     type="radio"
                     name="brandGroup"
@@ -487,7 +487,7 @@ export default function Roadmap({
                       <p className="mb-5 text-gray-500">{course.description}</p>
                     </div>
                   </div>
-                  <div className="rounded-xl bg-slate-100 p-2 lg:grid lg:grid-cols-2 lg:items-center lg:justify-items-center lg:p-5">
+                  <div className="rounded-xl bg-gray-50 p-2 lg:grid lg:grid-cols-2 lg:items-center lg:justify-items-center lg:p-5">
                     <div className="p-2 lg:grid lg:justify-items-center lg:p-5">
                       <div className="h-full w-full lg:my-0 lg:w-[300px]">
                         <img
@@ -561,13 +561,16 @@ export default function Roadmap({
                                 <AccordionItem
                                   key={course._id}
                                   title={accordionData[course._id].name}
-                                  className="rounded-xl bg-gray-200 px-6 font-semibold"
+                                  className="rounded-xl bg-gray-100 px-6 font-semibold text-white"
                                 >
                                   {accordionData[course._id].lessons?.map(
-                                    (lesson: ILessons) => (
+                                    (lesson: ILessons, index: number) => (
                                       <div key={lesson._id}>
-                                        <p className="font-normal">
-                                          {lesson.title}
+                                        <p className="text-black">
+                                          Lesson {index + 1}:
+                                          <span className="ml-1 font-normal">
+                                            {lesson.title}
+                                          </span>
                                         </p>
                                       </div>
                                     ),
@@ -577,7 +580,6 @@ export default function Roadmap({
                             </div>
                           ) : null}
                         </div>
-
                         <div className="flex items-center">
                           <FontAwesomeIcon
                             icon={faCheck}
@@ -604,7 +606,6 @@ export default function Roadmap({
                             {course.people}
                           </span>
                         </div>
-
                         <div className="flex items-center">
                           <div className="hidden xl:block">
                             <FontAwesomeIcon
