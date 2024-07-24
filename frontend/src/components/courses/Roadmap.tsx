@@ -58,13 +58,19 @@ export default function Roadmap({
   const [accordionData, setAccordionData] = useState<{ [key: string]: any }>(
     {},
   );
-
+  const [isCheckedTerms, setIsCheckedTerms] = useState<boolean>(false);
   const { isSignedIn } = useAuth();
   const { user } = useUser();
 
+  //Handle Check Before Pay
   const handleCheckBeforePay = () => {
     if (!isSignedIn) {
       setNotificationMessage("Vui lòng đăng nhập ");
+      setNotificationType("error");
+      onOpenChange();
+    }
+    if (!isCheckedTerms) {
+      setNotificationMessage("Vui lòng đồng ý với các điều khoản ");
       setNotificationType("error");
       onOpenChange();
     }
@@ -109,7 +115,7 @@ export default function Roadmap({
         const discount = couponData.discountPercentage;
         setDiscountPercentage(discount);
         handleNotification("Áp dụng mã thành công!", "success");
-        setCouponCode("");
+        // setCouponCode("");
 
         // Calculate new price based on applied coupon
         const totalPrice = roadMapCourses.reduce(
@@ -758,7 +764,11 @@ export default function Roadmap({
 
               {/* Terms */}
               <div className="pt-10">
-                <Checkbox className="flex items-start">
+                <Checkbox
+                  className="flex items-start"
+                  checked={isCheckedTerms}
+                  onChange={(e) => setIsCheckedTerms(e.target.checked)}
+                >
                   Tôi đã đọc và đồng ý với
                   <Link href="#" className="ml-1 text-blue-500">
                     Điều kiện & Điều khoản giao dịch,
