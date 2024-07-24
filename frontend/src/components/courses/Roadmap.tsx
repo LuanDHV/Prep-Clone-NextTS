@@ -26,6 +26,7 @@ import {
 } from "@/types/interfaces";
 import NotificationModal from "./NotificationModal";
 import axios from "axios";
+import { useAuth, useUser } from "@clerk/nextjs";
 
 export default function Roadmap({
   brands,
@@ -57,6 +58,17 @@ export default function Roadmap({
   const [accordionData, setAccordionData] = useState<{ [key: string]: any }>(
     {},
   );
+
+  const { isSignedIn } = useAuth();
+  const { user } = useUser();
+
+  const handleCheckBeforePay = () => {
+    if (!isSignedIn) {
+      setNotificationMessage("Vui lòng đăng nhập ");
+      setNotificationType("error");
+      onOpenChange();
+    }
+  };
 
   // Handle Accordion
   const handleOpenAccordion = (courseId: string) => {
@@ -731,18 +743,14 @@ export default function Roadmap({
                     type="text"
                     placeholder="Họ và tên"
                     size="lg"
+                    value={user?.fullName || ""}
                     className="md:w-2/5"
                   />
                   <Input
                     type="email"
                     placeholder="Email"
                     size="lg"
-                    className="md:w-2/5"
-                  />
-                  <Input
-                    type="text"
-                    placeholder="Số điện thoại"
-                    size="lg"
+                    value={user?.primaryEmailAddress?.emailAddress || ""}
                     className="md:w-2/5"
                   />
                 </div>
@@ -750,7 +758,7 @@ export default function Roadmap({
 
               {/* Terms */}
               <div className="pt-10">
-                <Checkbox defaultSelected className="flex items-start">
+                <Checkbox className="flex items-start">
                   Tôi đã đọc và đồng ý với
                   <Link href="#" className="ml-1 text-blue-500">
                     Điều kiện & Điều khoản giao dịch,
@@ -768,7 +776,10 @@ export default function Roadmap({
               {/* Button Pay */}
               <div className="grid pt-10 md:mx-auto md:grid-cols-2 md:gap-4 xl:w-2/5">
                 <ButtonModal />
-                <Button className="my-5 h-16 w-full rounded-xl bg-[#004b8d] py-4 text-[20px] font-bold text-white outline-none hover:scale-105 md:my-0">
+                <Button
+                  className="my-5 h-16 w-full rounded-xl bg-[#004b8d] py-4 text-[20px] font-bold text-white outline-none hover:scale-105 md:my-0"
+                  onClick={handleCheckBeforePay}
+                >
                   Thanh Toán
                 </Button>
               </div>
