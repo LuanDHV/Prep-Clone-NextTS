@@ -1,3 +1,4 @@
+import HeaderPayment from "@/components/layouts/HeaderPayment";
 import Footer from "@/components/layouts/Footer";
 
 export default function PaymentLayout({
@@ -7,6 +8,7 @@ export default function PaymentLayout({
 }) {
   return (
     <>
+      <HeaderPayment />
       {children}
       <Footer />
     </>

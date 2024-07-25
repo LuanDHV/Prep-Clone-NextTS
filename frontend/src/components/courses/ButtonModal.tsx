@@ -21,8 +21,8 @@ export default function ButtonModal() {
         onPress={onOpen}
         className="h-16 w-full rounded-xl border border-blue-500 bg-white font-bold hover:scale-105"
       >
-        <div className="text-[20px] text-[#0071F9]">
-          <span className="ml-2"> Đăng ký nhận tư vấn</span>
+        <div className="text-xl text-[#0071F9]">
+          <span className=""> Đăng ký nhận tư vấn</span>
         </div>
       </Button>
       <Modal

@@ -87,13 +87,13 @@ export default function Header() {
     <>
       {/* Header */}
       <section>
-        <div className="md:px-10py-2.5 flex h-[60px] w-full items-center justify-between bg-white px-5 shadow">
+        <div className="flex h-[60px] w-full items-center justify-between bg-white px-5 py-2.5 shadow md:px-10">
           <div className="flex items-center">
             <button className="p-2 pl-0 lg:hidden" onClick={toggleMenu}>
               <FontAwesomeIcon icon={faBars} />
             </button>
 
-            <Link href="#">
+            <Link href="/">
               <Image
                 src="/imgs/header/logo.svg"
                 alt="logo"
