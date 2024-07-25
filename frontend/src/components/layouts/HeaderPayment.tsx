@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function HeaderPayment() {
   return (
     <>
-      <div className="flex h-20 items-center px-5 md:px-10">
+      <div className="flex h-20 items-center border-b px-5 md:px-10">
         <Link href="/">
           <Image
             src="/imgs/header/logo.svg"
