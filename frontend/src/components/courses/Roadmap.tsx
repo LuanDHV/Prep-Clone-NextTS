@@ -24,7 +24,7 @@ import {
   ILessons,
   IRoadMapDetails,
 } from "@/types/interfaces";
-import NotificationModal from "./NotificationModal";
+import NotificationModal from "../Notification/NotificationModal";
 import axios from "axios";
 import { useAuth, useUser } from "@clerk/nextjs";
 
@@ -352,7 +352,7 @@ export default function Roadmap({
     // Log the results for debugging
     // console.log("Road Map Name:", roadMapName);
     // console.log("Road Map Details:", roadMapDetails);
-    // console.log("Road Map Courses:", roadMapCourses);
+    console.log("Road Map Courses:", roadMapCourses);
   };
 
   return (
