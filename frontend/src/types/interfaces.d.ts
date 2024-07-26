@@ -140,3 +140,18 @@ export interface ICoupon {
   code: string;
   discountPercentage: number;
 }
+
+interface IOrderData {
+  user: IUserOrderData;
+  roadMap: IRoadMapOrderData;
+  coupon: string | null;
+}
+interface IUserOrderData {
+  fullName: string;
+  email: string;
+}
+interface IRoadMapOrderData {
+  name: string;
+  details: IRoadMapDetails;
+  courses: ICourses[];
+}

@@ -1,26 +1,14 @@
+import OrderSummary from "@/components/payment/OrderSummary";
+
 export default function Payment() {
   return (
     <>
       <div className="h-screen">
         <div className="flex gap-5 p-5 md:grid-flow-col md:px-20 lg:px-40">
           {/* Order Summary */}
-          <div className="grid h-60 grid-rows-4 rounded-xl border px-3 py-5 shadow-md md:order-2 md:w-2/6">
-            <div className="flex items-center px-2">
-              <p className="font-bold">Tóm tắt học phí</p>
-            </div>
-            <div className="flex items-center px-2 py-3">
-              <p className="text-sm font-bold">3 khóa học</p>
-            </div>
-            <div className="flex items-center justify-between border-t px-2 py-2">
-              <p className="text-sm">Tạm tính</p>
-              <p className="font-bold">100000 đ</p>
-            </div>
-            <div className="flex items-center justify-between border-t px-2 py-2">
-              <p className="">Tổng tiền</p>
-              <p className="text-xl font-bold text-blue-500">100000 đ</p>
-            </div>
+          <div className="grid h-auto rounded-xl border px-3 py-5 shadow-md md:order-2 md:w-2/6">
+            <OrderSummary />
           </div>
-
           {/* Payment Method */}
           <div className="grid h-full rounded-xl border px-3 py-5 shadow-md md:order-1 md:w-4/6">
             <p className="text-xl font-bold">Phương thức thanh toán</p>

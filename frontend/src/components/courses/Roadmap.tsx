@@ -35,6 +35,9 @@ export default function Roadmap({
   benefits,
   courses,
 }: ICoursesLayout) {
+  const router = useRouter();
+  const { user } = useUser();
+  const { isSignedIn } = useAuth();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [couponCode, setCouponCode] = useState<string>("");
   const [selectedBrand, setSelectedBrand] = useState<string>("");
@@ -60,10 +63,7 @@ export default function Roadmap({
     {},
   );
   const [isCheckedTerms, setIsCheckedTerms] = useState<boolean>(false);
-  const { isSignedIn } = useAuth();
-  const { user } = useUser();
 
-  const router = useRouter();
   //Handle Check Before Pay
   const handleCheckBeforePay = () => {
     if (!isSignedIn) {
@@ -81,10 +81,27 @@ export default function Roadmap({
     return true;
   };
 
-  //Handle navigation after check paym
+  //Handle navigation to payment
   const handleNavigation = () => {
     if (handleCheckBeforePay()) {
+      const orderData = {
+        user: {
+          fullName: user?.fullName || "",
+          email: user?.primaryEmailAddress?.emailAddress || "",
+        },
+        roadMap: {
+          name: roadMapName,
+          details: roadMapDetails,
+          courses: roadMapCourses,
+        },
+        coupon: couponCode ? couponCode : null,
+      };
+      // Save data to Session Storage
+      sessionStorage.setItem("orderData", JSON.stringify(orderData));
+
+      // Navigation to payment
       router.push("/payment");
+      console.log("Order Data: ", orderData);
     }
   };
 
