@@ -4,13 +4,13 @@ export default function Payment() {
   return (
     <>
       <div className="h-screen">
-        <div className="flex gap-5 p-5 md:grid-flow-col md:px-20 lg:px-40">
+        <div className="flex flex-col gap-5 p-5 md:flex-row lg:px-20 xl:px-40">
           {/* Order Summary */}
-          <div className="grid h-auto rounded-xl border px-3 py-5 shadow-md md:order-2 md:w-2/6">
+          <div className="grid h-auto rounded-xl border px-3 py-5 shadow-md md:order-2 md:w-2/5 lg:w-2/6">
             <OrderSummary />
           </div>
           {/* Payment Method */}
-          <div className="grid h-full rounded-xl border px-3 py-5 shadow-md md:order-1 md:w-4/6">
+          <div className="grid h-full rounded-xl border px-3 py-5 shadow-md md:order-1 md:w-3/5 lg:w-4/6">
             <p className="text-xl font-bold">Phương thức thanh toán</p>
             <div className="my-3 flex flex-col rounded-2xl border-2 p-3">
               <label className="flex w-full cursor-pointer flex-row items-center rounded-xl">

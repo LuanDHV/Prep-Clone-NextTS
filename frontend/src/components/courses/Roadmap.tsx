@@ -24,7 +24,7 @@ import {
   ILessons,
   IRoadMapDetails,
 } from "@/types/interfaces";
-import NotificationModal from "../notification/NotificationModal";
+import NotificationModal from "@/components/notification/NotificationModal";
 import axios from "axios";
 import { useAuth, useUser } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
