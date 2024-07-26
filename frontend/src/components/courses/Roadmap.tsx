@@ -27,6 +27,7 @@ import {
 import NotificationModal from "../notification/NotificationModal";
 import axios from "axios";
 import { useAuth, useUser } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
 
 export default function Roadmap({
   brands,
@@ -62,17 +63,28 @@ export default function Roadmap({
   const { isSignedIn } = useAuth();
   const { user } = useUser();
 
+  const router = useRouter();
   //Handle Check Before Pay
   const handleCheckBeforePay = () => {
     if (!isSignedIn) {
       setNotificationMessage("Vui lòng đăng nhập ");
       setNotificationType("error");
       onOpenChange();
+      return false;
     }
     if (!isCheckedTerms) {
       setNotificationMessage("Vui lòng đồng ý với các điều khoản ");
       setNotificationType("error");
       onOpenChange();
+      return false;
+    }
+    return true;
+  };
+
+  //Handle navigation after check paym
+  const handleNavigation = () => {
+    if (handleCheckBeforePay()) {
+      router.push("/payment");
     }
   };
 
@@ -788,7 +800,7 @@ export default function Roadmap({
                 <ButtonModal />
                 <Button
                   className="my-5 h-16 w-full rounded-xl bg-[#004b8d] py-4 text-[20px] font-bold text-white outline-none hover:scale-105 md:my-0"
-                  onClick={handleCheckBeforePay}
+                  onClick={handleNavigation}
                 >
                   Thanh Toán
                 </Button>
