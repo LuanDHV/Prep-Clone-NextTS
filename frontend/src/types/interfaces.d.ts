@@ -142,9 +142,11 @@ export interface ICoupon {
 }
 
 interface IOrderData {
+  id: string;
   user: IUserOrderData;
   roadMap: IRoadMapOrderData;
   coupon: string | null;
+  paymentMethod?: string;
 }
 interface IUserOrderData {
   fullName: string;

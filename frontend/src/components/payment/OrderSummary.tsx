@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 export default function OrderSummary() {
   const [orderData, setOrderData] = useState<IOrderData | null>(null);
   useEffect(() => {
-    // Get Data From Session Storage
+    // Get data from session storage
     const storedOrderData = sessionStorage.getItem("orderData");
     if (storedOrderData) {
       setOrderData(JSON.parse(storedOrderData));
@@ -35,9 +35,15 @@ export default function OrderSummary() {
           <p className="text-sm font-bold">{orderData.roadMap.name}</p>
         </div>
         <div className="flex items-center justify-between border-t px-2 py-2">
-          <p className="text-sm">Số khóa học</p>
+          <p className="text-sm">Tổng số khóa học</p>
           <p className="text-sm font-bold">
             {orderData.roadMap.details.courses}
+          </p>
+        </div>
+        <div className="flex items-center justify-between border-t px-2 py-2">
+          <p className="text-sm">Thời gian sở hữu khóa học</p>
+          <p className="text-sm font-bold text-red-500">
+            {orderData.roadMap.details.duration}
           </p>
         </div>
         <div className="flex items-center justify-between border-t px-2 py-2">

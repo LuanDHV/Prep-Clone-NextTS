@@ -64,7 +64,7 @@ export default function Roadmap({
   );
   const [isCheckedTerms, setIsCheckedTerms] = useState<boolean>(false);
 
-  //Handle Check Before Pay
+  //Handle check before pay
   const handleCheckBeforePay = () => {
     if (!isSignedIn) {
       setNotificationMessage("Vui lòng đăng nhập ");
@@ -105,7 +105,7 @@ export default function Roadmap({
     }
   };
 
-  // Handle Accordion
+  // Handle accordion
   const handleOpenAccordion = (courseId: string) => {
     setOpenAccordions((prevState) => {
       const isOpen = !prevState[courseId];
