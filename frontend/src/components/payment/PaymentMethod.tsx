@@ -4,8 +4,6 @@ import { useEffect, useState } from "react";
 
 export default function PaymentMethod() {
   const [paymentMethod, setPaymentMethod] = useState<string>("");
-  const [qrCode, setQrCode] = useState<string | null>(null);
-  const [orderId, setOrderId] = useState<string | null>(null);
 
   useEffect(() => {
     const storedOrderData = sessionStorage.getItem("orderData");
@@ -25,37 +23,6 @@ export default function PaymentMethod() {
       orderData.paymentMethod = method;
       sessionStorage.setItem("orderData", JSON.stringify(orderData));
       console.log("Order Data Update: ", orderData);
-
-      if (method === "bank_transfer") {
-        // Create a new order ID and generate QR code
-        const response = await fetch("/api/payment/create-order", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            user: {
-              fullName: orderData.user.fullName,
-              email: orderData.user.email,
-            },
-            roadMap: orderData.roadMap,
-            amount: orderData.roadMap.details.price,
-          }),
-        });
-
-        if (response.ok) {
-          const data = await response.json();
-          setOrderId(data.orderId);
-
-          const qrResponse = await fetch(
-            `/api/payment/generate-qr/${data.orderId}`,
-          );
-          if (qrResponse.ok) {
-            const qrData = await qrResponse.json();
-            setQrCode(qrData.qrCode);
-          }
-        }
-      }
     }
   };
 
@@ -78,11 +45,6 @@ export default function PaymentMethod() {
           </div>
         </label>
         {/* Hiển thị mã QR nếu phương thức thanh toán là bank_transfer */}
-        {paymentMethod === "bank_transfer" && qrCode && (
-          <div className="mt-3 flex justify-center">
-            <img src={qrCode} alt="QR Code" className="max-w-xs" />
-          </div>
-        )}
       </div>
       <div className="my-3 flex flex-col rounded-2xl border-2 p-3">
         <label className="flex w-full cursor-pointer flex-row items-center rounded-xl">
