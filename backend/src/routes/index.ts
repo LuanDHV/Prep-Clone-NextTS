@@ -1,4 +1,4 @@
-//src/routes/index.ts
+// src/routes/index.ts
 import express from "express";
 import aimsRoutes from "./aimsRoutes";
 import brandsRoutes from "./brandsRoutes";
@@ -7,6 +7,7 @@ import slidersRoutes from "./slidersRoutes";
 import benefitsRoutes from "./benefitsRoutes";
 import contentsRoutes from "./contentsRoutes";
 import couponsRoutes from "./couponsRoutes";
+import paymentsRoutes from "./paymentsRoutes";
 
 const router = express.Router();
 
@@ -17,5 +18,6 @@ router.use("/sliders", slidersRoutes);
 router.use("/benefits", benefitsRoutes);
 router.use("/contents", contentsRoutes);
 router.use("/coupons", couponsRoutes);
+router.use("/payments", paymentsRoutes);
 
 export default router;

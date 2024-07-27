@@ -71,10 +71,10 @@ export default function ButtonModal() {
                   orientation="horizontal"
                   className="text-sm font-medium"
                 >
-                  <Radio value="buenos-aires">Học sinh</Radio>
-                  <Radio value="sydney">Người đi làm</Radio>
-                  <Radio value="student">Sinh viên</Radio>
-                  <Radio value="student">Khác</Radio>
+                  <Radio value="hs">Học sinh</Radio>
+                  <Radio value="ndl">Người đi làm</Radio>
+                  <Radio value="sv">Sinh viên</Radio>
+                  <Radio value="k">Khác</Radio>
                 </RadioGroup>
                 <RadioGroup
                   label="Bạn đang quan tâm"

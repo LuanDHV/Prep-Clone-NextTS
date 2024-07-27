@@ -22,7 +22,7 @@ export default function CoursesLayout({
           {/* Header */}
           <section>
             <div
-              className={`grid h-auto w-full grid-flow-row items-center ${content.bgBanner} justify-items-center px-5 py-10 md:px-10 lg:grid-flow-col`}
+              className={`grid h-screen w-full grid-flow-row items-center ${content.bgBanner} justify-items-center px-5 py-10 md:px-10 lg:grid-flow-col`}
               key={content._id}
             >
               <div className="text-center font-bold text-black lg:text-start">
