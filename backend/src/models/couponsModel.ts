@@ -1,15 +1,15 @@
 // src/models/couponsModel.ts
 import mongoose, { Model, Schema } from "mongoose";
-import { ICoupon } from "../types/interface";
+import { ICoupons } from "../types/interface";
 
-const CouponSchema: Schema<ICoupon> = new mongoose.Schema({
+const CouponsSchema: Schema<ICoupons> = new mongoose.Schema({
   code: { type: String, required: true, unique: true },
   discountPercentage: { type: Number, required: true },
 });
 
-const CouponModel: Model<ICoupon> = mongoose.model<ICoupon>(
-  "Coupon",
-  CouponSchema
+const CouponsModel: Model<ICoupons> = mongoose.model<ICoupons>(
+  "Coupons",
+  CouponsSchema
 );
 
-export default CouponModel;
+export default CouponsModel;

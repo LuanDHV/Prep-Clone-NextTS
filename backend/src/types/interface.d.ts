@@ -59,7 +59,29 @@ export interface IContents {
   text11: string;
 }
 
-export interface ICoupon {
+export interface ICoupons {
   code: string;
   discountPercentage: number;
+}
+
+export interface IPayments {
+  app_id: string;
+  app_trans_id: string;
+  app_user: string;
+  app_time: number;
+  expire_duration_seconds?: number;
+  amount: number;
+  item: string;
+  description: string;
+  embed_data: string;
+  bank_code: string;
+  mac?: string;
+  callback_url: string;
+  device_info?: string;
+  sub_app_id?: string;
+  title?: string;
+  currency?: string;
+  phone?: string;
+  email?: string;
+  address?: string;
 }

@@ -1,7 +1,7 @@
 // src/controllers/couponsController.ts
 import { Request, Response } from "express";
 import CouponModel from "../models/couponsModel";
-import { ICoupon } from "../types/interface";
+import { ICoupons } from "../types/interface";
 
 // Get all coupons
 export const getAllCoupons = async (req: Request, res: Response) => {
@@ -29,7 +29,7 @@ export const getCouponByCode = async (req: Request, res: Response) => {
 
 // Create a new coupon
 export const createCoupon = async (req: Request, res: Response) => {
-  const couponData: ICoupon = req.body;
+  const couponData: ICoupons = req.body;
   try {
     const newCoupon = await CouponModel.create(couponData);
     res.status(201).json(newCoupon);
@@ -41,7 +41,7 @@ export const createCoupon = async (req: Request, res: Response) => {
 // Update coupon details by code
 export const updateCoupon = async (req: Request, res: Response) => {
   const { code } = req.params;
-  const couponData: ICoupon = req.body;
+  const couponData: ICoupons = req.body;
   try {
     const updatedCoupon = await CouponModel.findOneAndUpdate(
       { code },
