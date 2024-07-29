@@ -169,23 +169,35 @@ export default function Roadmap({
     // console.log("Áp dụng mã coupon:", couponCode);
   };
 
-  //Effect to handle roadmap calculation on selected brand or aim change
+  // Effect to handle roadmap calculation on selected brand or aim change
   useEffect(() => {
+    const savedSelectedBrand = sessionStorage.getItem("selectedBrand");
+    const savedSelectedAim = sessionStorage.getItem("selectedAim");
+
+    if (savedSelectedBrand && savedSelectedAim) {
+      setSelectedBrand(savedSelectedBrand);
+      setSelectedAim(savedSelectedAim);
+      handleRoadMap(savedSelectedBrand, savedSelectedAim);
+    }
+  }, []);
+
+  useEffect(() => {
+    // Save data to sessionStorage
+    sessionStorage.setItem("selectedBrand", selectedBrand);
+    sessionStorage.setItem("selectedAim", selectedAim);
     handleRoadMap(selectedBrand, selectedAim);
   }, [selectedBrand, selectedAim]);
 
-  // Handle brand selection change
   const handleBrandChange = (courseType: string, brand: string) => {
     const selectedBrand = `${courseType} ${brand}`;
     setSelectedBrand(selectedBrand);
-    // console.log("Brand:", selectedBrand);
+    // console.log("Brand changed to:", selectedBrand);
   };
 
-  // Handle aim selection change
   const handleAimChange = (courseType: string, aim: string) => {
     const selectedAim = `${courseType} ${aim}`;
     setSelectedAim(selectedAim);
-    // console.log("Aim:", selectedAim);
+    // console.log("Aim changed to:", selectedAim);
   };
 
   // Handle notifications
