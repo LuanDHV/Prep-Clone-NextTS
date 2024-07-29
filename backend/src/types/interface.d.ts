@@ -90,3 +90,16 @@ interface ICreateStatusResult {
   return_code: number;
   return_message: string;
 }
+
+export interface IOrders {
+  amount: number;
+  fullName: string;
+  email: string;
+  roadMapName: string;
+  courses: number;
+  duration: string;
+  coupon: string;
+  app_trans_id: string;
+  app_time: number;
+  status: string; // e.g., "pending", "completed"
+}

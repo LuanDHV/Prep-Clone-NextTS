@@ -8,6 +8,7 @@ import benefitsRoutes from "./benefitsRoutes";
 import contentsRoutes from "./contentsRoutes";
 import couponsRoutes from "./couponsRoutes";
 import paymentsRoutes from "./paymentsRoutes";
+import ordersRoutes from "./ordersRoutes";
 
 const router = express.Router();
 
@@ -19,5 +20,6 @@ router.use("/benefits", benefitsRoutes);
 router.use("/contents", contentsRoutes);
 router.use("/coupons", couponsRoutes);
 router.use("/payments", paymentsRoutes);
+router.use("/orders", ordersRoutes);
 
 export default router;
