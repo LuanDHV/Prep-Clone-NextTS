@@ -96,10 +96,9 @@ export interface IOrders {
   fullName: string;
   email: string;
   roadMapName: string;
-  courses: number;
+  courses: string;
   duration: string;
   coupon: string;
   app_trans_id: string;
-  app_time: number;
   status: string; // e.g., "pending", "completed"
 }

@@ -5,6 +5,7 @@ import moment from "moment";
 import dotenv from "dotenv";
 import qs from "qs";
 import { ICreateStatusResult, IPayments } from "../types/interface";
+import OrdersModel from "../models/ordersModel";
 // Load environment variables
 dotenv.config();
 
@@ -39,7 +40,6 @@ export const createOrder = async (req: Request, res: Response) => {
   const transID = Math.floor(Math.random() * 1000000);
 
   const description = `
-  ZaloPay - Thanh toán cho đơn hàng #${transID}
   - Họ và tên: ${fullName}
   - Email: ${email}
   - Lộ trình: ${roadMapName}
@@ -82,6 +82,21 @@ export const createOrder = async (req: Request, res: Response) => {
   try {
     // Send a POST request to ZaloPay endpoint with order details
     const result = await axios.post(config.endpoint, null, { params: order });
+
+    //Save order to database with status "Chưa thanh toán"
+    const newOrder = {
+      amount,
+      fullName,
+      email,
+      roadMapName,
+      courses,
+      duration,
+      coupon,
+      app_trans_id: order.app_trans_id,
+      status: "Chưa thanh toán",
+    };
+
+    await OrdersModel.create(newOrder);
 
     // Return order_url data to the client
     const { order_url } = result.data;

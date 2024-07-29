@@ -22,7 +22,6 @@ export const createOrder = async (req: Request, res: Response) => {
     duration,
     coupon,
     app_trans_id: `${moment().format("YYMMDD")}_${transID}`,
-    app_time: Date.now(),
     status: "pending",
   };
 
