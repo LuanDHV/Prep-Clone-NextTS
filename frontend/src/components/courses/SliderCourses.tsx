@@ -28,7 +28,6 @@ export default function SliderCourses({ sliders }: ICoursesLayout) {
             height={400}
             className="mx-auto mb-[50px] object-cover"
             layout="responsive"
-            loading="lazy"
           />
         </SwiperSlide>
       ))}

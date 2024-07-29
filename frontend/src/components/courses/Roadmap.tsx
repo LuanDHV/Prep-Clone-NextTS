@@ -51,8 +51,8 @@ export default function Roadmap({
     period: "",
   });
   const [roadMapCourses, setRoadMapCourses] = useState<ICourses[]>([]);
-  const [notificationMessage, setNotificationMessage] = useState<string>("");
   const [discountPercentage, setDiscountPercentage] = useState<number>(0);
+  const [notificationMessage, setNotificationMessage] = useState<string>("");
   const [notificationType, setNotificationType] = useState<"success" | "error">(
     "error",
   );

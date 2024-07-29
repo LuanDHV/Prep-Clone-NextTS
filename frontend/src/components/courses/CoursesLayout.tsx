@@ -136,7 +136,6 @@ export default function CoursesLayout({
                   width={320}
                   height={230}
                   layout="responsive"
-                  loading="lazy"
                   className="object-cover"
                 />
               </div>

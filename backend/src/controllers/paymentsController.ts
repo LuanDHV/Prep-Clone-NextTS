@@ -4,14 +4,9 @@ import CryptoJS from "crypto-js";
 import moment from "moment";
 import dotenv from "dotenv";
 import qs from "qs";
-import { IPayments } from "../types/interface";
+import { ICreateStatusResult, IPayments } from "../types/interface";
 // Load environment variables
 dotenv.config();
-
-interface ICreateStatusResult {
-  return_code: number;
-  return_message: string;
-}
 
 // Configuration for ZaloPay
 const config = {
@@ -22,23 +17,45 @@ const config = {
 };
 
 export const createOrder = async (req: Request, res: Response) => {
+  const { amount, fullName, email, roadMapName, courses, duration, coupon } =
+    req.body;
+
   const embed_data = {
     redirecturl: "http://localhost:3000", // Redirect URL after payment
   };
 
-  const items = [{}];
+  const items = [
+    {
+      fullName,
+      email,
+      roadMapName,
+      courses,
+      duration,
+      coupon,
+    },
+  ];
 
   // Generate a unique transaction ID
   const transID = Math.floor(Math.random() * 1000000);
+
+  const description = `
+  ZaloPay - Thanh toán cho đơn hàng #${transID}
+  - Họ và tên: ${fullName}
+  - Email: ${email}
+  - Lộ trình: ${roadMapName}
+  - Tổng số khóa học: ${courses}
+  - Thời gian sở hữu khóa học: ${duration}
+  - Mã giảm giá: ${coupon}
+`;
 
   const order: IPayments = {
     app_id: config.appid,
     app_trans_id: `${moment().format("YYMMDD")}_${transID}`,
     app_user: "user123",
     app_time: Date.now(),
-    amount: 50000,
+    amount,
     item: JSON.stringify(items),
-    description: `Payment for the order #${transID}`,
+    description: description,
     embed_data: JSON.stringify(embed_data),
     bank_code: "",
     callback_url:
@@ -66,8 +83,12 @@ export const createOrder = async (req: Request, res: Response) => {
     // Send a POST request to ZaloPay endpoint with order details
     const result = await axios.post(config.endpoint, null, { params: order });
 
+    // Return order_url data to the client
+    const { order_url } = result.data;
+    return res.status(200).json({ order_url });
+
     // Return the response data to the client
-    return res.status(200).json(result.data);
+    // return res.status(200).json(result.data);
   } catch (error) {
     console.log(error);
   }
@@ -118,7 +139,7 @@ export const createStatus = async (req: Request, res: Response) => {
   res.json(result);
 };
 
-export const orderStatus = async (req: Request, res: Response) => {
+export const getOrderStatus = async (req: Request, res: Response) => {
   const { app_trans_id } = req.body;
 
   let postData: { app_id: string; app_trans_id: string; mac?: string } = {
@@ -131,7 +152,7 @@ export const orderStatus = async (req: Request, res: Response) => {
 
   let postConfig = {
     method: "post",
-    url: "https://sb-openapi.zalopay.vn/v2/query",
+    url: process.env.ZALOPAY_ORDER_STATUS_ENDPOINT!,
     headers: {
       "Content-Type": "application/x-www-form-urlencoded",
     },

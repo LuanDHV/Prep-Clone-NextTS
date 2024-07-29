@@ -1,5 +1,3 @@
-import exp from "constants";
-
 export interface ISubMenu {
   title: string;
   href: string;
@@ -141,19 +139,24 @@ export interface ICoupon {
   discountPercentage: number;
 }
 
-interface IOrderData {
+export interface IOrderData {
   id: string;
   user: IUserOrderData;
   roadMap: IRoadMapOrderData;
   coupon: string | null;
   paymentMethod?: string;
 }
-interface IUserOrderData {
+export interface IUserOrderData {
   fullName: string;
   email: string;
 }
-interface IRoadMapOrderData {
+export interface IRoadMapOrderData {
   name: string;
   details: IRoadMapDetails;
   courses: ICourses[];
+}
+
+export interface IPaymentMethodProps {
+  selectedPaymentMethod: string;
+  onSelect: (value: string) => void;
 }

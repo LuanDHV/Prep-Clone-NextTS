@@ -85,3 +85,8 @@ export interface IPayments {
   email?: string;
   address?: string;
 }
+
+interface ICreateStatusResult {
+  return_code: number;
+  return_message: string;
+}

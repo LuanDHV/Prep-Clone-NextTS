@@ -15,7 +15,6 @@ export default function AuthLayout({
               alt="decor"
               width={300}
               height={200}
-              loading="lazy"
               className="object-cover"
             />
             <h3 className="mt-3 text-[40px] font-extrabold text-blue-500">

@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post("/create-order", paymentsController.createOrder);
 router.post("/create-status", paymentsController.createStatus);
-router.post("/order-status", paymentsController.orderStatus);
+router.post("/order-status", paymentsController.getOrderStatus);
 
 export default router;
