@@ -1,3 +1,4 @@
+// src/controllers/paymentsController.ts
 import { Request, Response } from "express";
 import axios from "axios";
 import CryptoJS from "crypto-js";
@@ -6,6 +7,7 @@ import dotenv from "dotenv";
 import qs from "qs";
 import { ICreateStatusResult, IPayments } from "../types/interface";
 import OrdersModel from "../models/ordersModel";
+
 // Load environment variables
 dotenv.config();
 
@@ -15,11 +17,20 @@ const config = {
   key1: process.env.ZALOPAY_KEY1!,
   key2: process.env.ZALOPAY_KEY2!,
   endpoint: process.env.ZALOPAY_ENDPOINT!,
+  ngrok: process.env.NGROK_URI!,
 };
 
 export const createOrder = async (req: Request, res: Response) => {
-  const { amount, fullName, email, roadMapName, courses, duration, coupon } =
-    req.body;
+  const {
+    amount,
+    fullName,
+    email,
+    roadMapName,
+    totalCourses,
+    duration,
+    coupon,
+    courses,
+  } = req.body;
 
   const embed_data = {
     redirecturl: "http://localhost:3000", // Redirect URL after payment
@@ -30,7 +41,7 @@ export const createOrder = async (req: Request, res: Response) => {
       fullName,
       email,
       roadMapName,
-      courses,
+      totalCourses,
       duration,
       coupon,
     },
@@ -43,7 +54,7 @@ export const createOrder = async (req: Request, res: Response) => {
   - Họ và tên: ${fullName}
   - Email: ${email}
   - Lộ trình: ${roadMapName}
-  - Tổng số khóa học: ${courses}
+  - Tổng số khóa học: ${totalCourses}
   - Thời gian sở hữu khóa học: ${duration}
   - Mã giảm giá: ${coupon}
 `;
@@ -58,8 +69,7 @@ export const createOrder = async (req: Request, res: Response) => {
     description: description,
     embed_data: JSON.stringify(embed_data),
     bank_code: "",
-    callback_url:
-      "https://2d7c-2402-800-6296-778a-8c16-77d4-ba07-55a6.ngrok-free.app/api/payments/create-status",
+    callback_url: `${config.ngrok}/api/payments/create-status`,
   };
 
   // Generate HMAC signature for the order
@@ -88,9 +98,10 @@ export const createOrder = async (req: Request, res: Response) => {
       fullName,
       email,
       roadMapName,
-      courses,
+      totalCourses,
       duration,
       coupon,
+      courses,
       app_trans_id: order.app_trans_id,
       status: "Chưa thanh toán",
     };
@@ -140,7 +151,7 @@ export const createStatus = async (req: Request, res: Response) => {
 
       // Optionally, send a request to your order status API to confirm the update
       const orderStatus = await axios.post(
-        `https://2d7c-2402-800-6296-778a-8c16-77d4-ba07-55a6.ngrok-free.app/api/payments/order-status/${dataJson["app_trans_id"]}`
+        `${config.ngrok}/api/payments/order-status/${dataJson["app_trans_id"]}`
       );
     }
   } catch (ex) {

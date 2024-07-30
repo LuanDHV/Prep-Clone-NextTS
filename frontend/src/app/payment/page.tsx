@@ -46,9 +46,10 @@ export default function Payment() {
             fullName: orderData.user.fullName,
             email: orderData.user.email,
             roadMapName: orderData.roadMap.name,
-            courses: orderData.roadMap.details.courses,
+            totalCourses: orderData.roadMap.details.courses,
             duration: orderData.roadMap.details.duration,
             coupon: orderData.coupon,
+            courses: orderData.roadMap.courses,
           },
         );
 

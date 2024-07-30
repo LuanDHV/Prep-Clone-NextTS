@@ -1,3 +1,4 @@
+import { ObjectId } from "mongoose";
 export interface IAims {
   courseType: string;
   aim: string;
@@ -16,6 +17,7 @@ export interface ILessons {
 }
 
 export interface ICourses {
+  _id: ObjectId;
   courseType: string;
   title: string;
   description: string;
@@ -96,9 +98,10 @@ export interface IOrders {
   fullName: string;
   email: string;
   roadMapName: string;
-  courses: string;
+  totalCourses: string;
   duration: string;
   coupon: string;
   app_trans_id: string;
-  status: string; // e.g., "pending", "completed"
+  courses: ObjectId[];
+  status: string;
 }

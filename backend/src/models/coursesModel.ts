@@ -1,4 +1,4 @@
-//src/models/coursesModel.ts
+// src/models/coursesModel.ts
 import mongoose, { Model, Schema } from "mongoose";
 import { ICourses, ILessons } from "../types/interface";
 

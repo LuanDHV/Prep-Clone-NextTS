@@ -1,5 +1,3 @@
-// src/controllers/ordersController.ts
-
 import { Request, Response } from "express";
 import OrderModel from "../models/ordersModel";
 import { IOrders } from "../types/interface";
@@ -7,8 +5,16 @@ import moment from "moment";
 
 // Create a new order
 export const createOrder = async (req: Request, res: Response) => {
-  const { amount, fullName, email, roadMapName, courses, duration, coupon } =
-    req.body;
+  const {
+    amount,
+    fullName,
+    email,
+    roadMapName,
+    totalCourses,
+    courses,
+    duration,
+    coupon,
+  } = req.body;
 
   // Generate unique transaction ID
   const transID = Math.floor(Math.random() * 1000000);
@@ -18,11 +24,12 @@ export const createOrder = async (req: Request, res: Response) => {
     fullName,
     email,
     roadMapName,
-    courses,
+    totalCourses,
     duration,
     coupon,
+    courses,
     app_trans_id: `${moment().format("YYMMDD")}_${transID}`,
-    status: "pending",
+    status: "Chưa thanh toán",
   };
 
   try {
@@ -36,7 +43,7 @@ export const createOrder = async (req: Request, res: Response) => {
 // Get all orders
 export const getAllOrders = async (req: Request, res: Response) => {
   try {
-    const orders = await OrderModel.find();
+    const orders = await OrderModel.find().populate("courses");
     res.status(200).json(orders);
   } catch (error: any) {
     res.status(500).json({ message: error.message });
@@ -47,7 +54,7 @@ export const getAllOrders = async (req: Request, res: Response) => {
 export const getOrderById = async (req: Request, res: Response) => {
   const { id } = req.params;
   try {
-    const order = await OrderModel.findById(id);
+    const order = await OrderModel.findById(id).populate("courses");
     if (!order) {
       return res.status(404).json({ message: "Order not found" });
     }
@@ -66,7 +73,7 @@ export const updateOrderStatus = async (req: Request, res: Response) => {
       id,
       { status },
       { new: true }
-    );
+    ).populate("courses");
     if (!updatedOrder) {
       return res.status(404).json({ message: "Order not found to update" });
     }

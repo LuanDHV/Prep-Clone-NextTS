@@ -1,5 +1,4 @@
 // src/models/ordesrModel.ts
-
 import mongoose, { Model, Schema } from "mongoose";
 import { IOrders } from "../types/interface";
 
@@ -9,9 +8,10 @@ const OrdersSchema: Schema<IOrders> = new mongoose.Schema(
     fullName: { type: String, required: true },
     email: { type: String, required: true },
     roadMapName: { type: String, required: true },
-    courses: { type: String, required: true },
+    totalCourses: { type: String, required: true },
     duration: { type: String, required: true },
     coupon: { type: String },
+    courses: [{ type: mongoose.Schema.Types.ObjectId, ref: "Courses" }],
     app_trans_id: { type: String, required: true },
     status: { type: String },
   },
