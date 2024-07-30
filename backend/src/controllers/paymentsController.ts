@@ -59,7 +59,7 @@ export const createOrder = async (req: Request, res: Response) => {
     embed_data: JSON.stringify(embed_data),
     bank_code: "",
     callback_url:
-      "https://7f73-2402-800-6296-778a-a46e-eabe-44-92f9.ngrok-free.app/api/payments/create-status",
+      "https://2d7c-2402-800-6296-778a-8c16-77d4-ba07-55a6.ngrok-free.app/api/payments/create-status",
   };
 
   // Generate HMAC signature for the order
@@ -82,7 +82,7 @@ export const createOrder = async (req: Request, res: Response) => {
   try {
     // Send a POST request to ZaloPay endpoint with order details
     const result = await axios.post(config.endpoint, null, { params: order });
-    // Save order to database with status "pending"
+    // Save order to database with status "Chưa thanh toán"
     const newOrder = {
       amount,
       fullName,
@@ -92,7 +92,7 @@ export const createOrder = async (req: Request, res: Response) => {
       duration,
       coupon,
       app_trans_id: order.app_trans_id,
-      status: "pending",
+      status: "Chưa thanh toán",
     };
     await OrdersModel.create(newOrder);
 
@@ -109,6 +109,7 @@ export const createStatus = async (req: Request, res: Response) => {
     return_code: 0,
     return_message: "",
   };
+  console.log(req.body);
 
   try {
     let dataStr = req.body.data; // Data from the callback
@@ -131,32 +132,16 @@ export const createStatus = async (req: Request, res: Response) => {
         dataJson["app_trans_id"]
       );
 
-      // Check the payment status using order-status API
-      const orderStatus = await axios.post(
-        `https://7f73-2402-800-6296-778a-a46e-eabe-44-92f9.ngrok-free.app/api/payments/order-status/${dataJson["app_trans_id"]}`
+      // Update order status in the database
+      await OrdersModel.updateOne(
+        { app_trans_id: dataJson["app_trans_id"] },
+        { status: "Đã thanh toán thành công" }
       );
 
-      if (orderStatus.data.return_code === 1) {
-        // Payment success
-        result.return_code = 1;
-        result.return_message = "success";
-
-        // Update order status in the database
-        await OrdersModel.updateOne(
-          { app_trans_id: dataJson["app_trans_id"] },
-          { status: "success" }
-        );
-      } else {
-        // Payment failed
-        result.return_code = -1;
-        result.return_message = "failed";
-
-        // Update order status in the database
-        await OrdersModel.updateOne(
-          { app_trans_id: dataJson["app_trans_id"] },
-          { status: "failed" }
-        );
-      }
+      // Optionally, send a request to your order status API to confirm the update
+      const orderStatus = await axios.post(
+        `https://2d7c-2402-800-6296-778a-8c16-77d4-ba07-55a6.ngrok-free.app/api/payments/order-status/${dataJson["app_trans_id"]}`
+      );
     }
   } catch (ex) {
     if (ex instanceof Error) {

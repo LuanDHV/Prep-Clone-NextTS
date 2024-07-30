@@ -11,7 +11,7 @@ const OrdersSchema: Schema<IOrders> = new mongoose.Schema(
     roadMapName: { type: String, required: true },
     courses: { type: String, required: true },
     duration: { type: String, required: true },
-    coupon: { type: String, default: "Không" },
+    coupon: { type: String },
     app_trans_id: { type: String, required: true },
     status: { type: String },
   },
