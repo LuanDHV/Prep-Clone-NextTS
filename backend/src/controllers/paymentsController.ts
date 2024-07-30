@@ -59,7 +59,7 @@ export const createOrder = async (req: Request, res: Response) => {
     embed_data: JSON.stringify(embed_data),
     bank_code: "",
     callback_url:
-      "https://0f7c-2402-800-6296-778a-9a5-c2c2-6edf-c142.ngrok-free.app",
+      "https://7f73-2402-800-6296-778a-a46e-eabe-44-92f9.ngrok-free.app/api/payments/create-status",
   };
 
   // Generate HMAC signature for the order
@@ -82,8 +82,7 @@ export const createOrder = async (req: Request, res: Response) => {
   try {
     // Send a POST request to ZaloPay endpoint with order details
     const result = await axios.post(config.endpoint, null, { params: order });
-
-    //Save order to database with status "Chưa thanh toán"
+    // Save order to database with status "pending"
     const newOrder = {
       amount,
       fullName,
@@ -93,17 +92,13 @@ export const createOrder = async (req: Request, res: Response) => {
       duration,
       coupon,
       app_trans_id: order.app_trans_id,
-      status: "Chưa thanh toán",
+      status: "pending",
     };
-
     await OrdersModel.create(newOrder);
 
     // Return order_url data to the client
     const { order_url } = result.data;
     return res.status(200).json({ order_url });
-
-    // Return the response data to the client
-    // return res.status(200).json(result.data);
   } catch (error) {
     console.log(error);
   }
@@ -130,15 +125,38 @@ export const createStatus = async (req: Request, res: Response) => {
       result.return_message = "mac not equal";
     } else {
       // Payment success
-      // Update the order status
       let dataJson = JSON.parse(dataStr);
       console.log(
         "update order's status = success where app_trans_id =",
         dataJson["app_trans_id"]
       );
 
-      result.return_code = 1;
-      result.return_message = "success";
+      // Check the payment status using order-status API
+      const orderStatus = await axios.post(
+        `https://7f73-2402-800-6296-778a-a46e-eabe-44-92f9.ngrok-free.app/api/payments/order-status/${dataJson["app_trans_id"]}`
+      );
+
+      if (orderStatus.data.return_code === 1) {
+        // Payment success
+        result.return_code = 1;
+        result.return_message = "success";
+
+        // Update order status in the database
+        await OrdersModel.updateOne(
+          { app_trans_id: dataJson["app_trans_id"] },
+          { status: "success" }
+        );
+      } else {
+        // Payment failed
+        result.return_code = -1;
+        result.return_message = "failed";
+
+        // Update order status in the database
+        await OrdersModel.updateOne(
+          { app_trans_id: dataJson["app_trans_id"] },
+          { status: "failed" }
+        );
+      }
     }
   } catch (ex) {
     if (ex instanceof Error) {
@@ -155,7 +173,7 @@ export const createStatus = async (req: Request, res: Response) => {
 };
 
 export const getOrderStatus = async (req: Request, res: Response) => {
-  const { app_trans_id } = req.body;
+  const { app_trans_id } = req.params;
 
   let postData: { app_id: string; app_trans_id: string; mac?: string } = {
     app_id: config.appid,
