@@ -17,7 +17,6 @@ const config = {
   key1: process.env.ZALOPAY_KEY1!,
   key2: process.env.ZALOPAY_KEY2!,
   endpoint: process.env.ZALOPAY_ENDPOINT!,
-  ngrok: process.env.NGROK_URI!,
 };
 
 export const createOrder = async (req: Request, res: Response) => {
@@ -69,7 +68,7 @@ export const createOrder = async (req: Request, res: Response) => {
     description: description,
     embed_data: JSON.stringify(embed_data),
     bank_code: "",
-    callback_url: `${config.ngrok}/api/payments/create-status`,
+    callback_url: `${process.env.NGROK_ENDPOINT}/api/payments/create-status`,
   };
 
   // Generate HMAC signature for the order
@@ -151,8 +150,9 @@ export const createStatus = async (req: Request, res: Response) => {
 
       // Optionally, send a request to your order status API to confirm the update
       const orderStatus = await axios.post(
-        `${config.ngrok}/api/payments/order-status/${dataJson["app_trans_id"]}`
+        `${process.env.NGROK_ENDPOINT}/api/payments/order-status/${dataJson["app_trans_id"]}`
       );
+      console.log(config.appid);
     }
   } catch (ex) {
     if (ex instanceof Error) {
