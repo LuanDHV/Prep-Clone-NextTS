@@ -21,7 +21,7 @@ const config = {
 
 export const createOrder = async (req: Request, res: Response) => {
   const {
-    amount,
+    userId,
     fullName,
     email,
     roadMapName,
@@ -29,22 +29,14 @@ export const createOrder = async (req: Request, res: Response) => {
     duration,
     coupon,
     courses,
+    amount,
   } = req.body;
 
   const embed_data = {
     redirecturl: "http://localhost:3000", // Redirect URL after payment
   };
 
-  const items = [
-    {
-      fullName,
-      email,
-      roadMapName,
-      totalCourses,
-      duration,
-      coupon,
-    },
-  ];
+  const items = [{}];
 
   // Generate a unique transaction ID
   const transID = Math.floor(Math.random() * 1000000);
@@ -93,7 +85,7 @@ export const createOrder = async (req: Request, res: Response) => {
     const result = await axios.post(config.endpoint, null, { params: order });
     // Save order to database with status "Chưa thanh toán"
     const newOrder = {
-      amount,
+      userId,
       fullName,
       email,
       roadMapName,
@@ -101,6 +93,7 @@ export const createOrder = async (req: Request, res: Response) => {
       duration,
       coupon,
       courses,
+      amount,
       app_trans_id: order.app_trans_id,
       status: "Chưa thanh toán",
     };

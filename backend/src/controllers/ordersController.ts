@@ -6,21 +6,22 @@ import moment from "moment";
 // Create a new order
 export const createOrder = async (req: Request, res: Response) => {
   const {
-    amount,
+    userId,
     fullName,
     email,
     roadMapName,
     totalCourses,
-    courses,
     duration,
     coupon,
+    courses,
+    amount,
   } = req.body;
 
   // Generate unique transaction ID
   const transID = Math.floor(Math.random() * 1000000);
 
   const orderData: IOrders = {
-    amount,
+    userId,
     fullName,
     email,
     roadMapName,
@@ -28,6 +29,7 @@ export const createOrder = async (req: Request, res: Response) => {
     duration,
     coupon,
     courses,
+    amount,
     app_trans_id: `${moment().format("YYMMDD")}_${transID}`,
     status: "Chưa thanh toán",
   };

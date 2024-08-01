@@ -5,8 +5,10 @@ import { IOrderData } from "@/types/interfaces";
 import { useDisclosure } from "@nextui-org/modal";
 import NotificationModal from "@/components/notification/ModalNotification";
 import Image from "next/image";
+import { useUser } from "@clerk/nextjs";
 
 export default function Payment() {
+  const { user } = useUser();
   const { isOpen, onOpenChange } = useDisclosure();
   const [orderData, setOrderData] = useState<IOrderData | null>(null);
   const [paymentMethod, setPaymentMethod] = useState<string | null>(null);
@@ -31,7 +33,7 @@ export default function Payment() {
       return false;
     }
 
-    if (orderData) {
+    if (orderData && user) {
       try {
         // Convert quantity from character string to integer
         const amount = parseInt(
@@ -42,7 +44,7 @@ export default function Payment() {
         const response = await axios.post(
           "http://localhost:5000/api/payments/create-order",
           {
-            amount,
+            userId: user.id,
             fullName: orderData.user.fullName,
             email: orderData.user.email,
             roadMapName: orderData.roadMap.name,
@@ -50,6 +52,7 @@ export default function Payment() {
             duration: orderData.roadMap.details.duration,
             coupon: orderData.coupon,
             courses: orderData.roadMap.courses,
+            amount,
           },
         );
 

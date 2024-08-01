@@ -94,13 +94,14 @@ interface ICreateStatusResult {
 }
 
 export interface IOrders {
-  amount: number;
+  userId: string;
   fullName: string;
   email: string;
   roadMapName: string;
   totalCourses: string;
   duration: string;
   coupon: string;
+  amount: number;
   app_trans_id: string;
   courses: ObjectId[];
   status: string;
