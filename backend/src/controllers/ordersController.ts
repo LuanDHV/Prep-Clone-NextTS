@@ -98,3 +98,21 @@ export const deleteOrder = async (req: Request, res: Response) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+// Get courses by UserId
+export const getUserPaidCourses = async (req: Request, res: Response) => {
+  const { userId } = req.params;
+  try {
+    const orders = await OrderModel.find({
+      userId,
+      status: "Đã thanh toán thành công",
+    }).populate("courses");
+    if (!orders.length) {
+      return res.status(404).json({ message: "Bạn chưa sở hữu khóa học nào" });
+    }
+    const courses = orders.flatMap((order) => order.courses);
+    res.status(200).json(courses);
+  } catch (error: any) {
+    res.status(500).json({ message: error.message });
+  }
+};

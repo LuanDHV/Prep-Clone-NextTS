@@ -4,7 +4,7 @@ import { IOrders } from "../types/interface";
 
 const OrdersSchema: Schema<IOrders> = new mongoose.Schema(
   {
-    userId: { type: mongoose.Schema.Types.String, ref: "User", required: true },
+    userId: { type: String, required: true },
     fullName: { type: String, required: true },
     email: { type: String, required: true },
     roadMapName: { type: String, required: true },

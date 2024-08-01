@@ -10,5 +10,6 @@ router.get("/:id", orderController.getOrderById);
 router.post("/", orderController.createOrder);
 router.put("/:id/status", orderController.updateOrderStatus);
 router.delete("/:id", orderController.deleteOrder);
+router.get("/user-courses/:userId", orderController.getUserPaidCourses);
 
 export default router;
