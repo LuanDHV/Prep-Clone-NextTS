@@ -33,21 +33,23 @@ export default function LearningDashboard() {
   }
 
   return (
-    <div>
-      <h1>Khóa học của tôi</h1>
-      {courses.length > 0 ? (
-        <ul>
-          {courses.map((course) => (
-            <li key={course._id}>
-              <img src={course.image} alt={course.name} width="150" />
-              <h2>{course.name}</h2>
-              <p>{course.description}</p>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>Chưa có khóa học nào.</p>
-      )}
-    </div>
+    <>
+      <div className="h-[2000px]">
+        <h1>Khóa học của tôi</h1>
+        {courses.length > 0 ? (
+          <ul>
+            {courses.map((course) => (
+              <li key={course._id}>
+                <img src={course.image} alt={course.name} width="150" />
+                <h2>{course.name}</h2>
+                <p>{course.description}</p>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>Bạn chưa sở hữu khóa học nào.</p>
+        )}
+      </div>
+    </>
   );
 }

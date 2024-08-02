@@ -89,10 +89,11 @@ export default function Header() {
       <section>
         <div className="flex h-[60px] w-full items-center justify-between bg-white px-5 py-2.5 shadow md:px-10">
           <div className="flex items-center">
-            <button className="p-2 pl-0 lg:hidden" onClick={toggleMenu}>
-              <FontAwesomeIcon icon={faBars} />
-            </button>
-
+            <FontAwesomeIcon
+              icon={faBars}
+              className="cursor-pointer p-2 pl-0 lg:hidden"
+              onClick={toggleMenu}
+            />
             <Link href="/">
               <Image
                 src="/imgs/header/logo.svg"
@@ -106,8 +107,8 @@ export default function Header() {
           {isSignedIn ? (
             <div className="z-10 flex justify-end gap-3">
               <Link
-                href="#"
-                className="flex h-[40px] w-[100px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
+                href="learning-dashboard"
+                className="flex h-10 w-[100px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
               >
                 Bắt đầu học
               </Link>
@@ -116,7 +117,7 @@ export default function Header() {
           ) : (
             <Link
               href="sign-in"
-              className="z-10 flex h-[40px] w-[75px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
+              className="z-10 flex h-10 w-[75px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
             >
               Bắt đầu
             </Link>
@@ -172,7 +173,7 @@ export default function Header() {
                 <Link href={item.href || "#"}>
                   <span className="group relative inline-block duration-500 ease-in-out hover:text-xl hover:text-[#1479f4] lg:hover:text-base">
                     {item.title}
-                    <span className="absolute bottom-0 left-0 block h-[4px] w-full origin-left scale-x-0 bg-[#1479f4] transition-transform duration-500 ease-in-out group-hover:scale-x-100"></span>
+                    <span className="absolute bottom-0 left-0 block h-1 w-full origin-left scale-x-0 bg-[#1479f4] transition-transform duration-500 ease-in-out group-hover:scale-x-100"></span>
                   </span>
                 </Link>
               )}
