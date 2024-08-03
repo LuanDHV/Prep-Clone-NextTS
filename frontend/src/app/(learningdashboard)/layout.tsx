@@ -12,6 +12,11 @@ export default function LearningDashboardLayout({
   children: React.ReactNode;
 }) {
   const [activeNavbar, setActiveNavbar] = useState<string>("");
+  const [openNabar, setOpenNabar] = useState<boolean>(true);
+
+  const handleOpenNavbar = () => {
+    setOpenNabar(!openNabar);
+  };
 
   const active = [
     {
@@ -54,7 +59,11 @@ export default function LearningDashboardLayout({
     <div className="flex h-screen">
       <div className="fixed left-0 top-0 z-10 flex h-[66px] w-full items-center justify-between border-b-[2px] border-neutral-200 bg-white px-8 py-3">
         <div className="flex cursor-pointer items-center gap-5">
-          <FontAwesomeIcon icon={faBars} className="h-6 w-6" />
+          <FontAwesomeIcon
+            icon={faBars}
+            className="h-6 w-6"
+            onClick={handleOpenNavbar}
+          />
           <Link href="/">
             <Image
               src="/imgs/header/logo.svg"
@@ -68,38 +77,58 @@ export default function LearningDashboardLayout({
         <UserButton afterSignOutUrl="/" />
       </div>
       <div className="mt-[66px] flex flex-1">
-        <div className="fixed bottom-0 top-[66px] w-1/6 border-r-[1px] border-neutral-200 p-4">
-          {active.map((items) => (
-            <Link href={items.href}>
-              <div
-                key={items.id}
-                className={`mt-4 flex cursor-pointer items-center gap-2 rounded-xl p-4 text-sm ${activeNavbar === items.id ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}
-                onClick={() => setActiveNavbar(items.id)}
-              >
-                <Image
-                  src={activeNavbar === items.id ? items.activeImg : items.img}
-                  alt={items.id}
-                  width={24}
-                  height={24}
-                />
-                <p
-                  className={`font-semibold ${activeNavbar === items.id ? "text-blue-600" : "text-gray-600"}`}
+        {openNabar ? (
+          <div className="fixed bottom-0 top-[66px] w-1/6 border-r-[1px] border-neutral-200 p-4 lg:block">
+            {active.map((items) => (
+              <Link href={items.href}>
+                <div
+                  key={items.id}
+                  className={`mt-4 flex cursor-pointer items-center justify-center gap-2 rounded-xl p-4 text-sm duration-300 ease-in-out md:justify-start ${activeNavbar === items.id ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}
+                  onClick={() => setActiveNavbar(items.id)}
                 >
-                  {items.label}
+                  <Image
+                    src={
+                      activeNavbar === items.id ? items.activeImg : items.img
+                    }
+                    alt={items.id}
+                    width={24}
+                    height={24}
+                  />
+                  <p
+                    className={`hidden text-center font-semibold md:block ${activeNavbar === items.id ? "text-blue-600" : "text-gray-600"}`}
+                  >
+                    {items.label}
+                  </p>
+                </div>
+              </Link>
+            ))}
+            <button className="absolute bottom-5 left-0 w-full cursor-pointer p-4">
+              <Link
+                href="/"
+                className="flex items-center justify-center gap-2 rounded-xl bg-gray-200 px-4 py-3 duration-300 ease-in-out hover:bg-gray-300"
+              >
+                <p className="font-semibold text-gray-800">
+                  <Image
+                    src="/imgs/learningdashboard/left-arrow.png"
+                    alt="left-arrow"
+                    width={24}
+                    height={24}
+                    className="inline-block object-cover"
+                  />
+                  <span className="ml-2 hidden lg:inline-block">
+                    Về trang chủ
+                  </span>
                 </p>
-              </div>
-            </Link>
-          ))}
-          <button className="absolute bottom-5 left-0 w-full cursor-pointer p-4">
-            <Link
-              href="/"
-              className="flex items-center justify-center gap-2 rounded-xl bg-gray-200 px-4 py-3"
-            >
-              <p className="font-semibold text-gray-800"> Về trang chủ</p>
-            </Link>
-          </button>
-        </div>
-        <main className="ml-[16.67%] w-5/6 p-8">{children}</main>
+              </Link>
+            </button>
+          </div>
+        ) : null}
+
+        <main
+          className={`${openNabar ? "ml-[16.67%] w-5/6" : "ml-0 w-full"} p-8`}
+        >
+          {children}
+        </main>
       </div>
     </div>
   );
