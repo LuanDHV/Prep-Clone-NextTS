@@ -80,9 +80,8 @@ export default function LearningDashboardLayout({
         {openNabar ? (
           <div className="fixed bottom-0 top-[66px] w-1/6 border-r-[1px] border-neutral-200 p-4 lg:block">
             {active.map((items) => (
-              <Link href={items.href}>
+              <Link href={items.href} key={items.id}>
                 <div
-                  key={items.id}
                   className={`mt-4 flex cursor-pointer items-center justify-center gap-2 rounded-xl p-4 text-sm duration-300 ease-in-out md:justify-start ${activeNavbar === items.id ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}
                   onClick={() => setActiveNavbar(items.id)}
                 >

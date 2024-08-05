@@ -133,7 +133,8 @@ export default function Roadmap({
   };
 
   // Handle coupon application
-  const handleApplyCoupon = async () => {
+  const handleApplyCoupon = async (e: any) => {
+    e.preventDefault();
     try {
       const response = await axios.get(
         `http://localhost:5000/api/coupons/${couponCode}`,
@@ -737,7 +738,7 @@ export default function Roadmap({
               </div>
 
               {/* Coupon */}
-              <div className="pt-10">
+              <form className="pt-10" onSubmit={handleApplyCoupon}>
                 <div className="flex">
                   <Image
                     src="/imgs/courses/discount-icon.svg"
@@ -763,13 +764,13 @@ export default function Roadmap({
                     isDisabled={!couponCode}
                     color="primary"
                     size="lg"
-                    onClick={handleApplyCoupon}
+                    type="submit"
                     className="absolute right-0"
                   >
                     Áp dụng
                   </Button>
                 </div>
-              </div>
+              </form>
 
               {/* Information  */}
               <div className="pt-10">
