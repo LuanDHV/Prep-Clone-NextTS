@@ -31,7 +31,6 @@ export default function ButtonModal() {
         isDismissable={true}
         isKeyboardDismissDisabled={true}
         placement="center"
-        size="lg"
       >
         <ModalContent>
           {(onClose) => (
@@ -84,6 +83,8 @@ export default function ButtonModal() {
                 >
                   <Radio value="ielts">IELTS</Radio>
                   <Radio value="toeic">TOEIC</Radio>
+                  <Radio value="hsk">HSK</Radio>
+                  <Radio value="prep talk english">Prep Talk English</Radio>
                 </RadioGroup>
                 <Textarea
                   label=" Lộ trình học và mục tiêu bạn cần tư vấn"

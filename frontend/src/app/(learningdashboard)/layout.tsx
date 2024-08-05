@@ -1,22 +1,30 @@
 "use client";
+import { useState } from "react";
 import { UserButton } from "@clerk/nextjs";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
+import { useRouter } from "next/navigation";
 
 export default function LearningDashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const router = useRouter();
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [activeNavbar, setActiveNavbar] = useState<string>("");
   const [openNabar, setOpenNabar] = useState<boolean>(true);
-
-  const handleOpenNavbar = () => {
-    setOpenNabar(!openNabar);
-  };
+  const [selectedCourse, setSelectedCourse] = useState<string>("ielts");
 
   const active = [
     {
@@ -55,6 +63,27 @@ export default function LearningDashboardLayout({
       href: "learning-profile",
     },
   ];
+
+  const courses = [
+    { value: "ielts", label: "IELTS" },
+    { value: "toeic", label: "TOEIC" },
+    { value: "hsk", label: "HSK" },
+    { value: "prep talk english", label: "Prep Talk English" },
+  ];
+
+  const handleOpenNavbar = () => {
+    setOpenNabar(!openNabar);
+  };
+
+  const handleSelectedCourse = (e: any) => {
+    setSelectedCourse(e.target.value);
+    console.log(e.target.value);
+  };
+
+  const handleFilterCourse = () => {
+    router.push(`/my-courses?courseType=${selectedCourse}`);
+  };
+
   return (
     <div className="flex h-screen">
       <div className="fixed left-0 top-0 z-10 flex h-[66px] w-full items-center justify-between border-b-[2px] border-neutral-200 bg-white px-8 py-3">
@@ -74,7 +103,60 @@ export default function LearningDashboardLayout({
             />
           </Link>
         </div>
-        <UserButton afterSignOutUrl="/" />
+        <div className="flex items-center gap-5">
+          <Button
+            onPress={onOpen}
+            className="border border-blue-500 bg-white font-bold text-blue-500"
+          >
+            Chương trình bạn chọn
+          </Button>
+          <Modal
+            isOpen={isOpen}
+            onOpenChange={onOpenChange}
+            placement="center"
+            size="md"
+          >
+            <ModalContent>
+              {(onClose) => (
+                <>
+                  <ModalHeader className="flex justify-center">
+                    Bạn muốn bắt đầu với
+                  </ModalHeader>
+                  <div className="flex flex-col gap-5 p-5">
+                    {courses.map((course) => (
+                      <div
+                        className={`w-full rounded-xl border ${selectedCourse === course.value ? "border-blue-500 bg-blue-50 text-blue-500" : ""} p-5`}
+                        key={course.value}
+                      >
+                        <label className="flex w-full cursor-pointer items-center">
+                          <input
+                            type="radio"
+                            name="selectedCourse"
+                            value={course.value}
+                            className="h-5 w-5"
+                            checked={selectedCourse === course.value}
+                            onChange={handleSelectedCourse}
+                          />
+                          <p className="ml-4 font-bold">{course.label}</p>
+                        </label>
+                      </div>
+                    ))}
+                  </div>
+                  <ModalFooter>
+                    <Button
+                      color="primary"
+                      className="w-full"
+                      onClick={handleFilterCourse}
+                    >
+                      Bắt đầu ngay
+                    </Button>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
+          <UserButton afterSignOutUrl="/" />
+        </div>
       </div>
       <div className="mt-[66px] flex flex-1">
         {openNabar ? (

@@ -105,7 +105,7 @@ export default function Home() {
               />
             </div>
             <h3 className="mt-8 text-center text-2xl font-bold">
-              PrepTalk English
+              Prep Talk English
             </h3>
             <p className="mt-4 text-center font-medium text-[#6b7280]">
               Luyện giao tiếp tiếng anh dễ dàng
@@ -313,7 +313,7 @@ export default function Home() {
                 href="#"
                 className="flex h-[48px] w-full items-center justify-center rounded-3xl bg-[#1479f4] font-bold text-white duration-300 ease-in-out hover:scale-105"
               >
-                PrepTalk English
+                Prep Talk English
               </Link>
             </div>
           </div>

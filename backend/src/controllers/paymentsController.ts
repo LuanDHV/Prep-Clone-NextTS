@@ -145,7 +145,7 @@ export const createStatus = async (req: Request, res: Response) => {
       const orderStatus = await axios.post(
         `${process.env.NGROK_ENDPOINT}/api/payments/order-status/${dataJson["app_trans_id"]}`
       );
-      console.log(config.appid);
+      console.log(orderStatus);
     }
   } catch (ex) {
     if (ex instanceof Error) {
