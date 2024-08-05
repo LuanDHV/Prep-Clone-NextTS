@@ -147,6 +147,7 @@ export default function LearningDashboardLayout({
                       color="primary"
                       className="w-full"
                       onClick={handleFilterCourse}
+                      onPress={onClose}
                     >
                       Bắt đầu ngay
                     </Button>
