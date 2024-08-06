@@ -18,7 +18,7 @@ import { useRouter } from "next/navigation";
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
-  const [activeNavbar, setActiveNavbar] = useState<string>("");
+  const [activeNavbar, setActiveNavbar] = useState<string>("over_view");
   const [openNabar, setOpenNabar] = useState<boolean>(true);
   const [selectedCourse, setSelectedCourse] = useState<string>("ielts");
 

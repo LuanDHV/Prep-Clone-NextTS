@@ -44,7 +44,7 @@ export default function MyCourses() {
                 <img
                   src={course.image}
                   alt={course.name}
-                  className="h-[180px] w-full object-cover duration-300 ease-in-out hover:scale-125"
+                  className="object-cover duration-300 ease-in-out hover:scale-125"
                 />
               </div>
               <div className="border-t border-gray-300 p-5 font-bold">
