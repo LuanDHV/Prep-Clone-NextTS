@@ -95,7 +95,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               alt="logo"
               width={85}
               height={24}
-              className="object-cover"
+              className="hidden object-cover md:block"
             />
           </Link>
         </div>
@@ -157,7 +157,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </div>
       <div className="mt-[66px] flex flex-1">
         {openNabar ? (
-          <div className="fixed bottom-0 top-[66px] w-1/6 border-r-[1px] border-neutral-200 p-4 lg:block">
+          <div className="fixed bottom-0 top-[66px] w-1/6 border-r-[1px] border-neutral-200 p-1 md:p-4 lg:block">
             {active.map((items) => (
               <Link href={items.href} key={items.id}>
                 <div
@@ -171,7 +171,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     alt={items.id}
                     width={24}
                     height={24}
+                    className="object-cover"
                   />
+
                   <p
                     className={`hidden text-center font-semibold md:block ${activeNavbar === items.id ? "text-blue-600" : "text-gray-600"}`}
                   >
@@ -180,7 +182,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 </div>
               </Link>
             ))}
-            <button className="absolute bottom-5 left-0 w-full cursor-pointer p-4">
+            <button className="absolute bottom-5 left-0 w-full cursor-pointer p-1 md:p-4">
               <Link
                 href="/"
                 className="flex items-center justify-center gap-2 rounded-xl bg-gray-200 px-4 py-3 duration-300 ease-in-out hover:bg-gray-300"
@@ -202,9 +204,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           </div>
         ) : null}
 
-        <main
-          className={`${openNabar ? "ml-[16.67%] w-5/6" : "ml-0 w-full"} p-8`}
-        >
+        <main className={`${openNabar ? "ml-[16.67%] w-5/6" : "ml-0 w-full"}`}>
           {children}
         </main>
       </div>

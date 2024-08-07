@@ -1,3 +1,3 @@
 export default function TestPracticePage() {
-  return <div>TestPracticePage</div>;
+  return <div className="p-8">TestPracticePage</div>;
 }

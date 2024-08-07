@@ -1,3 +1,9 @@
+import StudyPlant from "@/components/learningdashboard/StudyPlant";
+
 export default function StudyPlanPage() {
-  return <div>StudyPlanPage</div>;
+  return (
+    <>
+      <StudyPlant />
+    </>
+  );
 }

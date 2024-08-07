@@ -1,3 +1,3 @@
 export default function LearningProfilePage() {
-  return <div>LearningProfilePage</div>;
+  return <div className="p-8">LearningProfilePage</div>;
 }
