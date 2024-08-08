@@ -544,7 +544,7 @@ export default function Home() {
                 className="mx-auto rounded-md bg-blue-600 object-cover p-4"
               />
               <p className="relative z-10 mt-4 text-center font-semibold">
-                Chọn chương trình <br /> học bạn mong muốn
+                Tiến hành thanh toán <br /> học phí
               </p>
               <span className="relative z-0 -mt-14 block text-center text-9xl font-bold text-gray-200">
                 2

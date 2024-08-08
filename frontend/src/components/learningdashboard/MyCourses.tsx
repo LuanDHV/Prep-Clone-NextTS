@@ -2,12 +2,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useUser } from "@clerk/nextjs";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
 
 export default function MyCourses() {
   const { user } = useUser();
+  const router = useRouter();
   const [courses, setCourses] = useState<any[]>([]);
+  const [lessons, setLessons] = useState<any[]>([]);
   const searchParams = useSearchParams();
   const courseType = searchParams.get("courseType") || "IELTS";
 
@@ -23,6 +25,12 @@ export default function MyCourses() {
             (course: any) => course.courseType === courseType?.toUpperCase(),
           );
           setCourses(filteredCourses);
+
+          // Extract and store lessons from the fetched courses
+          const allLessons = filteredCourses.flatMap(
+            (course: any) => course.lessons,
+          );
+          setLessons(allLessons);
         }
       } catch (error) {
         console.error("Error fetching courses:", error);
@@ -31,6 +39,21 @@ export default function MyCourses() {
 
     fetchCourses();
   }, [user, courseType]);
+
+  const handleCourseClick = (courseId: string) => {
+    // Find the selected course by ID
+    const selectedCourse = courses.find(
+      (course: any) => course._id === courseId,
+    );
+    if (selectedCourse) {
+      // Store the entire course information in localStorage
+      localStorage.setItem("selectedCourse", JSON.stringify(selectedCourse));
+
+      // Redirect to StudyPlant page
+      router.push("/study-plan");
+    }
+  };
+
   return (
     <>
       {courses.length > 0 ? (
@@ -39,6 +62,7 @@ export default function MyCourses() {
             <div
               key={course._id}
               className="grid-rows-2 rounded-xl border border-gray-300"
+              onClick={() => handleCourseClick(course._id)}
             >
               <div className="overflow-hidden rounded-t-xl">
                 <img

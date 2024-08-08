@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UserButton } from "@clerk/nextjs";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,10 +13,11 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
+  const pathname = usePathname();
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [activeNavbar, setActiveNavbar] = useState<string>("over_view");
   const [openNabar, setOpenNabar] = useState<boolean>(true);
@@ -31,19 +32,20 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       href: "over-view",
     },
     {
-      id: "study_plan",
-      label: "Study Plan",
-      img: "/imgs/learningdashboard/study_plan.svg",
-      activeImg: "/imgs/learningdashboard/study_plan_active.svg",
-      href: "study-plan",
-    },
-    {
       id: "my_courses",
       label: "My Courses",
       img: "/imgs/learningdashboard/my_courses.svg",
       activeImg: "/imgs/learningdashboard/my_courses_active.svg",
       href: "my-courses",
     },
+    {
+      id: "study_plan",
+      label: "Study Plan",
+      img: "/imgs/learningdashboard/study_plan.svg",
+      activeImg: "/imgs/learningdashboard/study_plan_active.svg",
+      href: "study-plan",
+    },
+
     {
       id: "test_practice",
       label: "Test Practice",
@@ -73,16 +75,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   const handleSelectedCourse = (e: any) => {
     setSelectedCourse(e.target.value);
-    console.log(e.target.value);
   };
 
   const handleFilterCourse = () => {
     router.push(`/my-courses?courseType=${selectedCourse}`);
   };
 
+  useEffect(() => {
+    const activeItem = active.find((item) => pathname.includes(item.href));
+    if (activeItem) {
+      setActiveNavbar(activeItem.id);
+    }
+  }, [pathname]);
+
   return (
     <div className="flex h-screen">
-      <div className="fixed left-0 top-0 z-10 flex h-[66px] w-full items-center justify-between border-b-[2px] border-neutral-200 bg-white px-8 py-3">
+      <div className="fixed left-0 top-0 z-50 flex h-[66px] w-full items-center justify-between border-b-[2px] border-neutral-200 bg-white px-8 py-3">
         <div className="flex cursor-pointer items-center gap-5">
           <FontAwesomeIcon
             icon={faBars}
