@@ -74,6 +74,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   };
 
   const handleSelectedCourse = (e: any) => {
+    localStorage.removeItem("selectedCourse");
     setSelectedCourse(e.target.value);
   };
 
