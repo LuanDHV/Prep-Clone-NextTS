@@ -4,6 +4,7 @@ import axios from "axios";
 import { useUser } from "@clerk/nextjs";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function MyCourses() {
   const { user } = useUser();
@@ -11,7 +12,10 @@ export default function MyCourses() {
   const [courses, setCourses] = useState<any[]>([]);
   const [lessons, setLessons] = useState<any[]>([]);
   const searchParams = useSearchParams();
-  const courseType = searchParams.get("courseType") || "IELTS";
+  const courseType =
+    searchParams.get("courseType") ||
+    localStorage.getItem("selectedCourseType") ||
+    "ielts";
 
   useEffect(() => {
     const fetchCourses = async () => {
@@ -85,8 +89,8 @@ export default function MyCourses() {
             width={150}
             height={140}
           />
-          <p className="text-sm font-medium text-gray-400">
-            Bạn chưa sở hữu khóa học nào.
+          <p className="mb-3 text-sm font-medium text-gray-400">
+            Bạn chưa sở hữu khóa học nào
           </p>
         </div>
       )}

@@ -21,7 +21,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [activeNavbar, setActiveNavbar] = useState<string>("over_view");
   const [openNabar, setOpenNabar] = useState<boolean>(true);
-  const [selectedCourse, setSelectedCourse] = useState<string>("ielts");
+  const [selectedCourseType, setSelectedCourseType] = useState<string>("ielts");
 
   const active = [
     {
@@ -73,16 +73,22 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     setOpenNabar(!openNabar);
   };
 
-  const handleSelectedCourse = (e: any) => {
-    localStorage.removeItem("selectedCourse");
-    setSelectedCourse(e.target.value);
+  const handleSelectedCourseType = (e: any) => {
+    const selectedType = e.target.value;
+    setSelectedCourseType(selectedType);
+    localStorage.setItem("selectedCourseType", selectedType);
   };
 
   const handleFilterCourse = () => {
-    router.push(`/my-courses?courseType=${selectedCourse}`);
+    localStorage.removeItem("selectedCourse");
+    router.push(`/my-courses?courseType=${selectedCourseType}`);
   };
 
   useEffect(() => {
+    const savedCourseType =
+      localStorage.getItem("selectedCourseType") || "ielts";
+    setSelectedCourseType(savedCourseType);
+
     const activeItem = active.find((item) => pathname.includes(item.href));
     if (activeItem) {
       setActiveNavbar(activeItem.id);
@@ -130,17 +136,17 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   <div className="flex flex-col gap-5 p-5">
                     {courses.map((course) => (
                       <div
-                        className={`w-full rounded-xl border ${selectedCourse === course.value ? "border-blue-500 bg-blue-50 text-blue-500" : ""} p-5`}
+                        className={`w-full rounded-xl border ${selectedCourseType === course.value ? "border-blue-500 bg-blue-50 text-blue-500" : ""}`}
                         key={course.value}
                       >
-                        <label className="flex w-full cursor-pointer items-center">
+                        <label className="flex w-full cursor-pointer items-center p-5">
                           <input
                             type="radio"
-                            name="selectedCourse"
+                            name="selectedCourseType"
                             value={course.value}
                             className="h-5 w-5"
-                            checked={selectedCourse === course.value}
-                            onChange={handleSelectedCourse}
+                            checked={selectedCourseType === course.value}
+                            onChange={handleSelectedCourseType}
                           />
                           <p className="ml-4 font-bold">{course.label}</p>
                         </label>

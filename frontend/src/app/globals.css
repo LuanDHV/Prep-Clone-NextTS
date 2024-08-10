@@ -48,3 +48,10 @@
   width: 40px;
   height: 40px;
 }
+
+/* custom scrollbar */
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #6b7280 #4b5563;
+}
