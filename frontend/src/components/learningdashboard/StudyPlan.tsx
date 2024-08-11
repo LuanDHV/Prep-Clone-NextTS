@@ -85,7 +85,7 @@ export default function StudyPlant() {
               </div>
             </div>
 
-            <div className="custom-scrollbar flex h-[620px] w-full justify-center xl:w-2/6 xl:overflow-y-scroll">
+            <div className="custom-scrollbar flex h-[330px] w-full justify-center overflow-y-scroll md:h-[620px] xl:w-2/6">
               <div className="w-5/6">
                 {lessons.length > 0 ? (
                   <ul>

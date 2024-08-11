@@ -53,7 +53,7 @@ export default function MyCourses() {
       // Store the entire course information in localStorage
       localStorage.setItem("selectedCourse", JSON.stringify(selectedCourse));
 
-      // Redirect to StudyPlant page
+      // Redirect to StudyPlan page
       router.push("/study-plan");
     }
   };

@@ -1,9 +1,9 @@
-import StudyPlant from "@/components/learningdashboard/StudyPlant";
+import StudyPlan from "@/components/learningdashboard/StudyPlan";
 
 export default function StudyPlanPage() {
   return (
     <>
-      <StudyPlant />
+      <StudyPlan />
     </>
   );
 }
