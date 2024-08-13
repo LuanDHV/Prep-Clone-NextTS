@@ -1,4 +1,5 @@
 "use client";
+import { ILessons } from "@/types/interfaces";
 import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
@@ -54,7 +55,7 @@ export default function StudyPlant() {
         <div className="absolute left-1/2 top-10 w-5/6 -translate-x-1/2 transform md:w-4/6">
           <div className="flex flex-col justify-between gap-10 xl:flex-row">
             <div className="w-full xl:w-3/6">
-              <div className="flex h-auto w-full flex-col items-center justify-center gap-2 rounded-3xl bg-white object-cover p-5 shadow-xl xl:gap-3 xl:py-7">
+              <div className="flex h-auto w-full flex-col items-center justify-center gap-2 rounded-3xl bg-white p-5 shadow-xl xl:gap-3 xl:py-7">
                 <h1 className="text-3xl font-extrabold text-blue-500">
                   {course.courseType} - {course.name}
                 </h1>
@@ -83,13 +84,68 @@ export default function StudyPlant() {
                   </div>
                 </div>
               </div>
+              <div className="mt-5 hidden h-auto w-full items-center justify-center rounded-3xl bg-white p-5 xl:block">
+                {lessons.length > 0 ? (
+                  <div className="flex flex-wrap justify-center">
+                    {lessons.map((lesson: ILessons, index: number) => (
+                      <div
+                        key={lesson._id}
+                        className="flex items-center justify-center"
+                      >
+                        <div className="relative">
+                          <Image
+                            src="/imgs/learningdashboard/hx-b2.svg"
+                            alt="hx-b2"
+                            width={40}
+                            height={40}
+                            className="object-cover"
+                          />
+                          <p className="absolute inset-0 flex items-center justify-center font-bold text-white">
+                            {index + 1}
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p>Không có bài học nào để hiển thị.</p>
+                )}
+                <div className="flex items-center justify-between">
+                  <Image
+                    src="/imgs/learningdashboard/hx-o.svg"
+                    alt="hx-b2"
+                    width={40}
+                    height={40}
+                    className="object-cover"
+                  />
+                  <p>Đang học</p>
+                  <Image
+                    src="/imgs/learningdashboard/hx-s.svg"
+                    alt="hx-b2"
+                    width={40}
+                    height={40}
+                    className="object-cover"
+                  />
+
+                  <p>Đã học</p>
+
+                  <Image
+                    src="/imgs/learningdashboard/hx-b2.svg"
+                    alt="hx-b2"
+                    width={40}
+                    height={40}
+                    className="object-cover"
+                  />
+                  <p>Chưa học</p>
+                </div>
+              </div>
             </div>
 
             <div className="custom-scrollbar flex h-[330px] w-full justify-center overflow-y-scroll md:h-[620px] xl:w-2/6">
               <div className="w-5/6">
                 {lessons.length > 0 ? (
-                  <ul>
-                    {lessons.map((lesson: any, index: number) => (
+                  <div>
+                    {lessons.map((lesson: ILessons, index: number) => (
                       <div key={lesson._id} className="relative mb-4">
                         <div className="flex">
                           <div className="flex items-center justify-center">
@@ -117,7 +173,7 @@ export default function StudyPlant() {
                         </div>
                       </div>
                     ))}
-                  </ul>
+                  </div>
                 ) : (
                   <p>Không có bài học nào để hiển thị.</p>
                 )}
