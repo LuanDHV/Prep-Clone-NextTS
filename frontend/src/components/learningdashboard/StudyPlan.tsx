@@ -217,10 +217,10 @@ export default function StudyPlant() {
       {/* Video Player Overlay */}
       {selectedVideo && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-8"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-5 md:p-0"
           onClick={() => setSelectedVideo(null)}
         >
-          <div className="relative h-2/4 w-full max-w-screen-md rounded-3xl bg-white p-5 xl:h-3/4 xl:max-w-screen-xl">
+          <div className="relative h-2/4 w-full max-w-screen-sm rounded-3xl bg-white p-5 xl:h-3/4 xl:max-w-screen-xl">
             <ReactPlayer
               url={selectedVideo}
               width="100%"
