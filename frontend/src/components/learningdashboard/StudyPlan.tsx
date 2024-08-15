@@ -86,7 +86,7 @@ export default function StudyPlant() {
                   </div>
                 </div>
               </div>
-              <div className="mt-5 hidden h-auto w-full items-center justify-center rounded-3xl bg-white p-2 xl:block">
+              <div className="mt-5 hidden h-auto w-full items-center justify-center rounded-3xl bg-white p-5 xl:block">
                 {lessons.length > 0 ? (
                   <div className="flex flex-wrap justify-center">
                     {lessons.map((lesson: ILessons, index: number) => (
@@ -112,31 +112,42 @@ export default function StudyPlant() {
                 ) : (
                   <p>Không có bài học nào để hiển thị.</p>
                 )}
-                <div className="flex items-center justify-between">
-                  <Image
-                    src="/imgs/learningdashboard/hx-o.svg"
-                    alt="hx-b2"
-                    width={40}
-                    height={40}
-                    className="object-cover"
-                  />
-                  <p>Đang học</p>
-                  <Image
-                    src="/imgs/learningdashboard/hx-s.svg"
-                    alt="hx-b2"
-                    width={40}
-                    height={40}
-                    className="object-cover"
-                  />
-                  <p>Đã học</p>
-                  <Image
-                    src="/imgs/learningdashboard/hx-b2.svg"
-                    alt="hx-b2"
-                    width={40}
-                    height={40}
-                    className="object-cover"
-                  />
-                  <p>Chưa học</p>
+                <div className="mt-5 flex items-center justify-between">
+                  <div className="grid grid-rows-2">
+                    <div className="flex items-center">
+                      <Image
+                        src="/imgs/learningdashboard/hx-o.svg"
+                        alt="hx-b2"
+                        width={40}
+                        height={40}
+                        className="object-cover"
+                      />
+                      <p>Đang học</p>
+                    </div>
+                    <div className="flex items-center">
+                      <Image
+                        src="/imgs/learningdashboard/hx-s.svg"
+                        alt="hx-b2"
+                        width={40}
+                        height={40}
+                        className="object-cover"
+                      />
+                      <p>Đã học</p>
+                    </div>
+                  </div>
+                  <div className="grid grid-rows-2">
+                    <div className="flex items-center">
+                      <Image
+                        src="/imgs/learningdashboard/hx-b2.svg"
+                        alt="hx-b2"
+                        width={40}
+                        height={40}
+                        className="object-cover"
+                      />
+                      <p>Chưa học</p>
+                    </div>
+                    <div className=""></div>
+                  </div>
                 </div>
               </div>
             </div>
