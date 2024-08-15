@@ -2,11 +2,13 @@
 import { ILessons } from "@/types/interfaces";
 import Image from "next/image";
 import Link from "next/link";
+import ReactPlayer from "react-player/youtube";
 import React, { useEffect, useState } from "react";
 
 export default function StudyPlant() {
   const [course, setCourse] = useState<any>(null);
   const [lessons, setLessons] = useState<any[]>([]);
+  const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
 
   useEffect(() => {
     // Get course data from localStorage
@@ -84,7 +86,7 @@ export default function StudyPlant() {
                   </div>
                 </div>
               </div>
-              <div className="mt-5 hidden h-auto w-full items-center justify-center rounded-3xl bg-white p-5 xl:block">
+              <div className="mt-5 hidden h-auto w-full items-center justify-center rounded-3xl bg-white p-2 xl:block">
                 {lessons.length > 0 ? (
                   <div className="flex flex-wrap justify-center">
                     {lessons.map((lesson: ILessons, index: number) => (
@@ -126,9 +128,7 @@ export default function StudyPlant() {
                     height={40}
                     className="object-cover"
                   />
-
                   <p>Đã học</p>
-
                   <Image
                     src="/imgs/learningdashboard/hx-b2.svg"
                     alt="hx-b2"
@@ -160,15 +160,16 @@ export default function StudyPlant() {
                               {index + 1}
                             </p>
                           </div>
-
-                          <button className="h-24 w-full rounded-2xl bg-white p-5 shadow-xl">
+                          <button
+                            onClick={() => setSelectedVideo(lesson.video)}
+                            className="h-24 w-full rounded-2xl bg-white p-5 shadow-xl"
+                          >
                             <p className="px-5 text-start text-sm uppercase text-gray-700">
                               {course.name}
                             </p>
                             <p className="px-5 text-start font-bold uppercase">
                               {lesson.title}
                             </p>
-                            {/* {lesson.video} */}
                           </button>
                         </div>
                       </div>
@@ -195,10 +196,27 @@ export default function StudyPlant() {
           </p>
           <Link
             href="/my-courses"
-            className="flex h-14 w-full items-center justify-center rounded-3xl bg-white font-bold text-blue-500 duration-300 ease-in-out hover:bg-blue-500 hover:text-white"
+            className="rounded-lg bg-white px-8 py-2 text-sm font-bold"
           >
-            Bắt đầu ngay
+            Chọn khóa học
           </Link>
+        </div>
+      )}
+
+      {/* Video Player Overlay */}
+      {selectedVideo && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-8"
+          onClick={() => setSelectedVideo(null)}
+        >
+          <div className="relative h-2/4 w-full max-w-screen-md rounded-3xl bg-white p-5 xl:h-3/4 xl:max-w-screen-xl">
+            <ReactPlayer
+              url={selectedVideo}
+              width="100%"
+              height="100%"
+              controls
+            />
+          </div>
         </div>
       )}
     </div>
