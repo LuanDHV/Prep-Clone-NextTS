@@ -60,6 +60,7 @@ export interface ILessons {
   _id: string;
   title: string;
   video: string;
+  status?: string;
 }
 
 export interface ICourses {

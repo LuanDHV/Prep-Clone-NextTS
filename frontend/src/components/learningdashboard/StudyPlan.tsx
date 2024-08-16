@@ -9,16 +9,77 @@ export default function StudyPlant() {
   const [course, setCourse] = useState<any>(null);
   const [lessons, setLessons] = useState<any[]>([]);
   const [selectedVideo, setSelectedVideo] = useState<string | null>(null);
+  const [currentLesson, setCurrentLesson] = useState<number | null>(null);
 
   useEffect(() => {
-    // Get course data from localStorage
     const courseData = localStorage.getItem("selectedCourse");
     if (courseData) {
       const parsedCourse = JSON.parse(courseData);
+      const parsedLessons = parsedCourse.lessons || [];
+
+      // Create a unique key for lesson status based on courseId
+      const lessonsStatusKey = `lessonsStatus_${parsedCourse._id}`;
+      const lessonsStatus = localStorage.getItem(lessonsStatusKey);
+
+      // If there is lesson status in localStorage, restore it
+      if (lessonsStatus) {
+        const savedLessonsStatus = JSON.parse(lessonsStatus);
+        parsedLessons.forEach((lesson: any) => {
+          const savedLessonStatus = savedLessonsStatus.find(
+            (savedLesson: any) => savedLesson._id === lesson._id,
+          );
+          if (savedLessonStatus) {
+            lesson.status = savedLessonStatus.status;
+          }
+        });
+      }
+
       setCourse(parsedCourse);
-      setLessons(parsedCourse.lessons || []);
+      setLessons(parsedLessons);
     }
   }, []);
+
+  const handleVideoStart = (lessonId: string) => {
+    const currentLesson = lessons.find((lesson) => lesson._id === lessonId);
+    if (!currentLesson) return;
+
+    // Check if the lesson already has a status of "Đã học", then do not change
+    if (currentLesson.status === "Đã học") {
+      setSelectedVideo(currentLesson.video);
+      setCurrentLesson(lessons.findIndex((lesson) => lesson._id === lessonId));
+      return;
+    }
+
+    // If not "Đã học", change status to "Đang học"
+    setSelectedVideo(currentLesson.video);
+    setCurrentLesson(lessons.findIndex((lesson) => lesson._id === lessonId));
+
+    // Update lesson status to  "Đang học"
+    const updatedLessons = lessons.map((lesson) =>
+      lesson._id === lessonId ? { ...lesson, status: "Đang học" } : lesson,
+    );
+    setLessons(updatedLessons);
+
+    // Save the status of lessons to localStorage with a key based on courseId
+    const lessonsStatusKey = `lessonsStatus_${course._id}`;
+    localStorage.setItem(lessonsStatusKey, JSON.stringify(updatedLessons));
+  };
+
+  const handleVideoEnd = () => {
+    if (currentLesson !== null) {
+      const lessonId = lessons[currentLesson]._id;
+
+      // Update lesson status to "Đã học"
+      const updatedLessons = lessons.map((lesson) =>
+        lesson._id === lessonId ? { ...lesson, status: "Đã học" } : lesson,
+      );
+      setLessons(updatedLessons);
+
+      // Save the status of lessons to localStorage with a key based on courseId
+      const lessonsStatusKey = `lessonsStatus_${course._id}`;
+      localStorage.setItem(lessonsStatusKey, JSON.stringify(updatedLessons));
+    }
+  };
 
   return (
     <div className="relative min-h-screen w-full">
@@ -61,7 +122,7 @@ export default function StudyPlant() {
                 <h1 className="text-3xl font-extrabold text-blue-500">
                   {course.courseType} - {course.name}
                 </h1>
-                <p className="font-bold">{course.title}</p>b
+                <p className="font-bold">{course.title}</p>
                 <div className="flex w-full justify-center gap-7">
                   <div className="flex items-center gap-2">
                     <Image
@@ -97,8 +158,14 @@ export default function StudyPlant() {
                       >
                         <div className="relative">
                           <Image
-                            src="/imgs/learningdashboard/hx-b2.svg"
-                            alt="hx-b2"
+                            src={
+                              lesson.status === "Đang học"
+                                ? "/imgs/learningdashboard/hx-o.svg"
+                                : lesson.status === "Đã học"
+                                  ? "/imgs/learningdashboard/hx-s.svg"
+                                  : "/imgs/learningdashboard/hx-b2.svg"
+                            }
+                            alt="hx-icon"
                             width={36}
                             height={36}
                             className="object-cover"
@@ -163,8 +230,14 @@ export default function StudyPlant() {
                         <div className="flex">
                           <div className="flex items-center justify-center">
                             <Image
-                              src="/imgs/learningdashboard/hx-b2.svg"
-                              alt="hx-b2"
+                              src={
+                                lesson.status === "Đang học"
+                                  ? "/imgs/learningdashboard/hx-o.svg"
+                                  : lesson.status === "Đã học"
+                                    ? "/imgs/learningdashboard/hx-s.svg"
+                                    : "/imgs/learningdashboard/hx-b2.svg"
+                              }
+                              alt="hx-icon"
                               width={60}
                               height={60}
                               className="absolute object-cover"
@@ -174,7 +247,7 @@ export default function StudyPlant() {
                             </p>
                           </div>
                           <button
-                            onClick={() => setSelectedVideo(lesson.video)}
+                            onClick={() => handleVideoStart(lesson._id)}
                             className="h-24 w-full rounded-2xl bg-white p-5 shadow-xl"
                           >
                             <p className="px-5 text-start text-sm uppercase text-gray-700">
@@ -228,6 +301,7 @@ export default function StudyPlant() {
               width="100%"
               height="100%"
               controls
+              onEnded={handleVideoEnd}
             />
           </div>
         </div>
