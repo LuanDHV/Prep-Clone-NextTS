@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export default function LearningProfile() {
+export default function TestPractice() {
   return (
     <>
       <div className="w-full">
@@ -16,7 +16,7 @@ export default function LearningProfile() {
             Tính năng sắp ra mắt
           </p>
           <p className="mx-auto mt-4 text-center text-[#727E90]">
-            Prep sẽ sớm ra mắt Learning Profile với chương trình dành cho bạn.
+            Prep sẽ sớm ra mắt Test Practice với chương trình dành cho bạn.
             <br /> Đừng quên quay lại sau nhé!
           </p>
         </div>
