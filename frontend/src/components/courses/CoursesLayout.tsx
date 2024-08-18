@@ -1,4 +1,4 @@
-import { Button, Avatar, AvatarGroup } from "@nextui-org/react";
+import { Avatar, AvatarGroup } from "@nextui-org/react";
 import ButtonModal from "./ButtonModal";
 import SliderCourses from "./SliderCourses";
 import Image from "next/image";
@@ -6,6 +6,7 @@ import SliderReviews from "../sliders/SliderReviews";
 import Questions from "./Questions";
 import Roadmap from "./Roadmap";
 import { ICoursesLayout } from "@/types/interfaces";
+import ScrollToRoadMap from "./ScrollToRoadMap";
 
 export default function CoursesLayout({
   contents,
@@ -22,7 +23,7 @@ export default function CoursesLayout({
           {/* Header */}
           <section>
             <div
-              className={`grid h-screen w-full grid-flow-row items-center ${content.bgBanner} justify-items-center px-5 py-10 md:px-10 lg:grid-flow-col`}
+              className={`grid h-auto w-full grid-flow-row items-center ${content.bgBanner} justify-items-center px-5 py-10 md:px-10 lg:grid-flow-col`}
               key={content._id}
             >
               <div className="text-center font-bold text-black lg:text-start">
@@ -33,9 +34,7 @@ export default function CoursesLayout({
                 <h3 className="mb-4 text-5xl">{content.text2}</h3>
                 <p className="">{content.text3}</p>
                 <p className="">{content.text4}</p>
-                <Button className="my-5 h-16 w-full rounded-xl bg-[#0071F9] py-4 text-[20px] font-bold text-white outline-none hover:scale-105">
-                  Xây Lộ Trình Cho Tôi
-                </Button>
+                <ScrollToRoadMap />
                 <ButtonModal />
                 <div className="my-5 grid grid-cols-2 justify-items-center">
                   <AvatarGroup isBordered max={4} total={99}>
@@ -68,7 +67,7 @@ export default function CoursesLayout({
 
           {/* Road map */}
           <section id="roadmap">
-            <div className="mt-12 h-auto w-full px-5 md:px-10 lg:mt-24">
+            <div className="h-auto w-full px-5 pt-10 md:px-10">
               <div className="mb-3 grid justify-items-center text-center text-2xl font-bold md:text-4xl">
                 <p className="text-gray-800">{content.text6}</p>
                 <p className={`${content.textColor} mt-4`}>{content.text7}</p>
@@ -123,9 +122,7 @@ export default function CoursesLayout({
                 </h1>
                 <h2 className="mb-4">{content.text10}</h2>
                 <h3 className="my-4 text-base font-normal">{content.text11}</h3>
-                <Button className="my-5 h-16 w-full rounded-xl bg-[#0071F9] py-4 text-[20px] font-bold text-white outline-none hover:scale-105">
-                  Xây Lộ Trình Cho Tôi
-                </Button>
+                <ScrollToRoadMap />
                 <ButtonModal />
               </div>
 

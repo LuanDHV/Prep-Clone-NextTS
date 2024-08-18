@@ -94,7 +94,7 @@ export default function Header() {
               className="cursor-pointer p-2 pl-0 lg:hidden"
               onClick={toggleMenu}
             />
-            <Link href="/">
+            <Link href="/" className="z-10">
               <Image
                 src="/imgs/header/logo.svg"
                 alt="logo"

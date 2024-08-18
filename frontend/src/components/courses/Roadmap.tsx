@@ -397,6 +397,13 @@ export default function Roadmap({
     console.log("Road Map Courses:", roadMapCourses);
   };
 
+  const handleScrollToRoadmap = () => {
+    const element = document.getElementById("roadmap");
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <div className="relative">
@@ -894,10 +901,11 @@ export default function Roadmap({
                 Vui lòng chọn trình độ và mục tiêu đầu ra để xem lộ trình
               </p>
 
-              <Button color="primary" className="mt-4 h-14 w-40 bg-[#0071F9]">
-                <Link href="#" className="font-bold">
-                  Chọn trình độ
-                </Link>
+              <Button
+                className="mt-4 h-14 w-40 bg-[#0071F9] font-bold text-white"
+                onClick={handleScrollToRoadmap}
+              >
+                Chọn trình độ
               </Button>
             </div>
           </>
