@@ -67,15 +67,11 @@ export default function Roadmap({
   //Handle check before pay
   const handleCheckBeforePay = () => {
     if (!isSignedIn) {
-      setNotificationMessage("Vui lòng đăng nhập ");
-      setNotificationType("error");
-      onOpenChange();
+      handleNotification("Vui lòng đăng nhập", "error");
       return false;
     }
     if (!isCheckedTerms) {
-      setNotificationMessage("Vui lòng đồng ý với các điều khoản ");
-      setNotificationType("error");
-      onOpenChange();
+      handleNotification("Vui lòng đồng ý với các điều khoản", "error");
       return false;
     }
     return true;

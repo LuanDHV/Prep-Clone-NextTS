@@ -161,3 +161,12 @@ export interface IPaymentMethodProps {
   selectedPaymentMethod: string;
   onSelect: (value: string) => void;
 }
+
+export interface ISupports {
+  fullName: string;
+  phoneNumber: string;
+  email: string;
+  userType: string;
+  interest: string;
+  goal: string;
+}
