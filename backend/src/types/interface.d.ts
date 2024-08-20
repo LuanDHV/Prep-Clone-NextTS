@@ -106,3 +106,12 @@ export interface IOrders {
   courses: ObjectId[];
   status: string;
 }
+
+export interface ISupports {
+  fullName: string;
+  phoneNumber: string;
+  email: string;
+  userType: string;
+  interest: string;
+  goal: string;
+}

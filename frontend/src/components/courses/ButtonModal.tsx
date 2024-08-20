@@ -66,25 +66,25 @@ export default function ButtonModal() {
                 />
                 <RadioGroup
                   label="Bạn là"
-                  defaultValue="other"
+                  defaultValue="Student"
                   orientation="horizontal"
                   className="text-sm font-medium"
                 >
-                  <Radio value="hs">Học sinh</Radio>
-                  <Radio value="ndl">Người đi làm</Radio>
-                  <Radio value="sv">Sinh viên</Radio>
-                  <Radio value="k">Khác</Radio>
+                  <Radio value="Student">Học sinh</Radio>
+                  <Radio value="University Student ">Sinh viên</Radio>
+                  <Radio value="Worker">Người đi làm</Radio>
+                  <Radio value="Other">Khác</Radio>
                 </RadioGroup>
                 <RadioGroup
                   label="Bạn đang quan tâm"
-                  defaultValue="ielts"
+                  defaultValue="IELTS"
                   orientation="horizontal"
                   className="text-sm font-medium"
                 >
-                  <Radio value="ielts">IELTS</Radio>
-                  <Radio value="toeic">TOEIC</Radio>
-                  <Radio value="hsk">HSK</Radio>
-                  <Radio value="prep talk english">Prep Talk English</Radio>
+                  <Radio value="IELTS">IELTS</Radio>
+                  <Radio value="TOEIC">TOEIC</Radio>
+                  <Radio value="HSK">HSK</Radio>
+                  <Radio value="Prep Talk English">Prep Talk English</Radio>
                 </RadioGroup>
                 <Textarea
                   label=" Lộ trình học và mục tiêu bạn cần tư vấn"

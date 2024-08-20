@@ -653,9 +653,7 @@ export default function Home() {
 
       {/* Button Target */}
       <section>
-        <div className="mx-24 py-10 duration-300 ease-in-out hover:scale-105 md:mx-auto md:w-1/5">
-          <ScrollToTarget />
-        </div>
+        <ScrollToTarget />
       </section>
     </>
   );
