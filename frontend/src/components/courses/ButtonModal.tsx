@@ -33,14 +33,17 @@ export default function ButtonModal() {
   const [notificationType, setNotificationType] = useState<"success" | "error">(
     "error",
   );
-  const [formData, setFormData] = useState<ISupports>({
+
+  const initialFormData: ISupports = {
     fullName: "",
     phoneNumber: "",
     email: "",
     goal: "",
     userType: "",
     interest: "",
-  });
+  };
+
+  const [formData, setFormData] = useState<ISupports>(initialFormData);
 
   // Handle to update the value of formData
   const handleChange = (e: any) => {
@@ -66,14 +69,7 @@ export default function ButtonModal() {
         "success",
       );
       // // Reset form data
-      setFormData({
-        fullName: "",
-        phoneNumber: "",
-        email: "",
-        goal: "",
-        userType: "",
-        interest: "",
-      });
+      setFormData(initialFormData);
 
       // Close the form modal
       onFormOpenChange();
