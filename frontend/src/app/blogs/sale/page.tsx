@@ -1,3 +1,9 @@
+import BlogsLayout from "@/components/blogs/BlogsLayout";
+
 export default function BlogSale() {
-  return <div>BlogSale</div>;
+  return (
+    <>
+      <BlogsLayout />
+    </>
+  );
 }

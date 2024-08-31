@@ -1,3 +1,9 @@
+import BlogsLayout from "@/components/blogs/BlogsLayout";
+
 export default function BlogHonor() {
-  return <div>BlogHonor</div>;
+  return (
+    <>
+      <BlogsLayout />
+    </>
+  );
 }

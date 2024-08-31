@@ -1,3 +1,9 @@
+import BlogsLayout from "@/components/blogs/BlogsLayout";
+
 export default function BlogToeic() {
-  return <div>BlogToeic</div>;
+  return (
+    <>
+      <BlogsLayout />
+    </>
+  );
 }
