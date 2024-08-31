@@ -39,7 +39,7 @@ export default function Home() {
       <section id="target">
         <div className="relative mx-auto grid h-auto w-full grid-cols-1 gap-10 bg-[#f5f6fa] px-5 pt-16 md:grid-cols-4 md:px-10">
           <Link
-            href="/ielts"
+            href="/courses/ielts"
             className="relative top-5 h-auto w-full rounded-lg bg-white p-10 shadow-lg duration-300 ease-in-out hover:top-0"
           >
             <div className="mx-auto -mt-20 flex h-20 w-20 items-center justify-center rounded-full">
@@ -57,7 +57,7 @@ export default function Home() {
             </p>
           </Link>
           <Link
-            href="/toeic"
+            href="/courses/toeic"
             className="relative top-5 h-auto w-full rounded-lg bg-white p-10 shadow-lg duration-300 ease-in-out hover:top-0"
           >
             <div className="mx-auto -mt-20 flex h-20 w-20 items-center justify-center rounded-full">
@@ -293,13 +293,13 @@ export default function Home() {
             </h2>
             <div className="mt-3 flex w-full flex-col items-center gap-5 md:grid md:grid-cols-2 md:text-center lg:grid-cols-3 xl:grid-cols-4">
               <Link
-                href="/ielts"
+                href="/courses/ielts"
                 className="flex h-[48px] w-full items-center justify-center rounded-3xl bg-[#1479f4] font-bold text-white duration-300 ease-in-out hover:scale-105"
               >
                 Khóa học IELTS
               </Link>
               <Link
-                href="/toeic"
+                href="/courses/toeic"
                 className="flex h-[48px] w-full items-center justify-center rounded-3xl bg-[#1479f4] font-bold text-white duration-300 ease-in-out hover:scale-105"
               >
                 Khóa học TOEIC

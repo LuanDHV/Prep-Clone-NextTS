@@ -44,29 +44,29 @@ export default function Header() {
     {
       title: "Khóa học",
       subItems: [
-        { title: "Luyện thi IELTS", href: "/ielts" },
-        { title: "Luyện thi TOEIC", href: "/toeic" },
+        { title: "Luyện thi IELTS", href: "/courses/ielts" },
+        { title: "Luyện thi TOEIC", href: "/courses/toeic" },
         { title: "Luyện thi HSK", href: "" },
         { title: "Prep Talk English", href: "" },
       ],
       isOpen: isCourseOpen,
       toggle: toggleCourseMenu,
     },
-    { title: "Kiểm tra đầu vào", href: "" },
-    {
-      title: "Luyện đề",
-      subItems: [
-        { title: "Luyện đề IELTS", href: "" },
-        { title: "Luyện đề TOEIC", href: "" },
-      ],
-      isOpen: isPracticeMenuOpen,
-      toggle: togglePracticeMenu,
-    },
+    { title: "Kiểm tra đầu vào", href: "/test" },
+    // {
+    //   title: "Luyện đề",
+    //   subItems: [
+    //     { title: "Luyện đề IELTS", href: "" },
+    //     { title: "Luyện đề TOEIC", href: "" },
+    //   ],
+    //   isOpen: isPracticeMenuOpen,
+    //   toggle: togglePracticeMenu,
+    // },
     {
       title: "Blog",
       subItems: [
-        { title: "Học IELTS", href: "" },
-        { title: "Học TOEIC", href: "" },
+        { title: "Học IELTS", href: "/blogs/ielts" },
+        { title: "Học TOEIC", href: "/blogs/toeic" },
       ],
       isOpen: isBlogMenuOpen,
       toggle: toggleBlogMenu,
@@ -74,9 +74,9 @@ export default function Header() {
     {
       title: "Tin tức",
       subItems: [
-        { title: "Vinh danh học viên", href: "" },
-        { title: "Sự kiện - Khuyến mãi", href: "" },
-        { title: "Tuyển dụng", href: "" },
+        { title: "Vinh danh học viên", href: "/blogs/honor" },
+        { title: "Sự kiện - Khuyến mãi", href: "/blogs/sale" },
+        // { title: "Tuyển dụng", href: "" },
       ],
       isOpen: isNewsMenuOpen,
       toggle: toggleNewsMenu,
