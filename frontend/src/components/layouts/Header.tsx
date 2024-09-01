@@ -75,7 +75,7 @@ export default function Header() {
       title: "Tin tức",
       subItems: [
         { title: "Vinh danh học viên", href: "/blogs/honor" },
-        { title: "Sự kiện - Khuyến mãi", href: "/blogs/sale" },
+        { title: "Sự kiện - Khuyến mãi", href: "/blogs/event" },
         // { title: "Tuyển dụng", href: "" },
       ],
       isOpen: isNewsMenuOpen,
