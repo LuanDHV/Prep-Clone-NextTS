@@ -46,8 +46,8 @@ export default function Header() {
       subItems: [
         { title: "Luyện thi IELTS", href: "/courses/ielts" },
         { title: "Luyện thi TOEIC", href: "/courses/toeic" },
-        { title: "Luyện thi HSK", href: "" },
-        { title: "Prep Talk English", href: "" },
+        // { title: "Luyện thi HSK", href: "" },
+        // { title: "Prep Talk English", href: "" },
       ],
       isOpen: isCourseOpen,
       toggle: toggleCourseMenu,

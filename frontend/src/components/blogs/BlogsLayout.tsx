@@ -9,7 +9,7 @@ export default function BlogsLayout({
 }: IBlogsLayout) {
   return (
     <>
-      <div className="h-auto w-full bg-[#292A2D] md:h-screen">
+      <div className="h-auto w-full bg-[#292A2D]">
         <div className="mx-auto w-5/6">
           <div className="flex gap-2 py-4 text-sm font-semibold text-[#9CA3AF] md:py-6">
             <span className="flex items-center">
