@@ -91,7 +91,7 @@ export default function Header() {
           <div className="flex items-center">
             <FontAwesomeIcon
               icon={faBars}
-              className="cursor-pointer p-2 pl-0 lg:hidden"
+              className="h-4 w-4 cursor-pointer object-cover p-2 pl-0 lg:hidden"
               onClick={toggleMenu}
             />
             <Link href="/" className="z-10">
@@ -137,11 +137,11 @@ export default function Header() {
                   >
                     <div>
                       {item.title}
-                      <span className="absolute bottom-0 left-0 hidden h-[4px] w-full origin-left scale-x-0 bg-[#1479f4] transition-transform duration-500 ease-in-out group-hover:scale-x-100 lg:block"></span>
+                      <span className="absolute bottom-0 left-0 hidden h-1 w-full origin-left scale-x-0 bg-[#1479f4] transition-transform duration-500 ease-in-out group-hover:scale-x-100 lg:block"></span>
                     </div>
                     <FontAwesomeIcon
                       icon={item.isOpen ? faCaretUp : faCaretDown}
-                      className="mr-2 h-[16px] w-[10px] object-cover lg:ml-1"
+                      className="mr-2 h-4 w-[10px] object-cover lg:ml-1"
                     />
                   </div>
                   <div

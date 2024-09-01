@@ -12,21 +12,24 @@ export default function BlogsLayout({
       <div className="h-auto w-full bg-[#292A2D] md:h-screen">
         <div className="mx-auto w-5/6">
           <div className="flex gap-2 py-4 text-sm font-semibold text-[#9CA3AF] md:py-6">
-            <span>
-              <FontAwesomeIcon icon={faHouse} className="mr-2 object-cover" />
+            <span className="flex items-center">
+              <FontAwesomeIcon
+                icon={faHouse}
+                className="mr-2 h-4 w-4 object-cover"
+              />
               Trang chủ
             </span>
-            <span>
+            <span className="flex items-center">
               <FontAwesomeIcon
                 icon={faChevronRight}
-                className="mr-2 object-cover"
+                className="mr-2 h-4 w-4 object-cover"
               />
               Blog
             </span>
-            <span>
+            <span className="flex items-center">
               <FontAwesomeIcon
                 icon={faChevronRight}
-                className="mr-2 object-cover"
+                className="mr-2 h-4 w-4 object-cover"
               />
               {pageName}
             </span>

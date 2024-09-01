@@ -1,9 +1,12 @@
 import BlogsLayout from "@/components/blogs/BlogsLayout";
+import SliderBlogIelts from "@/components/sliders/SliderBlogIelts";
 
 export default function BlogIelts() {
   return (
-    <>
-      <BlogsLayout />
-    </>
+    <BlogsLayout
+      pageName="IELTS"
+      pageContent="Nổi Bật"
+      SliderComponent={<SliderBlogIelts />}
+    />
   );
 }
