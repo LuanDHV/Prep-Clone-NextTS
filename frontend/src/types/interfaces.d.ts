@@ -141,6 +141,12 @@ export interface ICoursesLayout {
   benefits: IBenefits[];
 }
 
+export interface IBlogsLayout {
+  pageName: string;
+  pageContent: string;
+  SliderComponent: React.ReactNode;
+}
+
 export interface ICoupon {
   code: string;
   discountPercentage: number;

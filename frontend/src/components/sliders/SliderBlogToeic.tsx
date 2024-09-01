@@ -39,7 +39,7 @@ export default function SliderBlogToeic() {
         delay: 5000,
         disableOnInteraction: false,
       }}
-      spaceBetween={50}
+      spaceBetween={30}
     >
       {SliderBlogToeic.map((slide, index) => (
         <SwiperSlide key={index}>
