@@ -42,6 +42,12 @@ export interface ITeacher {
   score: string;
 }
 
+export interface IBlog {
+  title: string;
+  img: string;
+  link: string;
+}
+
 export interface IAims {
   _id: string;
   courseType: string;
