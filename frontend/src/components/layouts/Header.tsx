@@ -107,7 +107,7 @@ export default function Header() {
           {isSignedIn ? (
             <div className="z-10 flex justify-end gap-3">
               <Link
-                href="over-view"
+                href="/over-view"
                 className="flex h-10 w-[100px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
               >
                 Bắt đầu học
@@ -116,7 +116,7 @@ export default function Header() {
             </div>
           ) : (
             <Link
-              href="sign-in"
+              href="/sign-in"
               className="z-10 flex h-10 w-[75px] items-center justify-center rounded-xl bg-blue-500 text-sm font-semibold text-white duration-300 ease-in-out hover:bg-[#1a56db] lg:h-[48px] lg:w-[130px]"
             >
               Bắt đầu
