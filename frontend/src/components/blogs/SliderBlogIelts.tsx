@@ -41,7 +41,7 @@ export default function SliderBlogIelts() {
       }}
       spaceBetween={30}
     >
-      {SliderBlogIelts.map((slide, index) => (
+      {SliderBlogIelts.map((slide: IBlog, index: number) => (
         <SwiperSlide key={index}>
           <div className="mb-10">
             <Link href={slide.link}>

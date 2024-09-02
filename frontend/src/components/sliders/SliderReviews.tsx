@@ -98,7 +98,7 @@ export default function SliderReviews() {
       }}
       className="custom-swiper-pagination"
     >
-      {SliderReviews.map((slide, index) => (
+      {SliderReviews.map((slide: IReview, index: number) => (
         <SwiperSlide key={index}>
           <div className="mb-[50px] h-auto w-full rounded-xl bg-white p-5 shadow-lg">
             <div className="flex h-16 w-full justify-start">

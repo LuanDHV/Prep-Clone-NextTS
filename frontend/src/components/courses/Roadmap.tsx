@@ -19,6 +19,9 @@ import {
 import { useEffect, useState } from "react";
 import ButtonModal from "./ButtonModal";
 import {
+  IAims,
+  IBenefits,
+  IBrands,
   ICourses,
   ICoursesLayout,
   ILessons,
@@ -412,7 +415,7 @@ export default function Roadmap({
             </Link>
           </div>
           <div className="grid grid-flow-row lg:grid-flow-col">
-            {brands.map((brand) => (
+            {brands.map((brand: IBrands) => (
               <div
                 key={brand._id}
                 className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl shadow-lg lg:w-4/5 ${
@@ -450,7 +453,7 @@ export default function Roadmap({
             <p>Chọn mục tiêu bạn muốn chinh phục</p>
           </div>
           <div className="grid grid-flow-row lg:grid-flow-col">
-            {aims.map((aim) => (
+            {aims.map((aim: IAims) => (
               <div
                 key={aim._id}
                 className={`mx-auto my-2 grid h-20 w-full items-center rounded-xl shadow-lg lg:w-4/5 ${
@@ -527,7 +530,7 @@ export default function Roadmap({
 
             <div className="mt-10 rounded-xl bg-white p-5 shadow-lg md:p-10">
               {/* Courses */}
-              {roadMapCourses.map((course) => (
+              {roadMapCourses.map((course: ICourses) => (
                 <div className="mt-10" key={course._id}>
                   <div className="flex items-start">
                     <Image
@@ -724,7 +727,7 @@ export default function Roadmap({
                   </h4>
                 </div>
                 <div className="mt-4 flex gap-4">
-                  {benefits.map((benefit) => (
+                  {benefits.map((benefit: IBenefits) => (
                     <div key={benefit._id}>
                       {benefit.contents.map((content, contentIndex) => (
                         <div key={contentIndex}>

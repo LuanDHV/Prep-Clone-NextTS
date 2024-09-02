@@ -14,6 +14,7 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import { usePathname, useRouter } from "next/navigation";
+import { ICoursesType, IMenuActive } from "@/types/interfaces";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -23,7 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const [openNabar, setOpenNabar] = useState<boolean>(true);
   const [selectedCourseType, setSelectedCourseType] = useState<string>("ielts");
 
-  const active = [
+  const active: IMenuActive[] = [
     {
       id: "over_view",
       label: "Over View",
@@ -62,7 +63,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     },
   ];
 
-  const courses = [
+  const coursesType: ICoursesType[] = [
     { value: "ielts", label: "IELTS" },
     { value: "toeic", label: "TOEIC" },
     { value: "hsk", label: "HSK" },
@@ -134,7 +135,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                     Bạn muốn bắt đầu với
                   </ModalHeader>
                   <div className="flex flex-col gap-5 p-5">
-                    {courses.map((course) => (
+                    {coursesType.map((course: ICoursesType) => (
                       <div
                         className={`w-full rounded-xl border ${selectedCourseType === course.value ? "border-blue-500 bg-blue-50 text-blue-500" : ""}`}
                         key={course.value}
@@ -173,7 +174,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <div className="mt-[66px] flex flex-1">
         {openNabar ? (
           <div className="fixed bottom-0 top-[66px] w-1/6 border-r-[1px] border-neutral-200 p-1 md:p-4 lg:block">
-            {active.map((items) => (
+            {active.map((items: IMenuActive) => (
               <Link href={items.href} key={items.id}>
                 <div
                   className={`mt-4 flex cursor-pointer items-center justify-center gap-2 rounded-xl p-4 text-sm duration-300 ease-in-out md:justify-start ${activeNavbar === items.id ? "bg-blue-100 text-blue-600" : "text-gray-600 hover:bg-gray-100"}`}

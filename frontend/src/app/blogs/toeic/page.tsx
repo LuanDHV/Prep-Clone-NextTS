@@ -1,5 +1,5 @@
 import BlogsLayout from "@/components/blogs/BlogsLayout";
-import SliderBlogToeic from "@/components/sliders/SliderBlogToeic";
+import SliderBlogToeic from "@/components/blogs/SliderBlogToeic";
 
 export default function BlogToeic() {
   return (

@@ -4,7 +4,7 @@ import axios from "axios";
 import { useUser } from "@clerk/nextjs";
 import { useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
+import { ICourses } from "@/types/interfaces";
 
 export default function MyCourses() {
   const { user } = useUser();
@@ -62,7 +62,7 @@ export default function MyCourses() {
     <>
       {courses.length > 0 ? (
         <div className="grid cursor-pointer grid-flow-row gap-5 md:grid-cols-4">
-          {courses.map((course) => (
+          {courses.map((course: ICourses) => (
             <div
               key={course._id}
               className="grid-rows-2 rounded-xl border border-gray-300"

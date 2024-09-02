@@ -95,7 +95,7 @@ export default function SliderTeachers() {
       }}
       className="custom-swiper-pagination"
     >
-      {SliderTeachers.map((slide, index) => (
+      {SliderTeachers.map((slide: ITeacher, index: number) => (
         <SwiperSlide key={index}>
           <Image
             src={slide.img}

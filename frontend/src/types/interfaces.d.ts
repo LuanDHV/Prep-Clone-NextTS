@@ -182,3 +182,22 @@ export interface ISupports {
   interest: string;
   goal: string;
 }
+
+export interface IDataTest {
+  title: string;
+  time: string;
+  description: string;
+}
+
+export interface IMenuActive {
+  id: string;
+  label: string;
+  img: string;
+  activeImg: string;
+  href: string;
+}
+
+export interface ICoursesType {
+  value: string;
+  label: string;
+}

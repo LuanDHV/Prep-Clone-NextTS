@@ -36,7 +36,7 @@ export default function SliderPartners() {
         },
       }}
     >
-      {SliderPartners.map((slide, index) => (
+      {SliderPartners.map((slide: IPartner, index: number) => (
         <SwiperSlide key={index}>
           <div className="mx-auto mb-[50px] h-auto w-full rounded-xl bg-white p-5 shadow-lg">
             <Image

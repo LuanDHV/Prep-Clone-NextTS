@@ -1,5 +1,5 @@
 import BlogsLayout from "@/components/blogs/BlogsLayout";
-import SliderBlogHonor from "@/components/sliders/SliderBlogHonor";
+import SliderBlogHonor from "@/components/blogs/SliderBlogHonor";
 
 export default function BlogHonor() {
   return (

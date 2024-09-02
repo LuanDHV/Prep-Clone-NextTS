@@ -41,7 +41,7 @@ export default function SliderBlogToeic() {
       }}
       spaceBetween={30}
     >
-      {SliderBlogToeic.map((slide, index) => (
+      {SliderBlogToeic.map((slide: IBlog, index: number) => (
         <SwiperSlide key={index}>
           <div className="mb-10">
             <Link href={slide.link}>

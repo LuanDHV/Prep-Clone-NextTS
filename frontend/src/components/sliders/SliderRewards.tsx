@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { Pagination } from "swiper/modules";
 import Image from "next/image";
-import { IReward } from "@/types/interfaces";
+import { IReview, IReward } from "@/types/interfaces";
 
 export default function SliderRewards() {
   const SliderRewards: IReward[] = [
@@ -60,7 +60,7 @@ export default function SliderRewards() {
         },
       }}
     >
-      {SliderRewards.map((slide, index) => (
+      {SliderRewards.map((slide: IReward, index: number) => (
         <SwiperSlide key={index}>
           <div className="h-[90px]">
             <Image

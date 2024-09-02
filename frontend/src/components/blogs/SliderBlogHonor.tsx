@@ -45,7 +45,7 @@ export default function SliderBlogHonor() {
       }}
       spaceBetween={30}
     >
-      {SliderBlogHonor.map((slide, index) => (
+      {SliderBlogHonor.map((slide: IBlog, index: number) => (
         <SwiperSlide key={index}>
           <div className="mb-10">
             <Link href={slide.link}>

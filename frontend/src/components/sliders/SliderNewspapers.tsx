@@ -74,7 +74,7 @@ export default function SliderNewspapers() {
       }}
       className="custom-swiper-pagination"
     >
-      {SliderNewspapers.map((slide, index) => (
+      {SliderNewspapers.map((slide: INewPaper, index: number) => (
         <SwiperSlide key={index}>
           <div className="mx-auto mb-[50px] h-auto w-full rounded-xl bg-white p-5 shadow-lg">
             <Link href={slide.link} target="_blank">

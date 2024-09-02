@@ -8,7 +8,7 @@ import {
   faCaretDown,
   faCaretUp,
 } from "@fortawesome/free-solid-svg-icons";
-import { IMenu } from "@/types/interfaces";
+import { IMenu, ISubMenu } from "@/types/interfaces";
 import { UserButton, useAuth } from "@clerk/nextjs";
 
 export default function Header() {
@@ -127,7 +127,7 @@ export default function Header() {
         <div
           className={`flex w-full flex-col gap-5 bg-white bg-opacity-100 p-5 text-start font-semibold shadow lg:h-[60px] ${isOpen ? "block" : "hidden"} lg:absolute lg:top-0 lg:flex lg:flex-row lg:items-center lg:justify-center lg:bg-opacity-0 lg:shadow-none`}
         >
-          {menuItems.map((item, index) => (
+          {menuItems.map((item: IMenu, index: number) => (
             <div key={index} className="group relative">
               {item.subItems ? (
                 <>
@@ -148,24 +148,28 @@ export default function Header() {
                     className={`lg:hidden ${item.isOpen ? "block" : "hidden"} flex flex-col bg-white p-2 font-semibold lg:rounded-xl lg:shadow-md`}
                   >
                     <ul>
-                      {item.subItems.map((subItem, subIndex) => (
-                        <Link href={subItem.href || "#"} key={subIndex}>
-                          <li className="p-2 text-gray-600 hover:bg-blue-50">
-                            {subItem.title}
-                          </li>
-                        </Link>
-                      ))}
+                      {item.subItems.map(
+                        (subItem: ISubMenu, subIndex: number) => (
+                          <Link href={subItem.href || "#"} key={subIndex}>
+                            <li className="p-2 text-gray-600 hover:bg-blue-50">
+                              {subItem.title}
+                            </li>
+                          </Link>
+                        ),
+                      )}
                     </ul>
                   </div>
                   <div className="hidden rounded-xl font-semibold lg:absolute lg:left-[-50px] lg:top-10 lg:w-52 lg:flex-col lg:bg-white lg:p-2 lg:shadow-lg lg:group-hover:flex">
                     <ul>
-                      {item.subItems.map((subItem, subIndex) => (
-                        <Link href={subItem.href || "#"} key={subIndex}>
-                          <li className="p-2 text-gray-600 hover:bg-blue-50">
-                            {subItem.title}
-                          </li>
-                        </Link>
-                      ))}
+                      {item.subItems.map(
+                        (subItem: ISubMenu, subIndex: number) => (
+                          <Link href={subItem.href || "#"} key={subIndex}>
+                            <li className="p-2 text-gray-600 hover:bg-blue-50">
+                              {subItem.title}
+                            </li>
+                          </Link>
+                        ),
+                      )}
                     </ul>
                   </div>
                 </>

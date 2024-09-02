@@ -5,7 +5,7 @@ import Image from "next/image";
 import SliderReviews from "../sliders/SliderReviews";
 import Questions from "./Questions";
 import Roadmap from "./Roadmap";
-import { ICoursesLayout } from "@/types/interfaces";
+import { IContents, ICoursesLayout } from "@/types/interfaces";
 import ScrollToRoadMap from "./ScrollToRoadMap";
 
 export default function CoursesLayout({
@@ -18,7 +18,7 @@ export default function CoursesLayout({
 }: ICoursesLayout) {
   return (
     <>
-      {contents.map((content) => (
+      {contents.map((content: IContents) => (
         <>
           {/* Header */}
           <section>

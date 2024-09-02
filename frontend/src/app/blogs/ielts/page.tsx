@@ -1,5 +1,5 @@
 import BlogsLayout from "@/components/blogs/BlogsLayout";
-import SliderBlogIelts from "@/components/sliders/SliderBlogIelts";
+import SliderBlogIelts from "@/components/blogs/SliderBlogIelts";
 
 export default function BlogIelts() {
   return (
