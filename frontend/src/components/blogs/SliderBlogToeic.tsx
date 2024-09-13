@@ -48,7 +48,7 @@ export default function SliderBlogToeic() {
               <img
                 src={slide.img}
                 alt="img-slide-blog"
-                className="mx-auto h-60 w-full rounded-lg object-cover md:h-[450px] md:w-4/6"
+                className="mx-auto h-60 w-full rounded-lg object-contain md:h-[450px] md:w-4/6"
               />
             </Link>
             <p className="py-4 text-center text-white md:py-6 md:text-xl">
