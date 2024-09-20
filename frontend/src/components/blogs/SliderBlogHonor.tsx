@@ -52,7 +52,7 @@ export default function SliderBlogHonor() {
               <img
                 src={slide.img}
                 alt="img-slide-blog"
-                className="h:1-2 mx-auto h-full w-full rounded-lg object-contain md:w-1/2"
+                className="mx-auto h-full w-full rounded-lg object-contain md:w-1/4"
               />
             </Link>
             <p className="py-4 text-center text-white md:py-6 md:text-xl">
