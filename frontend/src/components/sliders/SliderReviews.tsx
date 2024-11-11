@@ -82,10 +82,11 @@ export default function SliderReviews() {
         delay: 5000,
         disableOnInteraction: false,
       }}
+      spaceBetween={30}
       breakpoints={{
         640: {
           slidesPerView: 1,
-          spaceBetween: 20,
+          spaceBetween: 30,
         },
         768: {
           slidesPerView: 2,
@@ -142,9 +143,7 @@ export default function SliderReviews() {
                 </div>
               </div>
             </div>
-            <p className="mt-4 h-56 lg:h-72 xl:h-40">
-              {renderContent(slide.content, index)}
-            </p>
+            <p className="mt-4 h-auto">{renderContent(slide.content, index)}</p>
             {slide.content.length > 300 && (
               <button
                 onClick={() => toggleContent(index)}

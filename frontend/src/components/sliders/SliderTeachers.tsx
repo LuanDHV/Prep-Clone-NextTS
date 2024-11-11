@@ -79,10 +79,11 @@ export default function SliderTeachers() {
         delay: 5000,
         disableOnInteraction: false,
       }}
+      spaceBetween={30}
       breakpoints={{
         640: {
           slidesPerView: 1,
-          spaceBetween: 20,
+          spaceBetween: 30,
         },
         768: {
           slidesPerView: 2,

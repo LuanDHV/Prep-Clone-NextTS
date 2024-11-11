@@ -83,7 +83,7 @@ export default function SliderNewspapers() {
                 alt="newspapers"
                 width={432}
                 height={165}
-                className="mb-2 object-cover"
+                className="mb-2 w-full object-cover"
               />
               <Image
                 src={slide.logo}

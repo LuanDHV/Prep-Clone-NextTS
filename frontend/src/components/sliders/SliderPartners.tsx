@@ -21,10 +21,11 @@ export default function SliderPartners() {
   ];
   return (
     <Swiper
+      spaceBetween={30}
       breakpoints={{
         640: {
           slidesPerView: 1,
-          spaceBetween: 20,
+          spaceBetween: 30,
         },
         768: {
           slidesPerView: 2,

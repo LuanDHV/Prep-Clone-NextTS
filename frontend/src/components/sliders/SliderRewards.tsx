@@ -41,10 +41,11 @@ export default function SliderRewards() {
         clickable: true,
       }}
       modules={[Pagination]}
+      spaceBetween={30}
       breakpoints={{
         640: {
           slidesPerView: 1,
-          spaceBetween: 20,
+          spaceBetween: 30,
         },
         768: {
           slidesPerView: 2,
