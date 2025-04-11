@@ -1,6 +1,6 @@
 # E-Learning Project
 
-Welcome to the **E-Learning Project!** This project demonstrates the implementation of a full-stack e-learning application using **TypeScript**, **Tailwind CSS**, **Next.js**, **Next UI** **Node.js**, **Express.js**, **MongoDB**, **Clerk**, **Swiper**, and **ZaloPay** .
+Welcome to the **E-Learning Project!** This project demonstrates the implementation of a full-stack e-learning application using **TypeScript**, **Tailwind CSS**, **Next.js**, **Next UI**, **Node.js**, **Express.js**, **MongoDB**, **Clerk**, **Swiper**, and **ZaloPay** .
 
 ## Project Overview
 
