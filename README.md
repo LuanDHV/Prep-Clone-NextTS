@@ -77,7 +77,7 @@ ngrok http 5000
 
 ### Running the Project
 
-1. **Install client dependencies:**
+1. **Install client dependencies and start the client:**
 
 ```bash
 cd frontend
@@ -91,7 +91,9 @@ npm install
 npm run dev
 ```
 
-2. **Install server dependencies:**
+This will start the client at **http://localhost:3000**
+
+2. **Install server dependencies, seed the database, and start the server:**
 
 ```bash
 cd backend
@@ -102,7 +104,11 @@ npm install
 ```
 
 ```bash
+npm run seed
+```
+
+```bash
 npm run start
 ```
 
-Once this is done, the application will start running. You can now access the client at **http://localhost:3000** and interact with the server at **http://localhost:5000**.
+This will seed your database with sample data and start the backend server at **http://localhost:5000**
