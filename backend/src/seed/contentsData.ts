@@ -1,0 +1,41 @@
+const contentsData = [
+  {
+    _id: "669896fb02372bb04dfdecb5",
+    courseType: "TOEIC",
+    image: "/imgs/courses/toeic/footer-toeic.png",
+    bgBanner: "bg-slate-100",
+    textColor: "text-[#004B8D]",
+    text1: "Luyên Thi",
+    text2: "Hiệu Quả!",
+    text3: "Cơ hội rộng mở - Chinh phục công việc như mơ !!!",
+    text4: "Hãy để Prep giúp bạn!",
+    text5: "Học viên đạt Toeic 800+",
+    text6: "Xây Lộ Trình Luyện Thi TOEIC",
+    text7: "Cá Nhân Hóa",
+    text8: "Lộ trình học chi tiết, phù hợp và dành riêng cho bạn",
+    text9: "Luyện Thi",
+    text10: "Cấp Tốc - Hiệu Quả",
+    text11: "Chủ động học với Study Plan và Learning Profile cá nhân hóa.",
+  },
+  {
+    _id: "668a6e2cf896b3c4f1f547b2",
+    courseType: "IELTS",
+    image: "/imgs/courses/ielts/footer-ielts.png",
+    bgBanner: "bg-[#E5EFFF]",
+    textColor: "text-[#0071F9]",
+    text1: "Lộ Trình Học",
+    text2: "Toàn Diện!",
+    text3: "Prep đã giúp hơn 700 học viên đạt IELTS 7.0+",
+    text4: "Hãy để Prep giúp bạn!",
+    text5: "Học viên đạt ielts 7.0+",
+    text6: "Xây Lộ Trình Học IELTS",
+    text7: "Cá Nhân Hóa",
+    text8: "Lộ trình học chi tiết, phù hợp và dành riêng cho bạn",
+    text9: "Tự Học",
+    text10: "Mọi Lúc Mọi Nơi Dễ Dàng - Hiệu Quả",
+    text11:
+      "Study Plan chi tiết, Learning Profile cá nhân hóa cùng sự hỗ trợ sát sao từ Prep bạn sẽ chủ động trong việc luyện thi online, nhưng không một mình !",
+  },
+];
+
+export default contentsData;

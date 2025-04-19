@@ -4,7 +4,9 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "start": "nodemon src/server.ts"
+    "start": "nodemon src/server.ts",
+    "seed": "ts-node src/seed/seedData.ts",
+    "delete": "ts-node src/seed/deleteData.ts"
   },
   "keywords": [],
   "author": "",

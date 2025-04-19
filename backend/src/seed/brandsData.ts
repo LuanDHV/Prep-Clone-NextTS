@@ -1,0 +1,60 @@
+const brandsData = [
+  {
+    _id: "668931fb4048e20f92e12d25",
+    courseType: "IELTS",
+    brand: "1.0 - 3.5",
+    description: "Mất gốc",
+    createdAt: "2024-07-06T12:00:59.811Z",
+    updatedAt: "2024-07-06T12:03:46.663Z",
+  },
+  {
+    _id: "668932094048e20f92e12d27",
+    courseType: "IELTS",
+    brand: "4.0 - 5.0",
+    description: "Có nền tảng",
+    createdAt: "2024-07-06T12:01:13.601Z",
+    updatedAt: "2024-07-06T12:04:05.162Z",
+  },
+  {
+    _id: "668932164048e20f92e12d29",
+    courseType: "IELTS",
+    brand: "5.0 - 5.5",
+    description: "Nền tảng tốt",
+    createdAt: "2024-07-06T12:01:26.563Z",
+    updatedAt: "2024-07-06T12:04:20.655Z",
+  },
+  {
+    _id: "668932314048e20f92e12d2b",
+    courseType: "IELTS",
+    brand: "6.0 - 6.5",
+    description: "Khá",
+    createdAt: "2024-07-06T12:01:53.408Z",
+    updatedAt: "2024-07-06T12:04:40.006Z",
+  },
+  {
+    _id: "6689326e4048e20f92e12d2e",
+    courseType: "TOEIC",
+    brand: "1 - 295",
+    description: "Mất gốc",
+    createdAt: "2024-07-06T12:02:54.430Z",
+    updatedAt: "2024-07-06T12:02:54.430Z",
+  },
+  {
+    _id: "6689327a4048e20f92e12d30",
+    courseType: "TOEIC",
+    brand: "300 - 595",
+    description: "Có nền tảng",
+    createdAt: "2024-07-06T12:03:06.414Z",
+    updatedAt: "2024-07-06T12:03:06.414Z",
+  },
+  {
+    _id: "668932894048e20f92e12d32",
+    courseType: "TOEIC",
+    brand: "600 - 650",
+    description: "Nền tảng tốt",
+    createdAt: "2024-07-06T12:03:21.722Z",
+    updatedAt: "2024-07-06T12:03:21.722Z",
+  },
+];
+
+export default brandsData;
